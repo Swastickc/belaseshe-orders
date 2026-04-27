@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#1a1a1a" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Belasheshe Orders</title>
+
+<!-- PWA manifest inline -->
+<link rel="manifest" href='data:application/manifest+json,{"name":"Belasheshe Orders","short_name":"Belasheshe","start_url":".","display":"standalone","background_color":"%23fafaf7","theme_color":"%231a1a1a","icons":[{"src":"data:image/svg%2bxml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22%3E%3Crect width=%22192%22 height=%22192%22 rx=%2240%22 fill=%22%231a1a1a%22/%3E%3Ctext x=%2296%22 y=%22122%22 font-family=%22serif%22 font-size=%2290%22 fill=%22%23fafaf7%22 text-anchor=%22middle%22%3E%E0%A6%AC%3C/text%3E%3C/svg%3E","sizes":"192x192","type":"image/svg+xml"}]}' />
+
+<!-- Bengali font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --surface-2: #f3f1ec;
+  --ink: #1a1a1a;
+  --ink-2: #5c5c5c;
+  --ink-3: #9a9a95;
+  --line: #e8e5dd;
+  --accent: #1a1a1a;
+  --success: #2d6a4f;
+  --danger: #b23a48;
+  --warm: #c69749;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --radius: 14px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: 'Fraunces', Georgia, serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+}
+
+.bn { font-family: 'Noto Serif Bengali', serif; font-weight: 500; }
+.mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input { font-family: inherit; }
+
+/* ============ APP SHELL ============ */
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  padding: 20px 20px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.brand .bn { font-size: 18px; color: var(--ink-2); }
+
+.sync-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  font-family: 'JetBrains Mono', monospace;
+}
+.sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-3); }
+.sync-dot.online { background: var(--success); box-shadow: 0 0 0 3px rgba(45,106,79,0.15); }
+.sync-dot.offline { background: var(--warm); }
+
+.content {
+  flex: 1;
+  padding-bottom: 90px;
+}
+
+/* ============ TABS ============ */
+.tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+  z-index: 20;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.04);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  border-radius: 10px;
+  color: var(--ink-3);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.15s, background 0.15s;
+  position: relative;
+}
+.tab svg { width: 22px; height: 22px; stroke-width: 1.6; }
+.tab.active { color: var(--ink); }
+.tab .badge {
+  position: absolute;
+  top: 4px;
+  right: 50%;
+  transform: translateX(18px);
+  background: var(--danger);
+  color: white;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============ MENU SCREEN ============ */
+.screen { padding: 16px 16px 20px; display: none; }
+.screen.active { display: block; animation: fadeIn 0.2s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.cat-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 0 -16px 16px;
+  padding: 4px 16px;
+}
+.cat-bar::-webkit-scrollbar { display: none; }
+
+.cat-chip {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.cat-chip.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.menu-list { display: flex; flex-direction: column; gap: 8px; }
+
+.menu-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.1s, box-shadow 0.15s;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+.menu-item:active { transform: scale(0.98); box-shadow: var(--shadow); }
+.menu-item.in-cart { border-color: var(--ink); background: var(--surface-2); }
+
+.menu-item-info { flex: 1; min-width: 0; }
+.menu-item-name {
+  font-family: 'Noto Serif Bengali', serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.menu-item-en {
+  font-size: 12px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+}
+.menu-item-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.qty-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 12px;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============ CART BAR ============ */
+.cart-bar {
+  position: fixed;
+  bottom: calc(80px + env(safe-area-inset-bottom));
+  left: 16px;
+  right: 16px;
+  max-width: 448px;
+  margin: 0 auto;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-lg);
+  z-index: 15;
+  transform: translateY(120px);
+  opacity: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+}
+.cart-bar.visible { transform: none; opacity: 1; }
+.cart-bar-info { display: flex; flex-direction: column; gap: 2px; }
+.cart-bar-count { font-size: 12px; opacity: 0.7; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+.cart-bar-total { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 18px; }
+.cart-bar-btn {
+  background: var(--bg);
+  color: var(--ink);
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============ CART/CHECKOUT MODAL ============ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  display: none;
+  align-items: flex-end;
+  animation: overlayIn 0.2s ease;
+}
+.modal-overlay.open { display: flex; }
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  background: var(--bg);
+  border-radius: 24px 24px 0 0;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@keyframes modalIn { from { transform: translateY(100%); } to { transform: none; } }
+
+.modal-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--line);
+  border-radius: 2px;
+  margin: 10px auto 8px;
+}
+
+.modal-header {
+  padding: 8px 20px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.modal-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-body { flex: 1; overflow-y: auto; padding: 16px 20px; }
+.modal-footer { padding: 16px 20px; border-top: 1px solid var(--line); }
+
+.cart-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cart-line:last-child { border-bottom: none; }
+.cart-line-info { flex: 1; min-width: 0; }
+.cart-line-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 15px; }
+.cart-line-price { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); }
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 2px;
+}
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: background 0.15s;
+}
+.qty-btn:active { background: var(--line); }
+.qty-num {
+  min-width: 32px;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cart-line-total {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 60px;
+  text-align: right;
+}
+
+.note-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 14px;
+  margin-top: 16px;
+  font-family: inherit;
+}
+.note-input:focus { outline: none; border-color: var(--ink); }
+
+.table-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 14px;
+  margin-bottom: 12px;
+  font-family: inherit;
+}
+.table-input:focus { outline: none; border-color: var(--ink); }
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.summary-row.total {
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 14px;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+.summary-row.total .mono { font-size: 22px; }
+
+.btn-primary {
+  width: 100%;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.1s;
+}
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { opacity: 0.4; }
+
+.btn-secondary {
+  width: 100%;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  margin-top: 8px;
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  font-size: 13px;
+  padding: 10px;
+  font-weight: 500;
+}
+
+/* ============ PAYMENT SCREEN ============ */
+.payment-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 20px;
+}
+.payment-amount {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 56px;
+  letter-spacing: -0.03em;
+  margin: 16px 0 4px;
+}
+.payment-amount .mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+.payment-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  margin-bottom: 32px;
+}
+.qr-frame {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.qr-frame img { display: block; width: 240px; height: 240px; }
+.qr-placeholder {
+  width: 240px;
+  height: 240px;
+  background: var(--surface-2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-3);
+  padding: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+.upload-qr-btn {
+  font-size: 13px;
+  color: var(--ink-2);
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+/* ============ ORDERS SCREEN ============ */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.stat-card.dark { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 6px;
+}
+.stat-value {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+.stat-value .mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 24px 0 10px;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+.section-meta {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.order-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  position: relative;
+}
+.order-card.pending { border-color: var(--warm); border-left-width: 3px; }
+.order-card.paid { opacity: 0.85; }
+
+.order-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.order-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.05em;
+}
+.order-table {
+  display: inline-block;
+  background: var(--surface-2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink-2);
+  margin-left: 6px;
+}
+.order-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 16px;
+}
+.order-items {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 13px;
+  color: var(--ink-2);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.order-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--ink-3);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.order-status {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.order-status.pending { background: rgba(198,151,73,0.15); color: var(--warm); }
+.order-status.paid { background: rgba(45,106,79,0.15); color: var(--success); }
+.order-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.order-action-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink-2);
+}
+.order-action-btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.order-action-btn.danger { color: var(--danger); }
+
+/* ============ HISTORY SCREEN ============ */
+.history-day {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+}
+.history-day-info { display: flex; flex-direction: column; gap: 2px; }
+.history-day-date {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+.history-day-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.history-day-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink-3);
+}
+.empty-icon { font-size: 32px; margin-bottom: 12px; opacity: 0.4; }
+.empty-text { font-size: 14px; }
+
+/* ============ SETTINGS SCREEN ============ */
+.settings-section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 4px 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.settings-row {
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  width: 100%;
+}
+.settings-row:last-child { border-bottom: none; }
+.settings-row-label { font-size: 14px; font-weight: 500; }
+.settings-row-value { font-size: 13px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
+
+.settings-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.settings-input:focus { outline: none; border-color: var(--ink); }
+
+.config-block {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.config-block-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.config-block-desc {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.config-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* ============ TOAST ============ */
+.toast {
+  position: fixed;
+  top: calc(20px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translate(-50%, -120%);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+}
+.toast.show { transform: translate(-50%, 0); }
+
+/* ============ LOCK SCREEN ============ */
+.lock {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+.lock.hidden { display: none; }
+.lock-brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.lock-brand-bn {
+  font-family: 'Noto Serif Bengali', serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--ink-2);
+  margin-bottom: 32px;
+}
+.pin-display {
+  display: flex;
+  gap: 14px;
+  margin: 20px 0 32px;
+}
+.pin-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: transparent;
+  transition: background 0.15s;
+}
+.pin-dot.filled { background: var(--ink); }
+.pin-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+}
+.pin-key {
+  aspect-ratio: 1.4;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 500;
+  transition: background 0.1s;
+}
+.pin-key:active { background: var(--surface-2); }
+.pin-key.del { color: var(--ink-3); font-size: 14px; }
+.lock-hint {
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--ink-3);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* iOS quirks */
+@supports (-webkit-touch-callout: none) {
+  .modal-body { -webkit-overflow-scrolling: touch; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div class="lock" id="lockScreen">
+  <div class="lock-brand">Belasheshe</div>
+  <div class="lock-brand-bn bn">বেলাশেষে</div>
+  <div class="pin-display" id="pinDisplay">
+    <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+  </div>
+  <div class="pin-pad">
+    <button class="pin-key" data-k="1">1</button>
+    <button class="pin-key" data-k="2">2</button>
+    <button class="pin-key" data-k="3">3</button>
+    <button class="pin-key" data-k="4">4</button>
+    <button class="pin-key" data-k="5">5</button>
+    <button class="pin-key" data-k="6">6</button>
+    <button class="pin-key" data-k="7">7</button>
+    <button class="pin-key" data-k="8">8</button>
+    <button class="pin-key" data-k="9">9</button>
+    <button class="pin-key del" data-k="reset">reset</button>
+    <button class="pin-key" data-k="0">0</button>
+    <button class="pin-key del" data-k="del">←</button>
+  </div>
+  <div class="lock-hint" id="lockHint">enter café pin</div>
+</div>
+
+<!-- APP -->
+<div class="app">
+  <div class="header">
+    <div class="brand">
+      <span>Belasheshe</span>
+      <span class="bn">বেলাশেষে</span>
+    </div>
+    <div class="sync-pill">
+      <span class="sync-dot" id="syncDot"></span>
+      <span id="syncLabel">local</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- MENU SCREEN -->
+    <div class="screen active" id="screen-menu">
+      <div class="cat-bar" id="catBar"></div>
+      <div class="menu-list" id="menuList"></div>
+    </div>
+
+    <!-- ORDERS SCREEN -->
+    <div class="screen" id="screen-orders">
+      <div class="stats">
+        <div class="stat-card dark">
+          <div class="stat-label">Today</div>
+          <div class="stat-value"><span class="mono">₹</span><span class="mono" id="todayTotal">0</span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Orders</div>
+          <div class="stat-value mono" id="todayCount">0</div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Pending</div>
+        <div class="section-meta" id="pendingMeta">0 open</div>
+      </div>
+      <div id="pendingList"></div>
+
+      <div class="section-header">
+        <div class="section-title">Paid Today</div>
+        <div class="section-meta" id="paidMeta">0 done</div>
+      </div>
+      <div id="paidList"></div>
+    </div>
+
+    <!-- HISTORY SCREEN -->
+    <div class="screen" id="screen-history">
+      <div class="section-header" style="margin-top:0;">
+        <div class="section-title">History</div>
+        <div class="section-meta" id="historyMeta">last 30 days</div>
+      </div>
+      <div id="historyList"></div>
+    </div>
+
+    <!-- SETTINGS SCREEN -->
+    <div class="screen" id="screen-settings">
+      <div class="section-header" style="margin-top:0;">
+        <div class="section-title">Settings</div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-block-title">Payment QR Code</div>
+        <div class="config-block-desc">Upload your Bharat Pay QR. Shown to customer at checkout.</div>
+        <input type="file" accept="image/*" id="qrUpload" style="display:none;" />
+        <button class="btn-secondary" onclick="document.getElementById('qrUpload').click()">
+          <span id="qrUploadLabel">Upload QR image</span>
+        </button>
+        <div id="qrPreview" style="margin-top:12px; display:none;">
+          <img id="qrPreviewImg" style="width:100px; height:100px; border-radius:8px; border:1px solid var(--line);" />
+          <button class="btn-danger" style="margin-top:6px; padding:6px;" onclick="removeQR()">Remove</button>
+        </div>
+      </div>
+
+      <div class="config-block">
+        <div class="config-block-title">Café PIN</div>
+        <div class="config-block-desc">4-digit PIN to unlock app on each phone.</div>
+        <input type="text" maxlength="4" inputmode="numeric" class="settings-input" id="pinInput" placeholder="4 digits" />
+        <button class="btn-secondary" onclick="savePin()" style="margin-top:8px;">Save PIN</button>
+      </div>
+
+      <div class="config-block">
+        <div class="config-block-title">Sync Across Phones (Firebase)</div>
+        <div class="config-block-desc">
+          Optional. To sync orders between gf, mom & your phones, paste Firebase config below. Free setup at console.firebase.google.com → create project → add web app → copy config. Without this, app works fully offline on this phone only.
+        </div>
+        <textarea class="config-textarea" id="firebaseConfig" placeholder='{"apiKey":"...", "projectId":"...", ...}'></textarea>
+        <button class="btn-secondary" onclick="saveFirebaseConfig()" style="margin-top:8px;">Save & Connect</button>
+        <button class="btn-danger" onclick="clearFirebaseConfig()" id="clearFbBtn" style="display:none;">Disconnect</button>
+      </div>
+
+      <div class="config-block">
+        <div class="config-block-title">Data</div>
+        <div class="config-block-desc">Backup or clear local orders.</div>
+        <button class="btn-secondary" onclick="exportData()">Export all orders (CSV)</button>
+        <button class="btn-secondary" onclick="lockApp()" style="margin-top:8px;">Lock app</button>
+        <button class="btn-danger" onclick="clearAllData()" style="margin-top:4px;">Clear all data</button>
+      </div>
+
+      <div style="text-align:center; padding: 20px 0; font-size: 11px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em;">
+        BELASHESHE · v1.0
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <nav class="tabs">
+    <button class="tab active" data-screen="menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      Menu
+    </button>
+    <button class="tab" data-screen="orders">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+      Orders
+      <span class="badge" id="ordersBadge" style="display:none;">0</span>
+    </button>
+    <button class="tab" data-screen="history">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      History
+    </button>
+    <button class="tab" data-screen="settings">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      Settings
+    </button>
+  </nav>
+</div>
+
+<!-- CART BAR -->
+<div class="cart-bar" id="cartBar" onclick="openCart()">
+  <div class="cart-bar-info">
+    <div class="cart-bar-count" id="cartBarCount">0 items</div>
+    <div class="cart-bar-total"><span>₹</span><span id="cartBarTotal">0</span></div>
+  </div>
+  <div class="cart-bar-btn">
+    Review
+    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+  </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModal" onclick="closeCart(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">Current Order</div>
+      <button class="modal-close" onclick="closeCart()"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <input type="text" class="table-input" id="tableInput" placeholder="Table no. (optional)" />
+      <div id="cartLines"></div>
+      <input type="text" class="note-input" id="noteInput" placeholder="Special instructions..." />
+      <div style="margin-top: 16px;">
+        <div class="summary-row total">
+          <span>Total</span>
+          <span><span class="mono">₹</span><span class="mono" id="cartTotal">0</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="goToPayment()">
+        Take Payment
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <button class="btn-danger" onclick="clearCart()">Clear order</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="paymentModal" onclick="closePayment(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">Show QR to Customer</div>
+      <button class="modal-close" onclick="closePayment()"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="payment-screen">
+        <div class="payment-label">Amount to pay</div>
+        <div class="payment-amount"><span class="mono">₹</span><span class="mono" id="payAmount">0</span></div>
+        <div class="qr-frame" id="qrFrame">
+          <div class="qr-placeholder" id="qrPlaceholder">No QR uploaded.<br/>Add yours in Settings.</div>
+          <img id="qrImage" style="display:none;" />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="confirmPayment()">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        Mark as Paid
+      </button>
+      <button class="btn-secondary" onclick="markPending()">Save as Pending</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- Firebase SDK (loaded only if config exists) -->
+<script type="module">
+// ============ MENU DATA (Belasheshe) ============
+const MENU = [
+  // Tea & Coffee
+  { id: 'cha-doodh', cat: 'cha', bn: 'দুধ চা', en: 'Milk Tea', price: 15 },
+  { id: 'cha-lemon', cat: 'cha', bn: 'লেবু চা', en: 'Lemon Tea', price: 15 },
+  { id: 'cha-masala', cat: 'cha', bn: 'মশলা চা', en: 'Masala Tea', price: 25 },
+  { id: 'cha-elach', cat: 'cha', bn: 'এলাচ চা', en: 'Cardamom Tea', price: 25 },
+  { id: 'cha-adrak', cat: 'cha', bn: 'আদা চা', en: 'Ginger Tea', price: 20 },
+  { id: 'coffee-black', cat: 'cha', bn: 'কালো কফি', en: 'Black Coffee', price: 40 },
+  { id: 'coffee-milk', cat: 'cha', bn: 'দুধ কফি', en: 'Milk Coffee', price: 50 },
+  { id: 'coffee-cold', cat: 'cha', bn: 'কোল্ড কফি', en: 'Cold Coffee', price: 80 },
+
+  // Snacks
+  { id: 'snack-singara', cat: 'snack', bn: 'সিঙ্গাড়া', en: 'Singara', price: 10 },
+  { id: 'snack-kochuri', cat: 'snack', bn: 'কচুরি', en: 'Kochuri', price: 15 },
+  { id: 'snack-dalpuri', cat: 'snack', bn: 'ডালপুরি', en: 'Dal Puri', price: 20 },
+  { id: 'snack-pakora', cat: 'snack', bn: 'পকোড়া', en: 'Pakora', price: 30 },
+  { id: 'snack-toast', cat: 'snack', bn: 'বাটার টোস্ট', en: 'Butter Toast', price: 25 },
+  { id: 'snack-omelet', cat: 'snack', bn: 'অমলেট', en: 'Omelette', price: 30 },
+  { id: 'snack-maggi', cat: 'snack', bn: 'ম্যাগি', en: 'Maggi', price: 50 },
+  { id: 'snack-sandwich', cat: 'snack', bn: 'স্যান্ডউইচ', en: 'Sandwich', price: 60 },
+
+  // Sweets
+  { id: 'sweet-rosogolla', cat: 'sweet', bn: 'রসগোল্লা', en: 'Rosogolla', price: 15 },
+  { id: 'sweet-misti', cat: 'sweet', bn: 'মিষ্টি দই', en: 'Mishti Doi', price: 30 },
+  { id: 'sweet-sandesh', cat: 'sweet', bn: 'সন্দেশ', en: 'Sandesh', price: 25 },
+  { id: 'sweet-chamcham', cat: 'sweet', bn: 'চমচম', en: 'Cham Cham', price: 20 },
+
+  // Mains
+  { id: 'main-ghoogni', cat: 'main', bn: 'ঘুগনি', en: 'Ghugni', price: 40 },
+  { id: 'main-egg-roll', cat: 'main', bn: 'ডিম রোল', en: 'Egg Roll', price: 50 },
+  { id: 'main-chicken-roll', cat: 'main', bn: 'চিকেন রোল', en: 'Chicken Roll', price: 80 },
+  { id: 'main-chowmein', cat: 'main', bn: 'চাউমিন', en: 'Chowmein', price: 70 },
+  { id: 'main-fried-rice', cat: 'main', bn: 'ফ্রায়েড রাইস', en: 'Fried Rice', price: 90 },
+];
+
+const CATEGORIES = [
+  { id: 'all', label: 'All' },
+  { id: 'cha', label: 'Tea & Coffee' },
+  { id: 'snack', label: 'Snacks' },
+  { id: 'sweet', label: 'Sweets' },
+  { id: 'main', label: 'Mains' },
+];
+
+// ============ STATE ============
+let state = {
+  cart: {}, // { itemId: qty }
+  orders: [], // local cache
+  currentCat: 'all',
+  qrImage: null,
+  pin: '0000',
+  pinAttempt: '',
+  firebaseApp: null,
+  firestore: null,
+  unsubscribeOrders: null,
+};
+
+// ============ STORAGE (IndexedDB via simple wrapper) ============
+const DB_NAME = 'belasheshe';
+const DB_VERSION = 1;
+let db;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = (e) => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains('orders')) {
+        d.createObjectStore('orders', { keyPath: 'id' });
+      }
+      if (!d.objectStoreNames.contains('settings')) {
+        d.createObjectStore('settings', { keyPath: 'key' });
+      }
+    };
+    req.onsuccess = (e) => { db = e.target.result; resolve(db); };
+    req.onerror = (e) => reject(e);
+  });
+}
+
+function dbGet(store, key) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readonly');
+    const req = tx.objectStore(store).get(key);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function dbSet(store, value) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readwrite');
+    const req = tx.objectStore(store).put(value);
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function dbDelete(store, key) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readwrite');
+    const req = tx.objectStore(store).delete(key);
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function dbAll(store) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readonly');
+    const req = tx.objectStore(store).getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function dbClear(store) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(store, 'readwrite');
+    const req = tx.objectStore(store).clear();
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+// ============ TOAST ============
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+// ============ LOCK ============
+function showLock() {
+  document.getElementById('lockScreen').classList.remove('hidden');
+  state.pinAttempt = '';
+  renderPinDots();
+}
+
+function hideLock() {
+  document.getElementById('lockScreen').classList.add('hidden');
+}
+
+function renderPinDots() {
+  const dots = document.querySelectorAll('#pinDisplay .pin-dot');
+  dots.forEach((d, i) => d.classList.toggle('filled', i < state.pinAttempt.length));
+}
+
+function pinKey(k) {
+  if (k === 'del') {
+    state.pinAttempt = state.pinAttempt.slice(0, -1);
+  } else if (k === 'reset') {
+    state.pinAttempt = '';
+  } else if (state.pinAttempt.length < 4) {
+    state.pinAttempt += k;
+  }
+  renderPinDots();
+  if (state.pinAttempt.length === 4) {
+    setTimeout(() => {
+      if (state.pinAttempt === state.pin) {
+        hideLock();
+      } else {
+        document.getElementById('lockHint').textContent = 'wrong pin · try again';
+        state.pinAttempt = '';
+        renderPinDots();
+        navigator.vibrate?.(120);
+      }
+    }, 150);
+  }
+}
+
+document.querySelectorAll('.pin-key').forEach(b => {
+  b.addEventListener('click', () => pinKey(b.dataset.k));
+});
+
+window.lockApp = () => showLock();
+
+// ============ TABS ============
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const screen = tab.dataset.screen;
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === `screen-${screen}`));
+    if (screen === 'orders') renderOrders();
+    if (screen === 'history') renderHistory();
+  });
+});
+
+// ============ MENU RENDER ============
+function renderCategories() {
+  const bar = document.getElementById('catBar');
+  bar.innerHTML = CATEGORIES.map(c =>
+    `<button class="cat-chip ${state.currentCat === c.id ? 'active' : ''}" data-cat="${c.id}">${c.label}</button>`
+  ).join('');
+  bar.querySelectorAll('.cat-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      state.currentCat = chip.dataset.cat;
+      renderCategories();
+      renderMenu();
+    });
+  });
+}
+
+function renderMenu() {
+  const list = document.getElementById('menuList');
+  const items = state.currentCat === 'all' ? MENU : MENU.filter(m => m.cat === state.currentCat);
+  list.innerHTML = items.map(item => {
+    const qty = state.cart[item.id] || 0;
+    return `
+      <button class="menu-item ${qty ? 'in-cart' : ''}" data-id="${item.id}">
+        <div class="menu-item-info">
+          <div class="menu-item-name bn">${item.bn}</div>
+          <div class="menu-item-en">${item.en}</div>
+        </div>
+        <div class="menu-item-price"><span class="mono">₹${item.price}</span></div>
+        ${qty ? `<span class="qty-badge mono">${qty}</span>` : ''}
+      </button>
+    `;
+  }).join('');
+  list.querySelectorAll('.menu-item').forEach(el => {
+    el.addEventListener('click', () => addToCart(el.dataset.id));
+  });
+}
+
+// ============ CART ============
+function addToCart(itemId) {
+  state.cart[itemId] = (state.cart[itemId] || 0) + 1;
+  renderMenu();
+  renderCartBar();
+  navigator.vibrate?.(15);
+}
+
+function setCartQty(itemId, qty) {
+  if (qty <= 0) delete state.cart[itemId];
+  else state.cart[itemId] = qty;
+  renderMenu();
+  renderCartBar();
+  renderCartLines();
+}
+
+function cartTotal() {
+  return Object.entries(state.cart).reduce((sum, [id, qty]) => {
+    const item = MENU.find(m => m.id === id);
+    return sum + (item?.price || 0) * qty;
+  }, 0);
+}
+
+function cartCount() {
+  return Object.values(state.cart).reduce((s, q) => s + q, 0);
+}
+
+function renderCartBar() {
+  const bar = document.getElementById('cartBar');
+  const count = cartCount();
+  if (count > 0) {
+    bar.classList.add('visible');
+    document.getElementById('cartBarCount').textContent = `${count} item${count > 1 ? 's' : ''}`;
+    document.getElementById('cartBarTotal').textContent = cartTotal();
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+function renderCartLines() {
+  const list = document.getElementById('cartLines');
+  const entries = Object.entries(state.cart);
+  if (entries.length === 0) {
+    list.innerHTML = '<div class="empty"><div class="empty-text">No items yet</div></div>';
+  } else {
+    list.innerHTML = entries.map(([id, qty]) => {
+      const item = MENU.find(m => m.id === id);
+      if (!item) return '';
+      return `
+        <div class="cart-line">
+          <div class="cart-line-info">
+            <div class="cart-line-name bn">${item.bn}</div>
+            <div class="cart-line-price mono">₹${item.price} × ${qty}</div>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" data-act="dec" data-id="${id}">−</button>
+            <span class="qty-num mono">${qty}</span>
+            <button class="qty-btn" data-act="inc" data-id="${id}">+</button>
+          </div>
+          <div class="cart-line-total mono">₹${item.price * qty}</div>
+        </div>
+      `;
+    }).join('');
+    list.querySelectorAll('.qty-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        const id = b.dataset.id;
+        const cur = state.cart[id] || 0;
+        setCartQty(id, b.dataset.act === 'inc' ? cur + 1 : cur - 1);
+      });
+    });
+  }
+  document.getElementById('cartTotal').textContent = cartTotal();
+}
+
+window.openCart = () => {
+  if (cartCount() === 0) return;
+  renderCartLines();
+  document.getElementById('cartModal').classList.add('open');
+};
+
+window.closeCart = (e) => {
+  if (e && e.target.id !== 'cartModal') return;
+  document.getElementById('cartModal').classList.remove('open');
+};
+
+window.clearCart = () => {
+  if (!confirm('Clear current order?')) return;
+  state.cart = {};
+  document.getElementById('tableInput').value = '';
+  document.getElementById('noteInput').value = '';
+  renderMenu();
+  renderCartBar();
+  closeCart();
+};
+
+// ============ PAYMENT ============
+window.goToPayment = () => {
+  if (cartCount() === 0) return;
+  document.getElementById('payAmount').textContent = cartTotal();
+  document.getElementById('cartModal').classList.remove('open');
+  // QR display
+  const ph = document.getElementById('qrPlaceholder');
+  const img = document.getElementById('qrImage');
+  if (state.qrImage) {
+    img.src = state.qrImage;
+    img.style.display = 'block';
+    ph.style.display = 'none';
+  } else {
+    img.style.display = 'none';
+    ph.style.display = 'flex';
+  }
+  document.getElementById('paymentModal').classList.add('open');
+};
+
+window.closePayment = (e) => {
+  if (e && e.target.id !== 'paymentModal') return;
+  document.getElementById('paymentModal').classList.remove('open');
+  document.getElementById('cartModal').classList.add('open');
+};
+
+async function saveOrder(status) {
+  const items = Object.entries(state.cart).map(([id, qty]) => {
+    const m = MENU.find(x => x.id === id);
+    return { id, bn: m.bn, en: m.en, price: m.price, qty };
+  });
+  const order = {
+    id: 'o_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+    createdAt: Date.now(),
+    table: document.getElementById('tableInput').value.trim() || null,
+    note: document.getElementById('noteInput').value.trim() || null,
+    items,
+    total: cartTotal(),
+    status, // 'paid' | 'pending'
+  };
+
+  await dbSet('orders', order);
+
+  // Sync to firebase if connected
+  if (state.firestore) {
+    try {
+      const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+      await setDoc(doc(state.firestore, 'orders', order.id), order);
+    } catch (e) { console.warn('Firebase sync failed:', e); }
+  }
+
+  state.cart = {};
+  document.getElementById('tableInput').value = '';
+  document.getElementById('noteInput').value = '';
+  document.getElementById('paymentModal').classList.remove('open');
+  await loadOrders();
+  renderMenu();
+  renderCartBar();
+  toast(status === 'paid' ? '✓ Payment received' : '⏳ Saved as pending');
+  navigator.vibrate?.([15, 40, 15]);
+}
+
+window.confirmPayment = () => saveOrder('paid');
+window.markPending = () => saveOrder('pending');
+
+// ============ ORDERS / LOAD ============
+async function loadOrders() {
+  const orders = await dbAll('orders');
+  state.orders = orders.sort((a, b) => b.createdAt - a.createdAt);
+  updatePendingBadge();
+}
+
+function updatePendingBadge() {
+  const pending = state.orders.filter(o => o.status === 'pending').length;
+  const badge = document.getElementById('ordersBadge');
+  if (pending > 0) {
+    badge.style.display = 'flex';
+    badge.textContent = pending;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function isToday(ts) {
+  const d = new Date(ts);
+  const n = new Date();
+  return d.getDate() === n.getDate() && d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear();
+}
+
+function fmtTime(ts) {
+  return new Date(ts).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase();
+}
+
+function renderOrders() {
+  const today = state.orders.filter(o => isToday(o.createdAt));
+  const todayPaid = today.filter(o => o.status === 'paid');
+  const pending = state.orders.filter(o => o.status === 'pending');
+
+  document.getElementById('todayTotal').textContent = todayPaid.reduce((s, o) => s + o.total, 0);
+  document.getElementById('todayCount').textContent = todayPaid.length;
+
+  const pendingList = document.getElementById('pendingList');
+  document.getElementById('pendingMeta').textContent = `${pending.length} open`;
+  if (pending.length === 0) {
+    pendingList.innerHTML = '<div class="empty"><div class="empty-text">No pending orders</div></div>';
+  } else {
+    pendingList.innerHTML = pending.map(orderCardHTML).join('');
+    attachOrderActions(pendingList);
+  }
+
+  const paidList = document.getElementById('paidList');
+  document.getElementById('paidMeta').textContent = `${todayPaid.length} done`;
+  if (todayPaid.length === 0) {
+    paidList.innerHTML = '<div class="empty"><div class="empty-text">No paid orders today</div></div>';
+  } else {
+    paidList.innerHTML = todayPaid.map(orderCardHTML).join('');
+    attachOrderActions(paidList);
+  }
+}
+
+function orderCardHTML(o) {
+  const itemsStr = o.items.map(i => `${i.bn} ×${i.qty}`).join(' · ');
+  return `
+    <div class="order-card ${o.status}">
+      <div class="order-head">
+        <div>
+          <span class="order-id">#${o.id.slice(-6)}</span>
+          ${o.table ? `<span class="order-table">T${o.table}</span>` : ''}
+        </div>
+        <div class="order-amount mono">₹${o.total}</div>
+      </div>
+      <div class="order-items bn">${itemsStr}</div>
+      ${o.note ? `<div class="order-items" style="font-style:italic; font-size:11px;">"${o.note}"</div>` : ''}
+      <div class="order-foot">
+        <span>${fmtTime(o.createdAt)}</span>
+        <span class="order-status ${o.status}">${o.status}</span>
+      </div>
+      ${o.status === 'pending' ? `
+        <div class="order-actions">
+          <button class="order-action-btn primary" data-act="pay" data-id="${o.id}">Mark Paid</button>
+          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
+        </div>` : `
+        <div class="order-actions">
+          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
+        </div>
+      `}
+    </div>
+  `;
+}
+
+function attachOrderActions(container) {
+  container.querySelectorAll('[data-act]').forEach(b => {
+    b.addEventListener('click', async () => {
+      const id = b.dataset.id;
+      const act = b.dataset.act;
+      if (act === 'pay') {
+        const order = state.orders.find(o => o.id === id);
+        if (order) {
+          order.status = 'paid';
+          await dbSet('orders', order);
+          if (state.firestore) {
+            try {
+              const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+              await setDoc(doc(state.firestore, 'orders', id), order);
+            } catch (e) {}
+          }
+          await loadOrders();
+          renderOrders();
+          toast('✓ Marked paid');
+        }
+      } else if (act === 'del') {
+        if (!confirm('Delete this order?')) return;
+        await dbDelete('orders', id);
+        if (state.firestore) {
+          try {
+            const { doc, deleteDoc } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+            await deleteDoc(doc(state.firestore, 'orders', id));
+          } catch (e) {}
+        }
+        await loadOrders();
+        renderOrders();
+        toast('Deleted');
+      }
+    });
+  });
+}
+
+// ============ HISTORY ============
+function renderHistory() {
+  const byDay = {};
+  state.orders.filter(o => o.status === 'paid').forEach(o => {
+    const d = new Date(o.createdAt);
+    const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (!byDay[key]) byDay[key] = { date: d, orders: [], total: 0 };
+    byDay[key].orders.push(o);
+    byDay[key].total += o.total;
+  });
+  const days = Object.entries(byDay)
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .slice(0, 30);
+
+  const list = document.getElementById('historyList');
+  if (days.length === 0) {
+    list.innerHTML = '<div class="empty"><div class="empty-text">No history yet</div></div>';
+    return;
+  }
+  list.innerHTML = days.map(([key, d]) => `
+    <div class="history-day">
+      <div class="history-day-info">
+        <div class="history-day-date">${d.date.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' })}</div>
+        <div class="history-day-meta">${d.orders.length} order${d.orders.length > 1 ? 's' : ''}</div>
+      </div>
+      <div class="history-day-amount">₹${d.total}</div>
+    </div>
+  `).join('');
+}
+
+// ============ SETTINGS ============
+document.getElementById('qrUpload').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async () => {
+    state.qrImage = reader.result;
+    await dbSet('settings', { key: 'qr', value: reader.result });
+    renderQRPreview();
+    toast('QR saved');
+  };
+  reader.readAsDataURL(file);
+});
+
+function renderQRPreview() {
+  const preview = document.getElementById('qrPreview');
+  const img = document.getElementById('qrPreviewImg');
+  const label = document.getElementById('qrUploadLabel');
+  if (state.qrImage) {
+    preview.style.display = 'block';
+    img.src = state.qrImage;
+    label.textContent = 'Replace QR image';
+  } else {
+    preview.style.display = 'none';
+    label.textContent = 'Upload QR image';
+  }
+}
+
+window.removeQR = async () => {
+  state.qrImage = null;
+  await dbDelete('settings', 'qr');
+  renderQRPreview();
+  toast('QR removed');
+};
+
+window.savePin = async () => {
+  const v = document.getElementById('pinInput').value;
+  if (!/^\d{4}$/.test(v)) { toast('PIN must be 4 digits'); return; }
+  state.pin = v;
+  await dbSet('settings', { key: 'pin', value: v });
+  document.getElementById('pinInput').value = '';
+  toast('PIN updated');
+};
+
+window.saveFirebaseConfig = async () => {
+  const raw = document.getElementById('firebaseConfig').value.trim();
+  if (!raw) { toast('Paste config first'); return; }
+  let cfg;
+  try {
+    // Accept JSON or JS-object-literal-ish
+    const cleaned = raw.replace(/^const\s+\w+\s*=\s*/, '').replace(/;?\s*$/, '');
+    cfg = JSON.parse(cleaned.replace(/(\w+):/g, '"$1":').replace(/'/g, '"'));
+  } catch (e) {
+    try { cfg = JSON.parse(raw); }
+    catch (e2) { toast('Invalid config'); return; }
+  }
+  await dbSet('settings', { key: 'firebaseConfig', value: cfg });
+  toast('Connecting...');
+  await initFirebase(cfg);
+};
+
+window.clearFirebaseConfig = async () => {
+  if (!confirm('Disconnect sync? Orders stay on this phone.')) return;
+  await dbDelete('settings', 'firebaseConfig');
+  if (state.unsubscribeOrders) state.unsubscribeOrders();
+  state.firestore = null;
+  state.firebaseApp = null;
+  document.getElementById('firebaseConfig').value = '';
+  document.getElementById('clearFbBtn').style.display = 'none';
+  updateSyncStatus();
+  toast('Disconnected');
+};
+
+window.exportData = async () => {
+  const orders = await dbAll('orders');
+  if (orders.length === 0) { toast('No data to export'); return; }
+  const headers = ['id','date','time','table','total','status','items','note'];
+  const rows = orders.sort((a,b) => a.createdAt - b.createdAt).map(o => {
+    const d = new Date(o.createdAt);
+    return [
+      o.id,
+      d.toLocaleDateString('en-IN'),
+      d.toLocaleTimeString('en-IN'),
+      o.table || '',
+      o.total,
+      o.status,
+      o.items.map(i => `${i.en} x${i.qty}`).join('; '),
+      o.note || ''
+    ].map(c => `"${String(c).replace(/"/g,'""')}"`).join(',');
+  });
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `belasheshe-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('Exported');
+};
+
+window.clearAllData = async () => {
+  if (!confirm('Delete ALL local orders? This cannot be undone.')) return;
+  if (!confirm('Really sure? All history will be gone.')) return;
+  await dbClear('orders');
+  state.orders = [];
+  renderOrders();
+  renderHistory();
+  updatePendingBadge();
+  toast('All data cleared');
+};
+
+// ============ FIREBASE SYNC ============
+async function initFirebase(config) {
+  try {
+    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js');
+    const { getFirestore, collection, onSnapshot } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+    state.firebaseApp = initializeApp(config);
+    state.firestore = getFirestore(state.firebaseApp);
+
+    // Listen for remote changes
+    if (state.unsubscribeOrders) state.unsubscribeOrders();
+    state.unsubscribeOrders = onSnapshot(collection(state.firestore, 'orders'), async (snap) => {
+      for (const change of snap.docChanges()) {
+        if (change.type === 'added' || change.type === 'modified') {
+          await dbSet('orders', change.doc.data());
+        } else if (change.type === 'removed') {
+          await dbDelete('orders', change.doc.id);
+        }
+      }
+      await loadOrders();
+      renderOrders();
+      if (document.getElementById('screen-history').classList.contains('active')) renderHistory();
+    });
+
+    // Push any local-only orders to firestore
+    const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+    for (const o of state.orders) {
+      try { await setDoc(doc(state.firestore, 'orders', o.id), o, { merge: true }); } catch (e) {}
+    }
+
+    document.getElementById('clearFbBtn').style.display = 'block';
+    updateSyncStatus();
+    toast('✓ Sync connected');
+  } catch (e) {
+    console.error(e);
+    toast('Sync failed: ' + e.message);
+  }
+}
+
+function updateSyncStatus() {
+  const dot = document.getElementById('syncDot');
+  const label = document.getElementById('syncLabel');
+  if (state.firestore) {
+    if (navigator.onLine) {
+      dot.className = 'sync-dot online';
+      label.textContent = 'synced';
+    } else {
+      dot.className = 'sync-dot offline';
+      label.textContent = 'offline';
+    }
+  } else {
+    dot.className = 'sync-dot';
+    label.textContent = 'local';
+  }
+}
+
+window.addEventListener('online', updateSyncStatus);
+window.addEventListener('offline', updateSyncStatus);
+
+// ============ INIT ============
+async function init() {
+  await openDB();
+
+  const qr = await dbGet('settings', 'qr');
+  if (qr) state.qrImage = qr.value;
+
+  const pin = await dbGet('settings', 'pin');
+  if (pin) state.pin = pin.value;
+
+  await loadOrders();
+
+  renderCategories();
+  renderMenu();
+  renderQRPreview();
+  updateSyncStatus();
+  showLock();
+
+  // Try restoring firebase config
+  const fbCfg = await dbGet('settings', 'firebaseConfig');
+  if (fbCfg) {
+    document.getElementById('firebaseConfig').value = JSON.stringify(fbCfg.value, null, 2);
+    initFirebase(fbCfg.value);
+  }
+}
+
+init();
+
+// Service worker for offline (registered inline)
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    self.addEventListener('install', e => self.skipWaiting());
+    self.addEventListener('activate', e => self.clients.claim());
+    self.addEventListener('fetch', e => {
+      if (e.request.mode === 'navigate') {
+        e.respondWith(fetch(e.request).catch(() => caches.match('/')));
+      }
+    });
+  `;
+  const blob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+</script>
+
+</body>
+</html>
