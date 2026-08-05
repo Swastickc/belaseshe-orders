@@ -316,15 +316,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <!-- CONFIRMATION MODAL -->
 <div class="modal-overlay" id="confirmModal">
   <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header" style="border-bottom:none;">
+      <div></div>
+      <button class="modal-close" onclick="finishOrdering()" aria-label="Close"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
     <div class="modal-body">
-      <div class="confirm-screen">
+      <div class="confirm-screen" style="padding-top:8px;">
         <div class="confirm-icon">
           <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         </div>
-        <div class="confirm-title">অর্ডার পাঠানো হয়েছে</div>
+        <div class="confirm-title">অর্ডার পাঠানো হয়েছে</div>
         <div class="confirm-sub" id="confirmSub">Your order is on its way to the kitchen.</div>
         <div class="confirm-meta" id="confirmMeta"></div>
         <button class="btn-primary" onclick="closeConfirm()">Order more</button>
+        <button class="btn-secondary" onclick="finishOrdering()">I'm done, back to menu</button>
       </div>
     </div>
   </div>
@@ -629,6 +634,10 @@ window.placeOrder = async () => {
 
 window.closeConfirm = () => {
   document.getElementById('confirmModal').classList.remove('open');
+};
+window.finishOrdering = () => {
+  document.getElementById('confirmModal').classList.remove('open');
+  goToStep('menu');
 };
 
 // ============ FIREBASE ============
