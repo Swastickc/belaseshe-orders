@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#1a1a1a" />
-<title>Belasheshe — Menu</title>
+<title>Belasheshe Menu</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -21,11 +21,11 @@
   --line: #e8e5dd;
   --success: #2d6a4f;
   --danger: #b23a48;
-  --warm: #c69749;
+  --warm: #ab7a2e;
   --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.14);
   --radius: 14px;
-  --radius-lg: 20px;
+  --radius-lg: 22px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html, body { height: 100%; overscroll-behavior: none; }
@@ -39,47 +39,79 @@ body {
 }
 .bn { font-family: 'Noto Serif Bengali', serif; font-weight: 500; }
 .mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; -webkit-tap-highlight-color: transparent; }
 
-.app { max-width: 480px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; position: relative; }
+.app { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; overflow-x: hidden; }
 
-.header { padding: 22px 20px 14px; border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 10; }
-.brand-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; }
-.brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 8px; }
-.brand .bn { font-size: 19px; color: var(--ink-2); }
+/* ============ STEP SHELL ============ */
+.step { display: none; min-height: 100vh; flex-direction: column; }
+.step.active { display: flex; animation: stepIn 0.32s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes stepIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .step.active { animation: none; } }
+
+.step-nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0; }
+.back-link { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.back-link svg { width: 15px; height: 15px; }
+.step-progress { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.1em; }
+
 .sync-pill { display: flex; align-items: center; gap: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
 .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-3); }
 .sync-dot.online { background: var(--success); box-shadow: 0 0 0 3px rgba(45,106,79,0.15); }
 .sync-dot.offline { background: var(--danger); }
 
-.table-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 8px; font-size: 13px; font-weight: 600; }
-.table-badge.unset { border-style: dashed; color: var(--ink-2); font-weight: 500; }
-.table-badge .icon { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: 'JetBrains Mono', monospace; }
-.table-badge.unset .icon { background: var(--ink-3); }
-.table-badge button { font-size: 11px; color: var(--ink-3); text-decoration: underline; margin-left: 6px; font-weight: 500; }
+/* ============ STEP 1 · MENU (the "menu picture") ============ */
+.menu-masthead { padding: 30px 24px 20px; text-align: center; }
+.menu-masthead .mark { width: 46px; height: 46px; margin: 0 auto 16px; border: 1.5px solid var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif Bengali', serif; font-weight: 600; font-size: 20px; }
+.menu-masthead .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px; letter-spacing: -0.02em; }
+.menu-masthead .brand-bn { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 20px; color: var(--ink-2); margin-top: 2px; }
+.menu-masthead .tagline { font-style: italic; font-size: 13px; color: var(--ink-3); margin-top: 12px; letter-spacing: 0.01em; }
+.menu-masthead .rule { width: 64px; height: 1px; background: var(--ink); margin: 18px auto 0; opacity: 0.25; }
 
-.seg { display: flex; gap: 2px; background: var(--surface-2); padding: 3px; border-radius: 999px; margin-top: 14px; }
-.seg-btn { flex: 1; padding: 10px 10px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink-2); transition: all 0.15s; }
-.seg-btn.active { background: var(--ink); color: var(--bg); }
+.menu-scroll { flex: 1; padding: 4px 24px 130px; overflow-y: auto; }
 
-.content { flex: 1; padding: 16px 16px 30px; }
-.tabpane { display: none; animation: fadeIn 0.2s ease; }
-.tabpane.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.cat-divider { display: flex; align-items: center; gap: 14px; margin: 34px 0 6px; }
+.cat-divider:first-child { margin-top: 6px; }
+.cat-divider::before, .cat-divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.cat-divider-label { font-family: 'Fraunces', serif; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-2); white-space: nowrap; }
 
-/* ---- Browse (picture-style) menu ---- */
-.menu-section { margin-bottom: 26px; }
-.menu-section-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); display: inline-block; }
-.browse-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed var(--line); gap: 12px; }
-.browse-row:last-child { border-bottom: none; }
-.browse-row-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 16px; }
-.browse-row-en { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; font-family: 'JetBrains Mono', monospace; margin-top: 1px; }
-.browse-row-price { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px; white-space: nowrap; }
+.leader-row { display: flex; flex-direction: column; padding: 12px 0; }
+.leader-row-top { display: flex; align-items: baseline; gap: 8px; }
+.leader-row-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 17px; white-space: nowrap; }
+.leader-row-dots { flex: 1; min-width: 16px; border-bottom: 1.5px dotted var(--ink-3); transform: translateY(-5px); opacity: 0.7; }
+.leader-row-price { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px; white-space: nowrap; }
+.leader-row-en { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-family: 'JetBrains Mono', monospace; margin-top: 3px; }
 
-/* ---- Order tab ---- */
+.cta-dock { position: fixed; bottom: 0; left: 0; right: 0; max-width: 480px; margin: 0 auto; padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to top, var(--bg) 60%, transparent); }
+.cta-dock-btn { width: 100%; background: var(--ink); color: var(--bg); padding: 17px; border-radius: 14px; font-weight: 600; font-size: 15.5px; letter-spacing: 0.01em; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow-lg); transition: transform 0.1s; }
+.cta-dock-btn:active { transform: scale(0.98); }
+
+/* ============ STEP 2 · TABLE ============ */
+.table-step-body { flex: 1; padding: 40px 28px; display: flex; flex-direction: column; }
+.table-step-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; letter-spacing: -0.01em; margin-top: 18px; }
+.table-step-sub { font-family: 'Noto Serif Bengali', serif; color: var(--ink-3); font-size: 15px; margin-top: 4px; }
+
+.zone-tabs { display: flex; gap: 28px; margin-top: 32px; border-bottom: 1px solid var(--line); }
+.zone-tab { padding: 0 0 12px; font-size: 15px; font-weight: 600; color: var(--ink-3); position: relative; }
+.zone-tab.active { color: var(--ink); }
+.zone-tab.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); }
+
+.table-tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+.table-tile { aspect-ratio: 1; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 20px; color: var(--ink-2); transition: all 0.15s; }
+.table-tile.active { background: var(--ink); color: var(--bg); border-color: var(--ink); transform: scale(1.04); }
+
+.table-step-footer { margin-top: auto; padding-top: 32px; }
+
+/* ============ STEP 3 · ORDER ============ */
+.order-context-bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 0; }
+.order-context-info { font-size: 13px; font-weight: 600; }
+.order-context-info .mono { color: var(--ink-3); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 1px; }
+.order-context-change { font-size: 12px; color: var(--ink-3); text-decoration: underline; font-weight: 500; }
+
+.content { flex: 1; padding: 16px 16px 20px; }
+
 .cat-bar { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px 16px; padding: 4px 16px; }
 .cat-bar::-webkit-scrollbar { display: none; }
-.cat-chip { flex-shrink: 0; padding: 8px 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 13px; font-weight: 500; color: var(--ink-2); white-space: nowrap; transition: all 0.15s; }
+.cat-chip { flex-shrink: 0; padding: 8px 15px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 12.5px; font-weight: 600; color: var(--ink-2); white-space: nowrap; transition: all 0.15s; letter-spacing: 0.01em; }
 .cat-chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
 .menu-list { display: flex; flex-direction: column; gap: 8px; }
@@ -133,27 +165,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .btn-primary:disabled { opacity: 0.4; }
 .btn-secondary { width: 100%; background: var(--surface); color: var(--ink); padding: 14px; border-radius: 12px; font-weight: 500; font-size: 14px; border: 1px solid var(--line); margin-top: 8px; }
 
-/* ---- Table picker (shown if no/invalid table in URL) ---- */
-.picker-overlay { position: fixed; inset: 0; background: var(--bg); z-index: 500; display: flex; flex-direction: column; padding: 32px 24px; }
-.picker-overlay.hidden { display: none; }
-.picker-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; margin-bottom: 6px; }
-.picker-sub { font-size: 13px; color: var(--ink-3); margin-bottom: 24px; }
-.picker-zone-toggle { display: flex; gap: 2px; background: var(--surface-2); padding: 3px; border-radius: 999px; margin-bottom: 16px; }
-.picker-zone-btn { flex: 1; padding: 10px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink-2); }
-.picker-zone-btn.active { background: var(--warm); color: white; }
-.picker-table-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
-.picker-table-btn { padding: 18px 4px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 18px; }
-.picker-table-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.picker-close { position: absolute; top: 20px; right: 20px; width: 34px; height: 34px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; }
-
-/* ---- Confirmation screen ---- */
-.confirm-screen { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 60px 24px; }
-.confirm-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--success); color: white; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+/* ---- Confirmation ---- */
+.confirm-screen { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 56px 24px; }
+.confirm-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--success); color: white; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
 .confirm-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; margin-bottom: 8px; }
-.confirm-sub { font-size: 14px; color: var(--ink-2); margin-bottom: 28px; line-height: 1.5; }
-.confirm-meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); margin-bottom: 32px; }
+.confirm-sub { font-size: 14px; color: var(--ink-2); margin-bottom: 26px; line-height: 1.5; max-width: 320px; }
+.confirm-meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); margin-bottom: 30px; }
 
-.error-banner { background: rgba(178,58,72,0.08); border: 1px solid var(--danger); color: var(--danger); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; margin-bottom: 14px; display: none; }
+.error-banner { background: rgba(178,58,72,0.08); border: 1px solid var(--danger); color: var(--danger); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; margin: 0 20px 14px; display: none; }
 .error-banner.show { display: block; }
 
 .empty { text-align: center; padding: 40px 20px; color: var(--ink-3); font-size: 14px; }
@@ -163,50 +182,79 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </head>
 <body>
 
-<!-- TABLE PICKER (opened only when the customer places an order, or taps the table badge) -->
-<div class="picker-overlay hidden" id="pickerOverlay">
-  <button class="picker-close" id="pickerCloseBtn" aria-label="Just browsing, close">
-    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-  </button>
-  <div class="picker-title">Which table are you at?</div>
-  <div class="picker-sub bn" style="font-family:'Noto Serif Bengali',serif;">আপনার টেবিল বেছে নিন</div>
-  <div class="picker-zone-toggle" id="pickerZoneToggle"></div>
-  <div class="picker-table-grid" id="pickerTableGrid"></div>
-  <button class="btn-primary" id="pickerConfirmBtn" disabled>Confirm table</button>
-  <button class="btn-secondary" id="pickerSkipBtn">Just browsing, not ordering yet</button>
-</div>
-
 <div class="app">
-  <div class="header">
-    <div class="brand-row">
-      <div class="brand"><span>Belasheshe</span><span class="bn">বেলাশেষে</span></div>
+
+  <!-- ============ STEP 1 · MENU ============ -->
+  <section class="step active" data-step="menu" id="stepMenu">
+    <div class="step-nav" style="justify-content: flex-end;">
       <div class="sync-pill"><span class="sync-dot" id="syncDot"></span><span id="syncLabel">connecting</span></div>
     </div>
-    <div class="table-badge" id="tableBadge">
-      <span class="icon" id="tableBadgeIcon">–</span>
-      <span id="tableBadgeText">Loading table…</span>
-      <button id="changeTableBtn">change</button>
+    <div class="menu-masthead">
+      <div class="mark bn">ব</div>
+      <div class="brand">Belasheshe</div>
+      <div class="brand-bn">বেলাশেষে</div>
+      <div class="tagline">A little break, a lot of happiness</div>
+      <div class="rule"></div>
     </div>
-    <div class="seg">
-      <button class="seg-btn active" data-tab="browse">Menu</button>
-      <button class="seg-btn" data-tab="order">Place Order</button>
-    </div>
-  </div>
 
-  <div class="content">
     <div class="error-banner" id="errorBanner"></div>
 
-    <!-- BROWSE TAB -->
-    <div class="tabpane active" id="tab-browse">
-      <div id="browseSections"></div>
-    </div>
+    <div class="menu-scroll" id="browseSections"></div>
 
-    <!-- ORDER TAB -->
-    <div class="tabpane" id="tab-order">
+    <div class="cta-dock">
+      <button class="cta-dock-btn" id="startOrderBtn">
+        Order now
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2 · TABLE ============ -->
+  <section class="step" data-step="table" id="stepTable">
+    <div class="step-nav">
+      <button class="back-link" id="backToMenuBtn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        Menu
+      </button>
+      <div class="step-progress">Step 2 of 3</div>
+    </div>
+    <div class="table-step-body">
+      <div class="table-step-title">Where are you sitting?</div>
+      <div class="table-step-sub bn">আপনার টেবিল বেছে নিন</div>
+
+      <div class="zone-tabs" id="zoneTabs"></div>
+      <div class="table-tile-grid" id="tableTileGrid"></div>
+
+      <div class="table-step-footer">
+        <button class="cta-dock-btn" id="tableContinueBtn" disabled style="position:static; box-shadow:none;">
+          Continue
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3 · ORDER ============ -->
+  <section class="step" data-step="order" id="stepOrder">
+    <div class="step-nav">
+      <button class="back-link" id="backToTableBtn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        Table
+      </button>
+      <div class="step-progress">Step 3 of 3</div>
+    </div>
+    <div class="order-context-bar">
+      <div class="order-context-info">
+        <span id="orderContextText">—</span>
+        <span class="mono" id="orderContextZone"></span>
+      </div>
+      <button class="order-context-change" id="changeTableLink">change table</button>
+    </div>
+    <div class="content">
       <div class="cat-bar" id="catBar"></div>
       <div class="menu-list" id="menuList"></div>
     </div>
-  </div>
+  </section>
 </div>
 
 <!-- CART BAR -->
@@ -254,10 +302,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="modal-body">
       <div class="confirm-screen">
         <div class="confirm-icon">
-          <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         </div>
-        <div class="confirm-title">Order sent!</div>
-        <div class="confirm-sub" id="confirmSub">Your order has been sent to the kitchen. Someone will bring it out shortly.</div>
+        <div class="confirm-title">Order sent</div>
+        <div class="confirm-sub" id="confirmSub">Your order is on its way to the kitchen.</div>
         <div class="confirm-meta" id="confirmMeta"></div>
         <button class="btn-primary" onclick="closeConfirm()">Order more</button>
       </div>
@@ -282,8 +330,7 @@ let state = {
   firestore: null,
   connected: false,
   pickerZone: 'rooftop',
-  pickerTable: null,
-  pendingOpenCartAfterPick: false,
+  currentStep: 'menu',
 };
 
 let toastTimer;
@@ -303,6 +350,23 @@ function clearError() {
   document.getElementById('errorBanner').classList.remove('show');
 }
 
+// ============ STEP NAVIGATION ============
+function goToStep(step) {
+  state.currentStep = step;
+  document.querySelectorAll('.step').forEach(s => s.classList.toggle('active', s.dataset.step === step));
+  window.scrollTo(0, 0);
+}
+document.getElementById('startOrderBtn').addEventListener('click', () => {
+  if (state.table) {
+    goToStep('order');
+  } else {
+    goToStep('table');
+  }
+});
+document.getElementById('backToMenuBtn').addEventListener('click', () => goToStep('menu'));
+document.getElementById('backToTableBtn').addEventListener('click', () => goToStep('table'));
+document.getElementById('changeTableLink').addEventListener('click', () => goToStep('table'));
+
 // ============ TABLE RESOLUTION ============
 function resolveTableFromURL() {
   const params = new URLSearchParams(location.search);
@@ -311,119 +375,72 @@ function resolveTableFromURL() {
   return null;
 }
 
-function renderTableBadge() {
-  const badge = document.getElementById('tableBadge');
-  const btn = document.getElementById('changeTableBtn');
-  if (state.table) {
-    badge.classList.remove('unset');
-    document.getElementById('tableBadgeIcon').textContent = state.table;
-    document.getElementById('tableBadgeText').textContent = `${ZONE_LABELS[state.zone]} · Table ${state.table}`;
-    btn.textContent = 'change';
-  } else {
-    badge.classList.add('unset');
-    document.getElementById('tableBadgeIcon').textContent = '–';
-    document.getElementById('tableBadgeText').textContent = 'Just browsing';
-    btn.textContent = 'set table';
-  }
-}
-
 function setTable(table) {
   state.table = table;
   state.zone = zoneOfTable(table);
-  renderTableBadge();
+  document.getElementById('orderContextText').textContent = `Table ${table}`;
+  document.getElementById('orderContextZone').textContent = ZONE_LABELS[state.zone];
   try {
     const url = new URL(location.href);
     url.searchParams.set('t', table);
     history.replaceState(null, '', url);
   } catch (e) {}
-  if (state.pendingOpenCartAfterPick) {
-    state.pendingOpenCartAfterPick = false;
-    openCart();
-  }
 }
 
-function openTablePicker() {
-  const overlay = document.getElementById('pickerOverlay');
-  overlay.classList.remove('hidden');
-  state.pickerZone = state.zone || 'rooftop';
-  state.pickerTable = null;
-  renderPickerZone();
-  renderPickerTables();
-}
-function closeTablePicker() {
-  document.getElementById('pickerOverlay').classList.add('hidden');
-  state.pendingOpenCartAfterPick = false;
-}
-function renderPickerZone() {
-  const el = document.getElementById('pickerZoneToggle');
+// ============ STEP 2 · ZONE / TABLE PICKER ============
+function renderZoneTabs() {
+  const el = document.getElementById('zoneTabs');
   el.innerHTML = Object.keys(TABLES).map(z =>
-    `<button class="picker-zone-btn ${state.pickerZone === z ? 'active' : ''}" data-zone="${z}">${ZONE_LABELS[z]}</button>`
+    `<button class="zone-tab ${state.pickerZone === z ? 'active' : ''}" data-zone="${z}">${ZONE_LABELS[z]}</button>`
   ).join('');
-  el.querySelectorAll('.picker-zone-btn').forEach(b => b.addEventListener('click', () => {
+  el.querySelectorAll('.zone-tab').forEach(b => b.addEventListener('click', () => {
     state.pickerZone = b.dataset.zone;
-    state.pickerTable = null;
-    renderPickerZone();
-    renderPickerTables();
+    renderZoneTabs();
+    renderTableTiles();
   }));
 }
-function renderPickerTables() {
-  const el = document.getElementById('pickerTableGrid');
+function renderTableTiles() {
+  const el = document.getElementById('tableTileGrid');
   el.innerHTML = TABLES[state.pickerZone].map(t =>
-    `<button class="picker-table-btn ${state.pickerTable === t ? 'active' : ''}" data-table="${t}">${t}</button>`
+    `<button class="table-tile ${state.table === t ? 'active' : ''}" data-table="${t}">${t}</button>`
   ).join('');
-  el.querySelectorAll('.picker-table-btn').forEach(b => b.addEventListener('click', () => {
-    state.pickerTable = b.dataset.table;
-    renderPickerTables();
-    document.getElementById('pickerConfirmBtn').disabled = false;
+  el.querySelectorAll('.table-tile').forEach(b => b.addEventListener('click', () => {
+    setTable(b.dataset.table);
+    renderTableTiles();
+    document.getElementById('tableContinueBtn').disabled = false;
   }));
 }
-document.getElementById('pickerConfirmBtn').addEventListener('click', () => {
-  if (!state.pickerTable) return;
-  const wasPending = state.pendingOpenCartAfterPick;
-  document.getElementById('pickerOverlay').classList.add('hidden');
-  setTable(state.pickerTable);
-  if (!wasPending) state.pendingOpenCartAfterPick = false;
-});
-document.getElementById('pickerCloseBtn').addEventListener('click', closeTablePicker);
-document.getElementById('pickerSkipBtn').addEventListener('click', closeTablePicker);
-document.getElementById('changeTableBtn').addEventListener('click', openTablePicker);
-
-// ============ TABS ============
-document.querySelectorAll('.seg-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.seg-btn').forEach(b => b.classList.toggle('active', b === btn));
-    document.querySelectorAll('.tabpane').forEach(p => p.classList.toggle('active', p.id === `tab-${btn.dataset.tab}`));
-  });
+document.getElementById('tableContinueBtn').addEventListener('click', () => {
+  if (!state.table) return;
+  goToStep('order');
 });
 
-// ============ BROWSE (picture-style) MENU ============
+// ============ BROWSE (the "menu picture") ============
 function renderBrowse() {
   const el = document.getElementById('browseSections');
   el.innerHTML = PUBLIC_MENU_CATEGORIES.map(cat => {
     const items = MENU.filter(m => m.cat === cat.id);
     if (items.length === 0) return '';
     return `
-      <div class="menu-section">
-        <div class="menu-section-title">${cat.label}</div>
-        ${items.map(item => `
-          <div class="browse-row">
-            <div>
-              <div class="browse-row-name bn">${item.bn}</div>
-              <div class="browse-row-en">${item.en}</div>
-            </div>
-            <div class="browse-row-price">₹${item.price}</div>
+      <div class="cat-divider"><span class="cat-divider-label">${cat.label}</span></div>
+      ${items.map(item => `
+        <div class="leader-row">
+          <div class="leader-row-top">
+            <span class="leader-row-name bn">${item.bn}</span>
+            <span class="leader-row-dots"></span>
+            <span class="leader-row-price mono">₹${item.price}</span>
           </div>
-        `).join('')}
-      </div>
+          <div class="leader-row-en">${item.en}</div>
+        </div>
+      `).join('')}
     `;
   }).join('');
 }
 
-// ============ ORDER TAB (interactive) ============
+// ============ STEP 3 · ORDER (interactive) ============
 function renderCategories() {
   const bar = document.getElementById('catBar');
-  const cats = CATEGORIES; // includes cig, excludes nothing except 'all' stays
-  bar.innerHTML = cats.map(c =>
+  bar.innerHTML = CATEGORIES.map(c =>
     `<button class="cat-chip ${state.currentCat === c.id ? 'active' : ''}" data-cat="${c.id}">${c.label}</button>`
   ).join('');
   bar.querySelectorAll('.cat-chip').forEach(chip => {
@@ -478,7 +495,7 @@ function cartCount() { return Object.values(state.cart).reduce((s, q) => s + q, 
 function renderCartBar() {
   const bar = document.getElementById('cartBar');
   const count = cartCount();
-  if (count > 0) {
+  if (count > 0 && state.currentStep === 'order') {
     bar.classList.add('visible');
     document.getElementById('cartBarCount').textContent = `${count} item${count > 1 ? 's' : ''}`;
     document.getElementById('cartBarTotal').textContent = cartTotal();
@@ -520,12 +537,8 @@ function renderCartLines() {
 
 window.openCart = () => {
   if (cartCount() === 0) return;
-  if (!state.table) {
-    state.pendingOpenCartAfterPick = true;
-    openTablePicker();
-    return;
-  }
-  document.getElementById('destSummary').textContent = `🪑 ${ZONE_LABELS[state.zone]} · Table ${state.table}`;
+  if (!state.table) { goToStep('table'); return; }
+  document.getElementById('destSummary').textContent = `Table ${state.table} · ${ZONE_LABELS[state.zone]}`;
   renderCartLines();
   updatePlaceOrderState();
   document.getElementById('cartModal').classList.add('open');
@@ -538,21 +551,17 @@ window.closeCart = (e) => {
 function updatePlaceOrderState() {
   const btn = document.getElementById('placeOrderBtn');
   btn.disabled = !state.connected;
-  btn.textContent = state.connected ? '' : 'Connecting…';
   if (state.connected) {
     btn.innerHTML = `Send order to kitchen
       <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+  } else {
+    btn.textContent = 'Connecting…';
   }
 }
 
 window.placeOrder = async () => {
   if (cartCount() === 0) return;
-  if (!state.table) {
-    document.getElementById('cartModal').classList.remove('open');
-    state.pendingOpenCartAfterPick = true;
-    openTablePicker();
-    return;
-  }
+  if (!state.table) { document.getElementById('cartModal').classList.remove('open'); goToStep('table'); return; }
   if (!state.firestore) { toast('Not connected yet, try again in a moment'); return; }
   const btn = document.getElementById('placeOrderBtn');
   btn.disabled = true;
@@ -583,7 +592,7 @@ window.placeOrder = async () => {
     await setDoc(doc(state.firestore, 'orders', order.id), order);
 
     document.getElementById('confirmSub').textContent =
-      `Table ${state.table} (${ZONE_LABELS[state.zone]}) — your order has been sent to the kitchen.`;
+      `Table ${state.table} (${ZONE_LABELS[state.zone]}). Someone will bring it out shortly.`;
     document.getElementById('confirmMeta').textContent =
       `₹${total} · ${items.length} item${items.length > 1 ? 's' : ''} · placed at ${new Date().toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase()}`;
 
@@ -596,7 +605,7 @@ window.placeOrder = async () => {
     navigator.vibrate?.([15, 40, 15]);
   } catch (e) {
     console.error(e);
-    toast('Could not send order — check your connection and try again');
+    toast('Could not send order, check your connection and try again');
   } finally {
     btn.disabled = !state.connected;
     updatePlaceOrderState();
@@ -654,11 +663,18 @@ function init() {
   renderMenu();
   renderCartBar();
   updateSyncStatus();
+  renderZoneTabs();
+  renderTableTiles();
 
   const urlTable = resolveTableFromURL();
-  if (urlTable) setTable(urlTable);
-  else renderTableBadge();
+  if (urlTable) {
+    setTable(urlTable);
+    state.pickerZone = state.zone;
+    renderZoneTabs();
+    renderTableTiles();
+  }
 
+  goToStep('menu');
   initFirebase();
 }
 init();
