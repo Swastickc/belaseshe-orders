@@ -1,14 +1,13 @@
 // One-off script: generates the unified shop QR code as a standalone SVG file.
 // Run with: node scripts/generate-qr.js
 //
-// The URL below is Firebase Hosting's default domain for this project
-// (always <project-id>.web.app once Hosting is deployed). If a custom
-// domain is added later, regenerate with that URL instead.
+// This app is hosted on GitHub Pages (not Firebase Hosting) — update this
+// URL if the repo/username or hosting method ever changes.
 const fs = require('fs');
 const path = require('path');
 const qrcode = require('../vendor/qrcode.js');
 
-const TARGET_URL = 'https://belaseshe-orders.web.app/menu.html';
+const TARGET_URL = 'https://swastickc.github.io/belaseshe-orders/menu.html';
 
 const qr = qrcode(0, 'M');
 qr.addData(TARGET_URL);
