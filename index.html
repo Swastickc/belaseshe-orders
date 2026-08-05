@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
-<meta name="theme-color" content="#1a1a1a" />
+<meta name="theme-color" content="#2c2018" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,23 +15,25 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #fafaf7;
+  --bg: #fbf5e8;
   --surface: #ffffff;
-  --surface-2: #f3f1ec;
-  --ink: #1a1a1a;
-  --ink-2: #5c5c5c;
-  --ink-3: #9a9a95;
-  --line: #e8e5dd;
-  --accent: #1a1a1a;
-  --success: #2d6a4f;
-  --danger: #b23a48;
-  --warm: #c69749;
-  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --surface-2: #f7ecda;
+  --ink: #2c2018;
+  --ink-2: #6e5c48;
+  --ink-3: #a8927a;
+  --line: #e7d7bd;
+  --accent: #b5502e;
+  --brand: #b5502e;
+  --success: #4f7d5c;
+  --danger: #a8384a;
+  --warm: #ab7a2e;
+  --cooking: #3f6e82;
+  --shadow: 0 2px 8px rgba(60,40,20,0.08);
+  --shadow-lg: 0 12px 36px rgba(60,40,20,0.16);
   --radius: 14px;
   --radius-lg: 20px;
 }
@@ -41,7 +43,7 @@
 html, body { height: 100%; overscroll-behavior: none; }
 
 body {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Fredoka', Georgia, sans-serif;
   background: var(--bg);
   color: var(--ink);
   font-size: 16px;
@@ -51,7 +53,7 @@ body {
   padding-top: env(safe-area-inset-top);
 }
 
-.bn { font-family: 'Noto Serif Bengali', serif; font-weight: 500; }
+.bn { font-family: 'Hind Siliguri', sans-serif; font-weight: 500; }
 .mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
 
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
@@ -66,7 +68,7 @@ input, select, textarea { font-family: inherit; }
   background: var(--bg);
   position: sticky; top: 0; z-index: 10;
 }
-.brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 8px; }
+.brand { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 8px; }
 .brand .bn { font-size: 18px; color: var(--ink-2); }
 
 .sync-pill { display: flex; align-items: center; gap: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
@@ -149,7 +151,7 @@ input, select, textarea { font-family: inherit; }
 .menu-item:active { transform: scale(0.98); box-shadow: var(--shadow); }
 .menu-item.in-cart { border-color: var(--ink); background: var(--surface-2); }
 .menu-item-info { flex: 1; min-width: 0; }
-.menu-item-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 17px; color: var(--ink); margin-bottom: 2px; }
+.menu-item-name { font-family: 'Hind Siliguri', sans-serif; font-weight: 500; font-size: 17px; color: var(--ink); margin-bottom: 2px; }
 .menu-item-en { font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
 .menu-item-price { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px; color: var(--ink); }
 .qty-badge { position: absolute; top: -6px; right: -6px; background: var(--ink); color: var(--bg); font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 12px; min-width: 22px; height: 22px; border-radius: 11px; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
@@ -170,7 +172,7 @@ input, select, textarea { font-family: inherit; }
 @keyframes modalIn { from { transform: translateY(100%); } to { transform: none; } }
 .modal-handle { width: 36px; height: 4px; background: var(--line); border-radius: 2px; margin: 10px auto 8px; }
 .modal-header { padding: 8px 20px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
-.modal-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+.modal-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
 .modal-close { width: 32px; height: 32px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; }
 .modal-body { flex: 1; overflow-y: auto; padding: 16px 20px; }
 .modal-footer { padding: 16px 20px; border-top: 1px solid var(--line); }
@@ -178,7 +180,7 @@ input, select, textarea { font-family: inherit; }
 .cart-line { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .cart-line:last-child { border-bottom: none; }
 .cart-line-info { flex: 1; min-width: 0; }
-.cart-line-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 15px; }
+.cart-line-name { font-family: 'Hind Siliguri', sans-serif; font-weight: 500; font-size: 15px; }
 .cart-line-price { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); }
 .qty-control { display: flex; align-items: center; gap: 0; background: var(--surface-2); border-radius: 999px; padding: 2px; }
 .qty-btn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; color: var(--ink); transition: background 0.15s; }
@@ -190,7 +192,7 @@ input, select, textarea { font-family: inherit; }
 .note-input:focus { outline: none; border-color: var(--ink); }
 
 .summary-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; }
-.summary-row.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+.summary-row.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
 .summary-row.total .mono { font-size: 22px; }
 
 .btn-primary { width: 100%; background: var(--ink); color: var(--bg); padding: 16px; border-radius: 12px; font-weight: 600; font-size: 15px; letter-spacing: 0.01em; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s; }
@@ -201,7 +203,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ============ PAYMENT SCREEN ============ */
 .payment-screen { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 24px 20px; }
-.payment-amount { font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px; letter-spacing: -0.03em; margin: 16px 0 4px; }
+.payment-amount { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 56px; letter-spacing: -0.03em; margin: 16px 0 4px; }
 .payment-amount .mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
 .payment-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-bottom: 32px; }
 .qr-frame { background: white; border: 1px solid var(--line); border-radius: 24px; padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow); }
@@ -213,15 +215,17 @@ input, select, textarea { font-family: inherit; }
 .stat-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
 .stat-card.dark { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
-.stat-value { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; letter-spacing: -0.02em; }
+.stat-value { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: -0.02em; }
 .stat-value .mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
 
 .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 24px 0 10px; }
-.section-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+.section-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
 .section-meta { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
 
 .order-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 8px; position: relative; text-align: left; width: 100%; }
 .order-card.pending { border-color: var(--warm); border-left-width: 3px; }
+.order-card.preparing { border-color: var(--cooking); border-left-width: 3px; }
+.order-card.ready { border-color: var(--success); border-left-width: 3px; }
 .order-card.paid { opacity: 0.85; }
 .order-card.unseen { border-color: var(--danger); border-left-width: 3px; }
 .order-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
@@ -231,11 +235,13 @@ input, select, textarea { font-family: inherit; }
 .order-tag.customer { background: rgba(198,151,73,0.18); color: var(--warm); }
 .order-tag.new { background: var(--danger); color: white; }
 .order-amount { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 16px; }
-.order-items { font-family: 'Noto Serif Bengali', serif; font-size: 13px; color: var(--ink-2); margin-bottom: 6px; line-height: 1.4; }
+.order-items { font-family: 'Hind Siliguri', sans-serif; font-size: 13px; color: var(--ink-2); margin-bottom: 6px; line-height: 1.4; }
 .order-foot { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
 .order-status { padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
-.order-status.pending { background: rgba(198,151,73,0.15); color: var(--warm); }
-.order-status.paid { background: rgba(45,106,79,0.15); color: var(--success); }
+.order-status.pending { background: rgba(171,122,46,0.15); color: var(--warm); }
+.order-status.preparing { background: rgba(63,110,130,0.15); color: var(--cooking); }
+.order-status.ready { background: rgba(79,125,92,0.15); color: var(--success); }
+.order-status.paid { background: rgba(79,125,92,0.15); color: var(--success); }
 .order-actions { display: flex; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
 .order-action-btn { flex: 1; padding: 8px; border-radius: 8px; font-size: 12px; font-weight: 500; border: 1px solid var(--line); background: var(--bg); color: var(--ink-2); }
 .order-action-btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
@@ -244,7 +250,7 @@ input, select, textarea { font-family: inherit; }
 /* ============ HISTORY SCREEN ============ */
 .history-day { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; text-align: left; width: 100%; }
 .history-day-info { display: flex; flex-direction: column; gap: 2px; }
-.history-day-date { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; }
+.history-day-date { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16px; }
 .history-day-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; }
 .history-day-amount { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 18px; }
 
@@ -269,7 +275,7 @@ input, select, textarea { font-family: inherit; }
 .menu-edit-cat-title { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
 .menu-edit-row { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
 .menu-edit-info { flex: 1; min-width: 0; }
-.menu-edit-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 14px; line-height: 1.2; }
+.menu-edit-name { font-family: 'Hind Siliguri', sans-serif; font-weight: 500; font-size: 14px; line-height: 1.2; }
 .menu-edit-en { font-size: 11px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
 .menu-edit-price-input { width: 70px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 13px; text-align: right; background: var(--bg); }
 .menu-edit-price-input:focus { outline: none; border-color: var(--ink); }
@@ -277,10 +283,10 @@ input, select, textarea { font-family: inherit; }
 .menu-form-group { margin-bottom: 12px; }
 .menu-form-label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
 .menu-form-input, .menu-form-select { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); font-size: 14px; font-family: inherit; }
-.menu-form-input.bn { font-family: 'Noto Serif Bengali', serif; }
+.menu-form-input.bn { font-family: 'Hind Siliguri', sans-serif; }
 .menu-form-input:focus, .menu-form-select:focus { outline: none; border-color: var(--ink); }
 .menu-form-row { display: grid; grid-template-columns: 1fr 100px; gap: 10px; }
-.config-block-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.config-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
 .config-block-desc { font-size: 12px; color: var(--ink-3); margin-bottom: 12px; line-height: 1.5; }
 .config-textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); font-size: 11px; font-family: 'JetBrains Mono', monospace; min-height: 120px; resize: vertical; line-height: 1.5; }
 .link-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
@@ -293,13 +299,13 @@ input, select, textarea { font-family: inherit; }
 /* ============ LOCK SCREEN ============ */
 .lock { position: fixed; inset: 0; background: var(--bg); z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; }
 .lock.hidden { display: none; }
-.lock-brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 4px; }
-.lock-brand-bn { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 22px; color: var(--ink-2); margin-bottom: 32px; }
+.lock-brand { font-family: 'Atma', cursive; font-weight: 700; font-size: 40px; margin-bottom: 4px; }
+.lock-brand-en { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 32px; }
 .pin-display { display: flex; gap: 14px; margin: 20px 0 32px; }
 .pin-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ink); background: transparent; transition: background 0.15s; }
 .pin-dot.filled { background: var(--ink); }
 .pin-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 280px; }
-.pin-key { aspect-ratio: 1.4; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; transition: background 0.1s; }
+.pin-key { aspect-ratio: 1.4; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); font-family: 'Fredoka', sans-serif; font-size: 24px; font-weight: 500; transition: background 0.1s; }
 .pin-key:active { background: var(--surface-2); }
 .pin-key.del { color: var(--ink-3); font-size: 14px; }
 .lock-hint { margin-top: 24px; font-size: 12px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
@@ -323,8 +329,8 @@ input, select, textarea { font-family: inherit; }
 
 <!-- LOCK SCREEN -->
 <div class="lock" id="lockScreen">
-  <div class="lock-brand">Belasheshe</div>
-  <div class="lock-brand-bn bn">বেলাশেষে</div>
+  <div class="lock-brand">বেলাশেষে</div>
+  <div class="lock-brand-en">Belasheshe Staff</div>
   <div class="pin-display" id="pinDisplay">
     <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
   </div>
@@ -349,8 +355,7 @@ input, select, textarea { font-family: inherit; }
 <div class="app">
   <div class="header">
     <div class="brand">
-      <span>Belasheshe</span>
-      <span class="bn">বেলাশেষে</span>
+      <span style="font-family:'Atma',cursive; font-weight:700; font-size:24px;">বেলাশেষে</span>
     </div>
     <div class="sync-pill">
       <span class="sync-dot" id="syncDot"></span>
@@ -393,7 +398,7 @@ input, select, textarea { font-family: inherit; }
       </div>
 
       <div class="section-header">
-        <div class="section-title">Pending</div>
+        <div class="section-title">Active</div>
         <div class="section-meta" id="pendingMeta">0 open</div>
       </div>
       <div id="pendingList"></div>
@@ -854,7 +859,7 @@ renderTableGrid();
 // ============ OPEN TABS ============
 function renderOpenTabs() {
   const bar = document.getElementById('openTabsBar');
-  const pending = state.orders.filter(o => o.status === 'pending');
+  const pending = state.orders.filter(o => o.status !== 'paid');
   if (pending.length === 0) { bar.style.display = 'none'; bar.innerHTML = ''; return; }
   bar.style.display = 'flex';
   bar.innerHTML = pending.map(o => {
@@ -1129,7 +1134,7 @@ async function loadOrders() {
   renderOpenTabs();
 }
 function updatePendingBadge() {
-  const pending = state.orders.filter(o => o.status === 'pending').length;
+  const pending = state.orders.filter(o => o.status !== 'paid').length;
   const badge = document.getElementById('ordersBadge');
   if (pending > 0) { badge.style.display = 'flex'; badge.textContent = pending; }
   else badge.style.display = 'none';
@@ -1145,14 +1150,14 @@ function fmtTime(ts) {
 function renderOrders() {
   const today = state.orders.filter(o => isToday(o.createdAt));
   const todayPaid = today.filter(o => o.status === 'paid');
-  const pending = state.orders.filter(o => o.status === 'pending');
+  const pending = state.orders.filter(o => o.status !== 'paid');
 
   document.getElementById('todayTotal').textContent = todayPaid.reduce((s, o) => s + o.total, 0);
   document.getElementById('todayCount').textContent = todayPaid.length;
 
   const pendingList = document.getElementById('pendingList');
   document.getElementById('pendingMeta').textContent = `${pending.length} open`;
-  if (pending.length === 0) pendingList.innerHTML = '<div class="empty"><div class="empty-text">No pending orders</div></div>';
+  if (pending.length === 0) pendingList.innerHTML = '<div class="empty"><div class="empty-text">No active orders</div></div>';
   else { pendingList.innerHTML = pending.map(orderCardHTML).join(''); attachOrderActions(pendingList); }
 
   const paidList = document.getElementById('paidList');
@@ -1163,8 +1168,36 @@ function renderOrders() {
 
 function orderCardHTML(o) {
   const itemsStr = o.items.map(i => `${i.bn} ×${i.qty}`).join(' · ');
-  const destLabel = o.destination === 'takeaway' ? '🥡 Takeaway' : (o.table ? `T${o.table}` : 'T?');
+  const destLabel = o.destination === 'takeaway' ? 'Takeaway' : (o.table ? `T${o.table}` : 'T?');
   const isUnseen = o.source === 'customer' && !o.seen;
+  const statusLabel = { pending: 'New', preparing: 'Cooking', ready: 'Ready', paid: 'Paid' }[o.status] || o.status;
+  let actionsHTML;
+  if (o.status === 'pending') {
+    actionsHTML = `
+        <div class="order-actions">
+          <button class="order-action-btn" data-act="add" data-id="${o.id}">+ Add Items</button>
+          <button class="order-action-btn primary" data-act="cook" data-id="${o.id}">Start Cooking</button>
+          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
+        </div>`;
+  } else if (o.status === 'preparing') {
+    actionsHTML = `
+        <div class="order-actions">
+          <button class="order-action-btn" data-act="add" data-id="${o.id}">+ Add Items</button>
+          <button class="order-action-btn primary" data-act="ready" data-id="${o.id}">Mark Ready</button>
+          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
+        </div>`;
+  } else if (o.status === 'ready') {
+    actionsHTML = `
+        <div class="order-actions">
+          <button class="order-action-btn primary" data-act="pay" data-id="${o.id}">Mark Paid</button>
+          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
+        </div>`;
+  } else {
+    actionsHTML = `
+        <div class="order-actions">
+          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
+        </div>`;
+  }
   return `
     <div class="order-card ${o.status} ${isUnseen ? 'unseen' : ''}" data-order-id="${o.id}">
       <div class="order-head">
@@ -1180,18 +1213,9 @@ function orderCardHTML(o) {
       ${o.note ? `<div class="order-items" style="font-style:italic; font-size:11px;">"${o.note}"</div>` : ''}
       <div class="order-foot">
         <span>${fmtTime(o.createdAt)}${o.updatedAt ? ' · edited ' + fmtTime(o.updatedAt) : ''}</span>
-        <span class="order-status ${o.status}">${o.status === 'pending' ? 'open' : o.status}</span>
+        <span class="order-status ${o.status}">${statusLabel}</span>
       </div>
-      ${o.status === 'pending' ? `
-        <div class="order-actions">
-          <button class="order-action-btn" data-act="add" data-id="${o.id}">+ Add Items</button>
-          <button class="order-action-btn primary" data-act="pay" data-id="${o.id}">Mark Paid</button>
-          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
-        </div>` : `
-        <div class="order-actions">
-          <button class="order-action-btn danger" data-act="del" data-id="${o.id}">Delete</button>
-        </div>
-      `}
+      ${actionsHTML}
     </div>
   `;
 }
@@ -1226,10 +1250,11 @@ function attachOrderActions(container) {
         loadOpenTab(id);
         return;
       }
-      if (act === 'pay') {
+      if (act === 'cook' || act === 'ready' || act === 'pay') {
         const order = state.orders.find(o => o.id === id);
         if (order) {
-          order.status = 'paid';
+          order.status = act === 'cook' ? 'preparing' : act === 'ready' ? 'ready' : 'paid';
+          order.updatedAt = Date.now();
           await dbSet('orders', order);
           if (state.firestore) {
             try {
@@ -1239,7 +1264,7 @@ function attachOrderActions(container) {
           }
           await loadOrders();
           renderOrders();
-          toast('✓ Marked paid');
+          toast(act === 'cook' ? '🔥 Cooking started' : act === 'ready' ? '✓ Marked ready' : '✓ Marked paid');
         }
       } else if (act === 'del') {
         if (!confirm('Delete this order?')) return;

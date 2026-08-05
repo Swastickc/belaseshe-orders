@@ -51,7 +51,7 @@ service cloud.firestore {
     function isValidStatusUpdate(before, after) {
       return after.diff(before).affectedKeys()
               .hasOnly(['status', 'updatedAt', 'note', 'seen', 'items', 'total'])
-        && after.status in ['pending', 'paid'];
+        && after.status in ['pending', 'preparing', 'ready', 'paid'];
     }
   }
 }

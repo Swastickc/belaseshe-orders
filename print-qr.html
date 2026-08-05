@@ -6,19 +6,19 @@
 <title>Belasheshe — Shop QR Code</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Noto+Serif+Bengali:wght@500&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atma:wght@600;700&family=Hind+Siliguri:wght@500&family=Fredoka:wght@500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --ink: #1a1a1a; --line: #e8e5dd; --bg: #fafaf7; --ink-3: #9a9a95; }
+  :root { --ink: #2c2018; --line: #e7d7bd; --bg: #fbf5e8; --ink-3: #a8927a; --brand: #b5502e; }
   * { box-sizing: border-box; }
-  body { font-family: 'Fraunces', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 24px; display: flex; flex-direction: column; align-items: center; }
+  body { font-family: 'Fredoka', sans-serif; background: var(--bg); color: var(--ink); margin: 0; padding: 24px; display: flex; flex-direction: column; align-items: center; }
   h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
   p.sub { color: var(--ink-3); font-size: 13px; margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; text-align: center; max-width: 420px; }
   .toolbar { display: flex; gap: 10px; margin-bottom: 28px; }
-  .toolbar button { font-family: inherit; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line); background: white; cursor: pointer; }
-  .toolbar button.primary { background: var(--ink); color: white; border-color: var(--ink); }
-  .card { border: 1px solid var(--line); border-radius: 20px; background: white; padding: 36px; text-align: center; break-inside: avoid; page-break-inside: avoid; width: 100%; max-width: 380px; }
-  .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; margin-bottom: 2px; }
-  .brand-bn { font-family: 'Noto Serif Bengali', serif; font-size: 15px; color: var(--ink-3); margin-bottom: 20px; }
+  .toolbar button { font-family: inherit; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 10px; border: 2px solid var(--line); background: white; cursor: pointer; }
+  .toolbar button.primary { background: var(--brand); color: white; border-color: var(--brand); }
+  .card { border: 2px dashed var(--line); border-radius: 24px; background: white; padding: 36px; text-align: center; break-inside: avoid; page-break-inside: avoid; width: 100%; max-width: 380px; }
+  .brand { font-family: 'Atma', cursive; font-weight: 700; font-size: 30px; margin-bottom: 2px; color: var(--ink); }
+  .brand-bn { font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
   .qr-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
   .qr-wrap svg { width: 220px; height: 220px; }
   .scan-hint { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
