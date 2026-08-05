@@ -333,7 +333,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <div class="toast" id="toast"></div>
 
 <script type="module">
-import { DEFAULT_MENU, DEFAULT_CATEGORIES, PUBLIC_MENU_CATEGORIES, TABLES, ZONE_LABELS, zoneOfTable, isValidTable } from './shared/menu-data.js';
+import { DEFAULT_MENU, DEFAULT_CATEGORIES, PUBLIC_MENU_CATEGORIES, TABLES, ZONE_LABELS, zoneOfTable } from './shared/menu-data.js';
 import { FIREBASE_CONFIG } from './shared/firebase-config.js';
 
 let CATEGORIES = DEFAULT_CATEGORIES;
@@ -385,14 +385,6 @@ document.getElementById('startOrderBtn').addEventListener('click', () => {
 document.getElementById('backToMenuBtn').addEventListener('click', () => goToStep('menu'));
 document.getElementById('backToTableBtn').addEventListener('click', () => goToStep('table'));
 document.getElementById('changeTableLink').addEventListener('click', () => goToStep('table'));
-
-// ============ TABLE RESOLUTION ============
-function resolveTableFromURL() {
-  const params = new URLSearchParams(location.search);
-  const t = (params.get('t') || params.get('table') || '').toUpperCase().trim();
-  if (isValidTable(t)) return t;
-  return null;
-}
 
 function setTable(table) {
   state.table = table;
@@ -689,15 +681,9 @@ function init() {
   renderZoneTabs();
   renderTableTiles();
 
-  const urlTable = resolveTableFromURL();
-  if (urlTable) {
-    setTable(urlTable);
-    state.pickerZone = state.zone;
-    renderZoneTabs();
-    renderTableTiles();
-    document.getElementById('tableContinueBtn').disabled = false;
-    document.getElementById('tableContinueBtn').style.background = 'var(--brand)';
-  }
+  // Tables are always chosen explicitly in Step 2 — this is a single shared
+  // QR code now, so we never auto-fill or skip the table step, even if a
+  // stray ?t= param is present (e.g. an old bookmarked link).
 
   goToStep('menu');
   initFirebase();
