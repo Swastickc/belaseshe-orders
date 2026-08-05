@@ -26,50 +26,49 @@ export const PUBLIC_MENU_CATEGORIES = DEFAULT_CATEGORIES.filter(
   (c) => c.id !== 'cig' && c.id !== 'all'
 );
 
+// This mirrors the cafe's real, currently-live menu (matches what's actually
+// been in use), cleaned up: duplicate entries removed, and every item given
+// a proper Bengali name paired with its English name (some had been added
+// with only an English placeholder, e.g. "Pizaaa" / "Burger").
 export const DEFAULT_MENU = [
   // ---- Drinks ----
   { id: 'drink-tea', cat: 'drink', bn: 'চা', en: 'Tea', price: 10 },
+  { id: 'drink-darjeeling-tea', cat: 'drink', bn: 'দার্জিলিং চা', en: 'Darjeeling Tea', price: 20 },
   { id: 'drink-green-tea', cat: 'drink', bn: 'গ্রিন টি', en: 'Green Tea', price: 15 },
   { id: 'drink-coffee', cat: 'drink', bn: 'কফি', en: 'Coffee', price: 20 },
-  { id: 'drink-darjeeling', cat: 'drink', bn: 'দার্জিলিং চা', en: 'Darjeeling Tea', price: 20 },
-  { id: 'drink-cold-coffee', cat: 'drink', bn: 'কোল্ড কফি', en: 'Cold Coffee', price: 39 },
-  { id: 'drink-masala-coke', cat: 'drink', bn: 'মসলা কোক', en: 'Masala Coke', price: 35 },
+  { id: 'drink-cold-coffee', cat: 'drink', bn: 'কোল্ড কফি', en: 'Cold Coffee', price: 40 },
+  { id: 'drink-special-cold-coffee', cat: 'drink', bn: 'স্পেশাল কোল্ড কফি', en: 'Special Cold Coffee', price: 60 },
+  { id: 'drink-cold-drink', cat: 'drink', bn: 'কোল্ড ড্রিংকস', en: 'Cold Drink', price: 25 },
 
   // ---- Maggi ----
   { id: 'maggi-veg', cat: 'maggi', bn: 'ভেজ ম্যাগি', en: 'Veg Maggi', price: 30 },
-  { id: 'maggi-chicken', cat: 'maggi', bn: 'চিকেন ম্যাগি', en: 'Chicken Maggi', price: 45 },
+  { id: 'maggi-chicken', cat: 'maggi', bn: 'চিকেন ম্যাগি', en: 'Chicken Maggi', price: 40 },
   { id: 'maggi-egg-chicken', cat: 'maggi', bn: 'এগ চিকেন ম্যাগি', en: 'Egg Chicken Maggi', price: 55 },
-  { id: 'maggi-chicken-cheese-garlic', cat: 'maggi', bn: 'চিকেন চিজ গার্লিক ম্যাগি', en: 'Chicken Cheese Garlic Maggi', price: 59 },
-  { id: 'maggi-cheese-garlic', cat: 'maggi', bn: 'চিজ গার্লিক ম্যাগি', en: 'Cheese Garlic Maggi', price: 45 },
+  { id: 'maggi-chilli-chicken-combo', cat: 'maggi', bn: 'ম্যাগি ও চিলি চিকেন কম্বো', en: 'Maggi & Chilli Chicken Combo', price: 99 },
 
   // ---- Pasta ----
-  { id: 'pasta-veg', cat: 'pasta', bn: 'ভেজ হোয়াইট সস পাস্তা', en: 'Veg White Sauce Pasta', price: 49 },
+  { id: 'pasta-veg', cat: 'pasta', bn: 'ভেজ হোয়াইট সস পাস্তা', en: 'Veg White Sauce Pasta', price: 50 },
   { id: 'pasta-chicken', cat: 'pasta', bn: 'চিকেন হোয়াইট সস পাস্তা', en: 'Chicken White Sauce Pasta', price: 75 },
 
   // ---- Sandwich ----
-  { id: 'sandwich-egg-mayo', cat: 'sandwich', bn: 'এগ মেয়ো স্যান্ডউইচ', en: 'Egg Mayo Sandwich', price: 40 },
-  { id: 'sandwich-egg-chicken', cat: 'sandwich', bn: 'এগ চিকেন স্যান্ডউইচ', en: 'Egg Chicken Sandwich', price: 50 },
+  { id: 'sandwich-egg-mayo', cat: 'sandwich', bn: 'এগ মেয়ো স্যান্ডউইচ', en: 'Egg Mayo Sandwich', price: 29 },
+  { id: 'sandwich-egg-chicken-mayo', cat: 'sandwich', bn: 'এগ চিকেন মেয়ো স্যান্ডউইচ', en: 'Egg Chicken Mayo Sandwich', price: 45 },
 
   // ---- Snacks ----
-  { id: 'snack-dry-chilli-chicken', cat: 'snack', bn: 'ড্রাই চিলি চিকেন', en: 'Dry Chilli Chicken', price: 80 },
-  { id: 'snack-crispy-chicken', cat: 'snack', bn: 'ক্রিস্পি চিকেন', en: 'Crispy Chicken', price: 80 },
-  { id: 'snack-chicken-chatpata', cat: 'snack', bn: 'চিকেন চটপটা', en: 'Chicken Chatpata', price: 99 },
-  { id: 'snack-chicken-kurkure', cat: 'snack', bn: 'চিকেন কুরকুরে', en: 'Chicken Kurkure', price: 99 },
+  { id: 'snack-chilli-chicken-dry', cat: 'snack', bn: 'চিলি চিকেন ড্রাই', en: 'Chilli Chicken Dry', price: 69 },
+  { id: 'snack-crispy-chicken', cat: 'snack', bn: 'ক্রিস্পি চিকেন', en: 'Crispy Chicken', price: 69 },
+  { id: 'snack-kurkure-chicken', cat: 'snack', bn: 'কুরকুরে চিকেন', en: 'Kurkure Chicken', price: 99 },
+  { id: 'snack-chatpata-chicken', cat: 'snack', bn: 'চাটপাটা চিকেন', en: 'Chatpata Chicken', price: 99 },
   { id: 'snack-butter-garlic-chicken', cat: 'snack', bn: 'বাটার গার্লিক চিকেন', en: 'Butter Garlic Chicken', price: 99 },
-  { id: 'snack-crispy-honey-chicken', cat: 'snack', bn: 'ক্রিস্পি হানি চিকেন', en: 'Crispy Honey Chicken', price: 99 },
+  { id: 'snack-chicken-wings', cat: 'snack', bn: 'চিকেন উইংস', en: 'Chicken Wings', price: 99 },
 
   // ---- Pizza & Burger ----
+  { id: 'pizza-cheese-corn-small', cat: 'pizza', bn: 'চিকেন পিৎজা (ছোট)', en: 'Chicken Cheese Corn Pizza (Small)', price: 100 },
+  { id: 'pizza-cheese-corn-regular', cat: 'pizza', bn: 'চিকেন পিৎজা (রেগুলার)', en: 'Chicken Cheese Corn Pizza (Regular)', price: 180 },
   { id: 'pizza-chicken-burger', cat: 'pizza', bn: 'চিকেন বার্গার', en: 'Chicken Burger', price: 79 },
-  { id: 'pizza-cheesy-corn-small', cat: 'pizza', bn: 'চিকেন চিজি কর্ন পিৎজা (ছোট)', en: 'Chicken Cheesy Corn Pizza (Small)', price: 99 },
-  { id: 'pizza-cheesy-corn-regular', cat: 'pizza', bn: 'চিকেন চিজি কর্ন পিৎজা (রেগুলার)', en: 'Chicken Cheesy Corn Pizza (Regular)', price: 180 },
 
-  // ---- Cigarettes (staff + interactive order menu only, not on public picture menu) ----
-  { id: 'cig-gold-flake', cat: 'cig', bn: 'গোল্ড ফ্লেক', en: 'Gold Flake', price: 10 },
-  { id: 'cig-gold-flake-kings', cat: 'cig', bn: 'গোল্ড ফ্লেক কিংস', en: 'Gold Flake Kings', price: 25 },
-  { id: 'cig-gold-flake-small', cat: 'cig', bn: 'গোল্ড ফ্লেক স্মল', en: 'Gold Flake Small', price: 18 },
-  { id: 'cig-classic', cat: 'cig', bn: 'ক্লাসিক', en: 'Classic', price: 25 },
-  { id: 'cig-marlboro', cat: 'cig', bn: 'মার্লবোরো', en: 'Marlboro', price: 30 },
-  { id: 'cig-navy-cut', cat: 'cig', bn: 'নেভি কাট', en: 'Navy Cut', price: 18 },
+  // ---- Cigarettes (staff + interactive order menu only, not on the public picture menu) ----
+  { id: 'cig-gold-flake-small', cat: 'cig', bn: 'গোল্ড ফ্লেক স্মল', en: 'Gold Flake Small', price: 10 },
   { id: 'cig-flake', cat: 'cig', bn: 'ফ্লেক', en: 'Flake', price: 12 },
 ];
 

@@ -3,41 +3,55 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#1a1a1a" />
+<meta name="theme-color" content="#fbf5e8" />
 <title>Belasheshe Menu</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #fafaf7;
+  /* Reading this as: redesign of a home-style Bengali cafe's QR menu, matching
+     its real wood-sign / hand-drawn signage. Warm, unpretentious, a little
+     playful. Not fine-dining editorial, not corporate SaaS. */
+  --bg: #fbf5e8;
   --surface: #ffffff;
-  --surface-2: #f3f1ec;
-  --ink: #1a1a1a;
-  --ink-2: #5c5c5c;
-  --ink-3: #9a9a95;
-  --line: #e8e5dd;
-  --success: #2d6a4f;
-  --danger: #b23a48;
-  --warm: #ab7a2e;
-  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.14);
-  --radius: 14px;
-  --radius-lg: 22px;
+  --surface-2: #f7ecda;
+  --ink: #2c2018;
+  --ink-2: #6e5c48;
+  --ink-3: #a8927a;
+  --line: #e7d7bd;
+  --line-strong: #d9c093;
+  --brand: #b5502e;
+  --brand-dark: #93401f;
+  --success: #4f7d5c;
+  --danger: #a8384a;
+  --shadow: 0 2px 8px rgba(60, 40, 20, 0.08);
+  --shadow-lg: 0 14px 36px rgba(60, 40, 20, 0.16);
+  --radius: 16px;
+  --radius-lg: 26px;
+
+  /* per-category identity colors, used only as small tab accents + price tint */
+  --c-drink: #4f7d5c;
+  --c-maggi: #b5502e;
+  --c-pasta: #8a6a1e;
+  --c-sandwich: #3f6e82;
+  --c-snack: #a24462;
+  --c-pizza: #7a4a24;
+  --c-cig: #766b5c;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html, body { height: 100%; overscroll-behavior: none; }
 body {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Hind Siliguri', 'Fredoka', sans-serif;
   background: var(--bg); color: var(--ink);
   font-size: 16px; line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   padding-bottom: env(safe-area-inset-bottom);
   padding-top: env(safe-area-inset-top);
 }
-.bn { font-family: 'Noto Serif Bengali', serif; font-weight: 500; }
+.bn { font-family: 'Hind Siliguri', sans-serif; font-weight: 600; }
 .mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; -webkit-tap-highlight-color: transparent; }
 
@@ -50,96 +64,92 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (prefers-reduced-motion: reduce) { .step.active { animation: none; } }
 
 .step-nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0; }
-.back-link { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.back-link { display: flex; align-items: center; gap: 6px; font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; color: var(--ink-2); }
 .back-link svg { width: 15px; height: 15px; }
 .step-progress { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.1em; }
 
 .sync-pill { display: flex; align-items: center; gap: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
 .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-3); }
-.sync-dot.online { background: var(--success); box-shadow: 0 0 0 3px rgba(45,106,79,0.15); }
+.sync-dot.online { background: var(--success); box-shadow: 0 0 0 3px rgba(79,125,92,0.15); }
 .sync-dot.offline { background: var(--danger); }
 
 /* ============ STEP 1 · MENU (the "menu picture") ============ */
-.menu-masthead { padding: 30px 24px 20px; text-align: center; }
-.menu-masthead .mark { width: 46px; height: 46px; margin: 0 auto 16px; border: 1.5px solid var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif Bengali', serif; font-weight: 600; font-size: 20px; }
-.menu-masthead .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px; letter-spacing: -0.02em; }
-.menu-masthead .brand-bn { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 20px; color: var(--ink-2); margin-top: 2px; }
-.menu-masthead .tagline { font-style: italic; font-size: 13px; color: var(--ink-3); margin-top: 12px; letter-spacing: 0.01em; }
-.menu-masthead .rule { width: 64px; height: 1px; background: var(--ink); margin: 18px auto 0; opacity: 0.25; }
+.menu-masthead { padding: 30px 24px 8px; text-align: center; }
+.masthead-icon { width: 42px; height: 42px; margin: 0 auto 10px; color: var(--brand); }
+.masthead-bn { font-family: 'Atma', cursive; font-weight: 700; font-size: 42px; color: var(--ink); line-height: 1; }
+.masthead-en { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-2); margin-top: 10px; }
+.masthead-tagline { font-family: 'Fredoka', sans-serif; font-size: 13px; color: var(--ink-3); margin-top: 8px; }
+.masthead-squiggle { width: 90px; height: 10px; margin: 14px auto 0; color: var(--brand); opacity: 0.55; }
 
-.menu-scroll { flex: 1; padding: 4px 24px 130px; overflow-y: auto; }
+.menu-scroll { flex: 1; padding: 10px 20px 130px; overflow-y: auto; }
 
-.cat-divider { display: flex; align-items: center; gap: 14px; margin: 34px 0 6px; }
-.cat-divider:first-child { margin-top: 6px; }
-.cat-divider::before, .cat-divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
-.cat-divider-label { font-family: 'Fraunces', serif; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-2); white-space: nowrap; }
+.cat-card { position: relative; border: 2px dashed var(--line-strong); border-radius: var(--radius-lg); background: var(--surface); padding: 22px 18px 6px; margin: 26px 0 22px; }
+.cat-card-tab { position: absolute; top: -15px; left: 22px; background: var(--cat-color, var(--brand)); color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.03em; padding: 7px 16px; border-radius: 999px; box-shadow: var(--shadow); }
 
-.leader-row { display: flex; flex-direction: column; padding: 12px 0; }
-.leader-row-top { display: flex; align-items: baseline; gap: 8px; }
-.leader-row-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 17px; white-space: nowrap; }
-.leader-row-dots { flex: 1; min-width: 16px; border-bottom: 1.5px dotted var(--ink-3); transform: translateY(-5px); opacity: 0.7; }
-.leader-row-price { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px; white-space: nowrap; }
-.leader-row-en { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; font-family: 'JetBrains Mono', monospace; margin-top: 3px; }
+.item-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.item-row:last-child { border-bottom: none; }
+.item-row-name { font-family: 'Hind Siliguri', sans-serif; font-weight: 600; font-size: 16.5px; color: var(--ink); }
+.item-row-en { font-family: 'Fredoka', sans-serif; font-size: 10.5px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; }
+.item-row-price { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 15px; color: var(--cat-color, var(--brand)); white-space: nowrap; padding-top: 1px; }
 
-.cta-dock { position: fixed; bottom: 0; left: 0; right: 0; max-width: 480px; margin: 0 auto; padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to top, var(--bg) 60%, transparent); }
-.cta-dock-btn { width: 100%; background: var(--ink); color: var(--bg); padding: 17px; border-radius: 14px; font-weight: 600; font-size: 15.5px; letter-spacing: 0.01em; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow-lg); transition: transform 0.1s; }
+.cta-dock { position: fixed; bottom: 0; left: 0; right: 0; max-width: 480px; margin: 0 auto; padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to top, var(--bg) 62%, transparent); }
+.cta-dock-btn { width: 100%; background: var(--brand); color: #fff; padding: 17px; border-radius: 16px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.01em; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow-lg); transition: transform 0.1s; }
 .cta-dock-btn:active { transform: scale(0.98); }
 
 /* ============ STEP 2 · TABLE ============ */
-.table-step-body { flex: 1; padding: 40px 28px; display: flex; flex-direction: column; }
-.table-step-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; letter-spacing: -0.01em; margin-top: 18px; }
-.table-step-sub { font-family: 'Noto Serif Bengali', serif; color: var(--ink-3); font-size: 15px; margin-top: 4px; }
+.table-step-body { flex: 1; padding: 36px 26px; display: flex; flex-direction: column; }
+.table-step-title { font-family: 'Atma', cursive; font-weight: 700; font-size: 30px; color: var(--ink); margin-top: 14px; }
+.table-step-sub { font-family: 'Hind Siliguri', sans-serif; color: var(--ink-3); font-size: 15px; margin-top: 2px; }
 
-.zone-tabs { display: flex; gap: 28px; margin-top: 32px; border-bottom: 1px solid var(--line); }
-.zone-tab { padding: 0 0 12px; font-size: 15px; font-weight: 600; color: var(--ink-3); position: relative; }
-.zone-tab.active { color: var(--ink); }
-.zone-tab.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); }
+.zone-tabs { display: flex; gap: 10px; margin-top: 30px; }
+.zone-tab { flex: 1; padding: 13px; border-radius: 14px; font-family: 'Fredoka', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--ink-2); background: var(--surface); border: 2px solid var(--line); text-align: center; }
+.zone-tab.active { color: #fff; background: var(--brand); border-color: var(--brand); }
 
-.table-tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
-.table-tile { aspect-ratio: 1; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 20px; color: var(--ink-2); transition: all 0.15s; }
-.table-tile.active { background: var(--ink); color: var(--bg); border-color: var(--ink); transform: scale(1.04); }
+.table-tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+.table-tile { aspect-ratio: 1; border-radius: 16px; border: 2px solid var(--line); background: var(--surface); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 19px; color: var(--ink-2); transition: all 0.15s; }
+.table-tile.active { background: var(--brand); color: #fff; border-color: var(--brand); transform: scale(1.04); }
 
-.table-step-footer { margin-top: auto; padding-top: 32px; }
+.table-step-footer { margin-top: auto; padding-top: 30px; }
 
 /* ============ STEP 3 · ORDER ============ */
 .order-context-bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 0; }
-.order-context-info { font-size: 13px; font-weight: 600; }
-.order-context-info .mono { color: var(--ink-3); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 1px; }
-.order-context-change { font-size: 12px; color: var(--ink-3); text-decoration: underline; font-weight: 500; }
+.order-context-info { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; }
+.order-context-info .mono { color: var(--ink-3); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-top: 1px; font-family: 'JetBrains Mono', monospace; }
+.order-context-change { font-family: 'Fredoka', sans-serif; font-size: 12px; color: var(--brand); text-decoration: underline; font-weight: 600; }
 
 .content { flex: 1; padding: 16px 16px 20px; }
 
 .cat-bar { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px 16px; padding: 4px 16px; }
 .cat-bar::-webkit-scrollbar { display: none; }
-.cat-chip { flex-shrink: 0; padding: 8px 15px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 12.5px; font-weight: 600; color: var(--ink-2); white-space: nowrap; transition: all 0.15s; letter-spacing: 0.01em; }
+.cat-chip { flex-shrink: 0; padding: 9px 16px; border-radius: 999px; background: var(--surface); border: 2px solid var(--line); font-family: 'Fredoka', sans-serif; font-size: 12.5px; font-weight: 600; color: var(--ink-2); white-space: nowrap; transition: all 0.15s; }
 .cat-chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
 .menu-list { display: flex; flex-direction: column; gap: 8px; }
-.menu-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: transform 0.1s, box-shadow 0.15s; position: relative; text-align: left; width: 100%; }
+.menu-item { background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: transform 0.1s, box-shadow 0.15s; position: relative; text-align: left; width: 100%; }
 .menu-item:active { transform: scale(0.98); box-shadow: var(--shadow); }
-.menu-item.in-cart { border-color: var(--ink); background: var(--surface-2); }
+.menu-item.in-cart { border-color: var(--brand); background: var(--surface-2); }
 .menu-item-info { flex: 1; min-width: 0; }
-.menu-item-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 17px; margin-bottom: 2px; }
-.menu-item-en { font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
-.menu-item-price { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px; }
-.qty-badge { position: absolute; top: -6px; right: -6px; background: var(--ink); color: var(--bg); font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 12px; min-width: 22px; height: 22px; border-radius: 11px; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
+.menu-item-name { font-family: 'Hind Siliguri', sans-serif; font-weight: 600; font-size: 16.5px; margin-bottom: 2px; }
+.menu-item-en { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Fredoka', sans-serif; }
+.menu-item-price { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 15px; }
+.qty-badge { position: absolute; top: -6px; right: -6px; background: var(--brand); color: #fff; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; min-width: 22px; height: 22px; border-radius: 11px; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
 
 /* ---- Cart bar / modal ---- */
 .cart-bar { position: fixed; bottom: 16px; left: 16px; right: 16px; max-width: 448px; margin: 0 auto; background: var(--ink); color: var(--bg); border-radius: var(--radius); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-lg); z-index: 15; transform: translateY(120px); opacity: 0; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s; }
 .cart-bar.visible { transform: none; opacity: 1; }
 .cart-bar-info { display: flex; flex-direction: column; gap: 2px; }
-.cart-bar-count { font-size: 12px; opacity: 0.7; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
-.cart-bar-total { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 18px; }
-.cart-bar-btn { background: var(--bg); color: var(--ink); padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+.cart-bar-count { font-family: 'Fredoka', sans-serif; font-size: 12px; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.05em; }
+.cart-bar-total { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 18px; }
+.cart-bar-btn { background: var(--brand); color: #fff; padding: 10px 18px; border-radius: 10px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; }
 
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; display: none; align-items: flex-end; animation: overlayIn 0.2s ease; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(30, 20, 10, 0.5); z-index: 100; display: none; align-items: flex-end; animation: overlayIn 0.2s ease; }
 .modal-overlay.open { display: flex; }
 @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
-.modal { background: var(--bg); border-radius: 24px 24px 0 0; width: 100%; max-width: 480px; margin: 0 auto; max-height: 90vh; display: flex; flex-direction: column; animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); padding-bottom: env(safe-area-inset-bottom); }
+.modal { background: var(--bg); border-radius: 26px 26px 0 0; width: 100%; max-width: 480px; margin: 0 auto; max-height: 90vh; display: flex; flex-direction: column; animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); padding-bottom: env(safe-area-inset-bottom); }
 @keyframes modalIn { from { transform: translateY(100%); } to { transform: none; } }
-.modal-handle { width: 36px; height: 4px; background: var(--line); border-radius: 2px; margin: 10px auto 8px; }
+.modal-handle { width: 36px; height: 4px; background: var(--line-strong); border-radius: 2px; margin: 10px auto 8px; }
 .modal-header { padding: 8px 20px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
-.modal-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+.modal-title { font-family: 'Atma', cursive; font-weight: 700; font-size: 24px; color: var(--ink); }
 .modal-close { width: 32px; height: 32px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; }
 .modal-body { flex: 1; overflow-y: auto; padding: 16px 20px; }
 .modal-footer { padding: 16px 20px; border-top: 1px solid var(--line); }
@@ -147,36 +157,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .cart-line { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .cart-line:last-child { border-bottom: none; }
 .cart-line-info { flex: 1; min-width: 0; }
-.cart-line-name { font-family: 'Noto Serif Bengali', serif; font-weight: 500; font-size: 15px; }
+.cart-line-name { font-family: 'Hind Siliguri', sans-serif; font-weight: 600; font-size: 15px; }
 .cart-line-price { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); }
 .qty-control { display: flex; align-items: center; gap: 0; background: var(--surface-2); border-radius: 999px; padding: 2px; }
 .qty-btn { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; transition: background 0.15s; }
 .qty-btn:active { background: var(--line); }
 .qty-num { min-width: 32px; text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 14px; }
-.cart-line-total { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 14px; min-width: 60px; text-align: right; }
+.cart-line-total { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; min-width: 60px; text-align: right; }
 
-.note-input { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 14px; margin-top: 16px; font-family: inherit; }
-.note-input:focus { outline: none; border-color: var(--ink); }
+.note-input { width: 100%; padding: 12px 14px; border: 2px solid var(--line); border-radius: 12px; background: var(--surface); font-size: 14px; margin-top: 16px; font-family: inherit; }
+.note-input:focus { outline: none; border-color: var(--brand); }
 
-.summary-row.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; letter-spacing: -0.01em; display: flex; justify-content: space-between; }
+.summary-row.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-family: 'Atma', cursive; font-weight: 700; font-size: 26px; display: flex; justify-content: space-between; align-items: center; }
+.summary-row.total .mono { font-family: 'JetBrains Mono', monospace; font-size: 22px; }
 
-.btn-primary { width: 100%; background: var(--ink); color: var(--bg); padding: 16px; border-radius: 12px; font-weight: 600; font-size: 15px; letter-spacing: 0.01em; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s; }
+.btn-primary { width: 100%; background: var(--brand); color: #fff; padding: 16px; border-radius: 14px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15.5px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s; }
 .btn-primary:active { transform: scale(0.98); }
 .btn-primary:disabled { opacity: 0.4; }
-.btn-secondary { width: 100%; background: var(--surface); color: var(--ink); padding: 14px; border-radius: 12px; font-weight: 500; font-size: 14px; border: 1px solid var(--line); margin-top: 8px; }
+.btn-secondary { width: 100%; background: var(--surface); color: var(--ink); padding: 14px; border-radius: 14px; font-family: 'Fredoka', sans-serif; font-weight: 500; font-size: 14px; border: 2px solid var(--line); margin-top: 8px; }
 
 /* ---- Confirmation ---- */
 .confirm-screen { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 56px 24px; }
 .confirm-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--success); color: white; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-.confirm-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; margin-bottom: 8px; }
+.confirm-title { font-family: 'Atma', cursive; font-weight: 700; font-size: 30px; margin-bottom: 8px; }
 .confirm-sub { font-size: 14px; color: var(--ink-2); margin-bottom: 26px; line-height: 1.5; max-width: 320px; }
 .confirm-meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-3); margin-bottom: 30px; }
 
-.error-banner { background: rgba(178,58,72,0.08); border: 1px solid var(--danger); color: var(--danger); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; margin: 0 20px 14px; display: none; }
+.error-banner { background: rgba(168,56,74,0.08); border: 2px solid var(--danger); color: var(--danger); border-radius: var(--radius); padding: 12px 14px; font-size: 13px; margin: 0 20px 14px; display: none; }
 .error-banner.show { display: block; }
 
 .empty { text-align: center; padding: 40px 20px; color: var(--ink-3); font-size: 14px; }
-.toast { position: fixed; top: calc(20px + env(safe-area-inset-top)); left: 50%; transform: translate(-50%, -120%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 500; box-shadow: var(--shadow-lg); z-index: 200; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); white-space: nowrap; }
+.toast { position: fixed; top: calc(20px + env(safe-area-inset-top)); left: 50%; transform: translate(-50%, -120%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 500; box-shadow: var(--shadow-lg); z-index: 200; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); white-space: nowrap; }
 .toast.show { transform: translate(-50%, 0); }
 </style>
 </head>
@@ -190,11 +201,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="sync-pill"><span class="sync-dot" id="syncDot"></span><span id="syncLabel">connecting</span></div>
     </div>
     <div class="menu-masthead">
-      <div class="mark bn">ব</div>
-      <div class="brand">Belasheshe</div>
-      <div class="brand-bn">বেলাশেষে</div>
-      <div class="tagline">A little break, a lot of happiness</div>
-      <div class="rule"></div>
+      <svg class="masthead-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M14 21h20v9a10 10 0 01-10 10 10 10 0 01-10-10v-9z"/>
+        <path d="M34 23h3a4 4 0 010 8h-3"/>
+        <path d="M19 14c-1.5-1.8-1.5-3.2 0-5M24 14c-1.5-1.8-1.5-3.2 0-5M29 14c-1.5-1.8-1.5-3.2 0-5" opacity="0.6"/>
+      </svg>
+      <div class="masthead-bn">বেলাশেষে</div>
+      <div class="masthead-en">Belasheshe</div>
+      <div class="masthead-tagline">A little break, a lot of happiness</div>
+      <svg class="masthead-squiggle" viewBox="0 0 90 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M2 6c6-6 9 6 15 0s9-6 15 0 9 6 15 0 9-6 15 0 9 6 15 0"/>
+      </svg>
     </div>
 
     <div class="error-banner" id="errorBanner"></div>
@@ -204,7 +221,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="cta-dock">
       <button class="cta-dock-btn" id="startOrderBtn">
         Order now
-        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </button>
     </div>
   </section>
@@ -213,22 +230,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <section class="step" data-step="table" id="stepTable">
     <div class="step-nav">
       <button class="back-link" id="backToMenuBtn">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
         Menu
       </button>
       <div class="step-progress">Step 2 of 3</div>
     </div>
     <div class="table-step-body">
-      <div class="table-step-title">Where are you sitting?</div>
-      <div class="table-step-sub bn">আপনার টেবিল বেছে নিন</div>
+      <div class="table-step-title">কোথায় বসেছেন?</div>
+      <div class="table-step-sub">Where are you sitting?</div>
 
       <div class="zone-tabs" id="zoneTabs"></div>
       <div class="table-tile-grid" id="tableTileGrid"></div>
 
       <div class="table-step-footer">
-        <button class="cta-dock-btn" id="tableContinueBtn" disabled style="position:static; box-shadow:none;">
+        <button class="cta-dock-btn" id="tableContinueBtn" disabled style="position:static; box-shadow:none; opacity:1; background: var(--line-strong);">
           Continue
-          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
@@ -238,7 +255,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <section class="step" data-step="order" id="stepOrder">
     <div class="step-nav">
       <button class="back-link" id="backToTableBtn">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
         Table
       </button>
       <div class="step-progress">Step 3 of 3</div>
@@ -274,7 +291,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-handle"></div>
     <div class="modal-header">
-      <div class="modal-title">Your Order</div>
+      <div class="modal-title">আপনার অর্ডার</div>
       <button class="modal-close" onclick="closeCart()"><svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
     </div>
     <div class="modal-body">
@@ -304,7 +321,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="confirm-icon">
           <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         </div>
-        <div class="confirm-title">Order sent</div>
+        <div class="confirm-title">অর্ডার পাঠানো হয়েছে</div>
         <div class="confirm-sub" id="confirmSub">Your order is on its way to the kitchen.</div>
         <div class="confirm-meta" id="confirmMeta"></div>
         <button class="btn-primary" onclick="closeConfirm()">Order more</button>
@@ -321,6 +338,11 @@ import { FIREBASE_CONFIG } from './shared/firebase-config.js';
 
 let CATEGORIES = DEFAULT_CATEGORIES;
 let MENU = [...DEFAULT_MENU];
+
+const CAT_COLOR_VAR = {
+  drink: '--c-drink', maggi: '--c-maggi', pasta: '--c-pasta',
+  sandwich: '--c-sandwich', snack: '--c-snack', pizza: '--c-pizza', cig: '--c-cig',
+};
 
 let state = {
   cart: {},
@@ -357,11 +379,8 @@ function goToStep(step) {
   window.scrollTo(0, 0);
 }
 document.getElementById('startOrderBtn').addEventListener('click', () => {
-  if (state.table) {
-    goToStep('order');
-  } else {
-    goToStep('table');
-  }
+  if (state.table) goToStep('order');
+  else goToStep('table');
 });
 document.getElementById('backToMenuBtn').addEventListener('click', () => goToStep('menu'));
 document.getElementById('backToTableBtn').addEventListener('click', () => goToStep('table'));
@@ -407,7 +426,9 @@ function renderTableTiles() {
   el.querySelectorAll('.table-tile').forEach(b => b.addEventListener('click', () => {
     setTable(b.dataset.table);
     renderTableTiles();
-    document.getElementById('tableContinueBtn').disabled = false;
+    const btn = document.getElementById('tableContinueBtn');
+    btn.disabled = false;
+    btn.style.background = 'var(--brand)';
   }));
 }
 document.getElementById('tableContinueBtn').addEventListener('click', () => {
@@ -421,18 +442,20 @@ function renderBrowse() {
   el.innerHTML = PUBLIC_MENU_CATEGORIES.map(cat => {
     const items = MENU.filter(m => m.cat === cat.id);
     if (items.length === 0) return '';
+    const colorVar = CAT_COLOR_VAR[cat.id] || '--brand';
     return `
-      <div class="cat-divider"><span class="cat-divider-label">${cat.label}</span></div>
-      ${items.map(item => `
-        <div class="leader-row">
-          <div class="leader-row-top">
-            <span class="leader-row-name bn">${item.bn}</span>
-            <span class="leader-row-dots"></span>
-            <span class="leader-row-price mono">₹${item.price}</span>
+      <div class="cat-card" style="--cat-color: var(${colorVar});">
+        <div class="cat-card-tab">${cat.label}</div>
+        ${items.map(item => `
+          <div class="item-row">
+            <div>
+              <div class="item-row-name bn">${item.bn}</div>
+              <div class="item-row-en">${item.en}</div>
+            </div>
+            <div class="item-row-price mono">₹${item.price}</div>
           </div>
-          <div class="leader-row-en">${item.en}</div>
-        </div>
-      `).join('')}
+        `).join('')}
+      </div>
     `;
   }).join('');
 }
@@ -672,6 +695,8 @@ function init() {
     state.pickerZone = state.zone;
     renderZoneTabs();
     renderTableTiles();
+    document.getElementById('tableContinueBtn').disabled = false;
+    document.getElementById('tableContinueBtn').style.background = 'var(--brand)';
   }
 
   goToStep('menu');
