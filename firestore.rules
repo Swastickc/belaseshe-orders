@@ -1,0 +1,57 @@
+rules_version = '2';
+
+// ============================================================
+// Belasheshe Firestore rules
+//
+// There is no login system in this app (staff use a local PIN
+// that only gates the UI on their own phone, not the database).
+// Because of that, these rules can't fully distinguish "staff"
+// from "a random customer" — that would need real Firebase Auth.
+// What they DO enforce:
+//   - customer-placed orders must look like a real order
+//     (valid table/zone, non-empty items, sane total, starts as
+//     'pending', can't be created already 'paid')
+//   - once created, only status/seen/note/updatedAt can change —
+//     items/table/total are frozen so nobody can rewrite an
+//     existing order's contents after the fact
+// Anyone with the public Firebase config can still technically
+// read the orders list or spam order creations. For a single
+// small cafe this is an accepted trade-off; if that ever becomes
+// a real problem, add Firebase App Check (free) and/or Firebase
+// Auth for staff.
+// ============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /orders/{orderId} {
+      allow read: if true;
+      allow create: if isValidNewOrder(request.resource.data);
+      allow update: if isValidStatusUpdate(resource.data, request.resource.data);
+      allow delete: if true;
+    }
+
+    // Shared menu + settings docs (menu, qr image, etc). Edited from the
+    // staff Menu Editor / Settings screens.
+    match /config/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    function isValidNewOrder(o) {
+      return o.keys().hasAll(['table', 'zone', 'destination', 'items', 'total', 'status', 'source'])
+        && o.destination in ['table', 'takeaway']
+        && o.zone in ['rooftop', 'downstairs', 'none']
+        && o.items is list && o.items.size() > 0 && o.items.size() <= 40
+        && o.total is number && o.total >= 0 && o.total <= 100000
+        && o.status == 'pending'
+        && o.source in ['staff', 'customer'];
+    }
+
+    function isValidStatusUpdate(before, after) {
+      return after.diff(before).affectedKeys()
+              .hasOnly(['status', 'updatedAt', 'note', 'seen', 'items', 'total'])
+        && after.status in ['pending', 'paid'];
+    }
+  }
+}
