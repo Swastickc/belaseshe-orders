@@ -53,7 +53,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .sync-dot.offline { background: var(--danger); }
 
 .table-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 8px; font-size: 13px; font-weight: 600; }
+.table-badge.unset { border-style: dashed; color: var(--ink-2); font-weight: 500; }
 .table-badge .icon { width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+.table-badge.unset .icon { background: var(--ink-3); }
 .table-badge button { font-size: 11px; color: var(--ink-3); text-decoration: underline; margin-left: 6px; font-weight: 500; }
 
 .seg { display: flex; gap: 2px; background: var(--surface-2); padding: 3px; border-radius: 999px; margin-top: 14px; }
@@ -142,6 +144,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .picker-table-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
 .picker-table-btn { padding: 18px 4px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 18px; }
 .picker-table-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.picker-close { position: absolute; top: 20px; right: 20px; width: 34px; height: 34px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; }
 
 /* ---- Confirmation screen ---- */
 .confirm-screen { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 60px 24px; }
@@ -160,13 +163,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 </head>
 <body>
 
-<!-- TABLE PICKER (only shown if URL has no valid table) -->
+<!-- TABLE PICKER (opened only when the customer places an order, or taps the table badge) -->
 <div class="picker-overlay hidden" id="pickerOverlay">
-  <div class="picker-title">Which table?</div>
+  <button class="picker-close" id="pickerCloseBtn" aria-label="Just browsing, close">
+    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <div class="picker-title">Which table are you at?</div>
   <div class="picker-sub bn" style="font-family:'Noto Serif Bengali',serif;">আপনার টেবিল বেছে নিন</div>
   <div class="picker-zone-toggle" id="pickerZoneToggle"></div>
   <div class="picker-table-grid" id="pickerTableGrid"></div>
   <button class="btn-primary" id="pickerConfirmBtn" disabled>Confirm table</button>
+  <button class="btn-secondary" id="pickerSkipBtn">Just browsing, not ordering yet</button>
 </div>
 
 <div class="app">
@@ -276,6 +283,7 @@ let state = {
   connected: false,
   pickerZone: 'rooftop',
   pickerTable: null,
+  pendingOpenCartAfterPick: false,
 };
 
 let toastTimer;
@@ -303,18 +311,35 @@ function resolveTableFromURL() {
   return null;
 }
 
+function renderTableBadge() {
+  const badge = document.getElementById('tableBadge');
+  const btn = document.getElementById('changeTableBtn');
+  if (state.table) {
+    badge.classList.remove('unset');
+    document.getElementById('tableBadgeIcon').textContent = state.table;
+    document.getElementById('tableBadgeText').textContent = `${ZONE_LABELS[state.zone]} · Table ${state.table}`;
+    btn.textContent = 'change';
+  } else {
+    badge.classList.add('unset');
+    document.getElementById('tableBadgeIcon').textContent = '–';
+    document.getElementById('tableBadgeText').textContent = 'Just browsing';
+    btn.textContent = 'set table';
+  }
+}
+
 function setTable(table) {
   state.table = table;
   state.zone = zoneOfTable(table);
-  const badge = document.getElementById('tableBadge');
-  document.getElementById('tableBadgeIcon').textContent = table;
-  document.getElementById('tableBadgeText').textContent = `${ZONE_LABELS[state.zone]} · Table ${table}`;
-  badge.style.display = 'inline-flex';
+  renderTableBadge();
   try {
     const url = new URL(location.href);
     url.searchParams.set('t', table);
     history.replaceState(null, '', url);
   } catch (e) {}
+  if (state.pendingOpenCartAfterPick) {
+    state.pendingOpenCartAfterPick = false;
+    openCart();
+  }
 }
 
 function openTablePicker() {
@@ -327,6 +352,7 @@ function openTablePicker() {
 }
 function closeTablePicker() {
   document.getElementById('pickerOverlay').classList.add('hidden');
+  state.pendingOpenCartAfterPick = false;
 }
 function renderPickerZone() {
   const el = document.getElementById('pickerZoneToggle');
@@ -353,9 +379,13 @@ function renderPickerTables() {
 }
 document.getElementById('pickerConfirmBtn').addEventListener('click', () => {
   if (!state.pickerTable) return;
+  const wasPending = state.pendingOpenCartAfterPick;
+  document.getElementById('pickerOverlay').classList.add('hidden');
   setTable(state.pickerTable);
-  closeTablePicker();
+  if (!wasPending) state.pendingOpenCartAfterPick = false;
 });
+document.getElementById('pickerCloseBtn').addEventListener('click', closeTablePicker);
+document.getElementById('pickerSkipBtn').addEventListener('click', closeTablePicker);
 document.getElementById('changeTableBtn').addEventListener('click', openTablePicker);
 
 // ============ TABS ============
@@ -490,6 +520,11 @@ function renderCartLines() {
 
 window.openCart = () => {
   if (cartCount() === 0) return;
+  if (!state.table) {
+    state.pendingOpenCartAfterPick = true;
+    openTablePicker();
+    return;
+  }
   document.getElementById('destSummary').textContent = `🪑 ${ZONE_LABELS[state.zone]} · Table ${state.table}`;
   renderCartLines();
   updatePlaceOrderState();
@@ -512,6 +547,12 @@ function updatePlaceOrderState() {
 
 window.placeOrder = async () => {
   if (cartCount() === 0) return;
+  if (!state.table) {
+    document.getElementById('cartModal').classList.remove('open');
+    state.pendingOpenCartAfterPick = true;
+    openTablePicker();
+    return;
+  }
   if (!state.firestore) { toast('Not connected yet, try again in a moment'); return; }
   const btn = document.getElementById('placeOrderBtn');
   btn.disabled = true;
@@ -616,7 +657,7 @@ function init() {
 
   const urlTable = resolveTableFromURL();
   if (urlTable) setTable(urlTable);
-  else openTablePicker();
+  else renderTableBadge();
 
   initFirebase();
 }

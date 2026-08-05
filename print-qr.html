@@ -3,50 +3,55 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Belasheshe — Table QR Codes</title>
+<title>Belasheshe — Shop QR Code</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Noto+Serif+Bengali:wght@500&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root { --ink: #1a1a1a; --line: #e8e5dd; --bg: #fafaf7; --ink-3: #9a9a95; }
   * { box-sizing: border-box; }
-  body { font-family: 'Fraunces', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 24px; }
+  body { font-family: 'Fraunces', Georgia, serif; background: var(--bg); color: var(--ink); margin: 0; padding: 24px; display: flex; flex-direction: column; align-items: center; }
   h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
-  p.sub { color: var(--ink-3); font-size: 13px; margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; }
-  .toolbar { display: flex; gap: 10px; margin-bottom: 24px; }
+  p.sub { color: var(--ink-3); font-size: 13px; margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; text-align: center; max-width: 420px; }
+  .toolbar { display: flex; gap: 10px; margin-bottom: 28px; }
   .toolbar button { font-family: inherit; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line); background: white; cursor: pointer; }
   .toolbar button.primary { background: var(--ink); color: white; border-color: var(--ink); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-  .card { border: 1px solid var(--line); border-radius: 16px; background: white; padding: 20px; text-align: center; break-inside: avoid; page-break-inside: avoid; }
-  .zone-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
-  .table-label { font-size: 30px; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-bottom: 14px; }
-  .qr-wrap { display: flex; justify-content: center; margin-bottom: 12px; }
-  .qr-wrap svg { width: 180px; height: 180px; }
-  .url-label { font-size: 10px; color: var(--ink-3); word-break: break-all; font-family: 'JetBrains Mono', monospace; }
-  .scan-hint { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+  .card { border: 1px solid var(--line); border-radius: 20px; background: white; padding: 36px; text-align: center; break-inside: avoid; page-break-inside: avoid; width: 100%; max-width: 380px; }
+  .brand { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; margin-bottom: 2px; }
+  .brand-bn { font-family: 'Noto Serif Bengali', serif; font-size: 15px; color: var(--ink-3); margin-bottom: 20px; }
+  .qr-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
+  .qr-wrap svg { width: 220px; height: 220px; }
+  .scan-hint { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .scan-sub { font-size: 12px; color: var(--ink-3); }
+  .url-label { font-size: 10px; color: var(--ink-3); word-break: break-all; font-family: 'JetBrains Mono', monospace; margin-top: 16px; }
 
   @media print {
     body { padding: 0; background: white; }
     .toolbar { display: none; }
     h1, p.sub { display: none; }
-    .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .card { box-shadow: none; }
+    .card { box-shadow: none; border: none; }
   }
 </style>
 </head>
 <body>
-  <h1>Table QR Codes</h1>
-  <p class="sub">Print, laminate, and place one on each table. Scanning opens the menu with that table pre-filled.</p>
+  <h1>Shop QR Code</h1>
+  <p class="sub">One code for the whole shop — print a few copies (counter, entrance, each table). Anyone can scan it to browse the menu; it only asks which table they're at when they actually place an order.</p>
   <div class="toolbar">
-    <button class="primary" onclick="window.print()">Print all</button>
+    <button class="primary" onclick="window.print()">Print</button>
   </div>
-  <div class="grid" id="grid"></div>
+  <div class="card" id="card">
+    <div class="brand">Belasheshe</div>
+    <div class="brand-bn">বেলাশেষে</div>
+    <div class="qr-wrap" id="qrWrap"></div>
+    <div class="scan-hint">Scan to see the menu</div>
+    <div class="scan-sub">Ordering asks for your table only if you're sitting down</div>
+    <div class="url-label" id="urlLabel"></div>
+  </div>
 
   <script src="vendor/qrcode.js"></script>
   <script type="module">
-    import { TABLES, ZONE_LABELS } from './shared/menu-data.js';
-
     const base = location.origin + location.pathname.replace(/print-qr\.html$/, '');
+    const url = `${base}menu.html`;
 
     function makeQrSvg(text) {
       const qr = qrcode(0, 'M');
@@ -55,23 +60,8 @@
       return qr.createSvgTag({ cellSize: 6, margin: 2, scalable: true });
     }
 
-    const grid = document.getElementById('grid');
-    let html = '';
-    for (const zone of Object.keys(TABLES)) {
-      for (const table of TABLES[zone]) {
-        const url = `${base}menu.html?t=${table}`;
-        html += `
-          <div class="card">
-            <div class="zone-label">${ZONE_LABELS[zone]}</div>
-            <div class="table-label">${table}</div>
-            <div class="qr-wrap">${makeQrSvg(url)}</div>
-            <div class="url-label">${url}</div>
-            <div class="scan-hint">Scan to view menu &amp; order</div>
-          </div>
-        `;
-      }
-    }
-    grid.innerHTML = html;
+    document.getElementById('qrWrap').innerHTML = makeQrSvg(url);
+    document.getElementById('urlLabel').textContent = url;
   </script>
 </body>
 </html>
