@@ -397,6 +397,17 @@ input, select, textarea { font-family: inherit; }
         </div>
       </div>
 
+      <div class="stats" style="margin-top:-8px;">
+        <div class="stat-card">
+          <div class="stat-label">QR Menu Views · Today</div>
+          <div class="stat-value mono" id="scansToday">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">QR Menu Views · All time</div>
+          <div class="stat-value mono" id="scansTotal">0</div>
+        </div>
+      </div>
+
       <div class="section-header">
         <div class="section-title">Active</div>
         <div class="section-meta" id="pendingMeta">0 open</div>
@@ -1575,6 +1586,18 @@ async function initFirebase(config) {
       } else {
         try { await setDoc(doc(state.firestore, 'config', 'menu'), { items: MENU, updatedAt: Date.now() }); } catch (e) {}
       }
+    });
+
+    // Live QR-menu view counter (written by menu.html on each new customer session)
+    onSnapshot(doc(state.firestore, 'config', 'menu-scans'), (snap) => {
+      const data = snap.exists() ? (snap.data() || {}) : {};
+      const total = Number(data.total) || 0;
+      const today = new Date().toISOString().slice(0, 10);
+      const todayCount = Number(data.daily && data.daily[today]) || 0;
+      const totalEl = document.getElementById('scansTotal');
+      const todayEl = document.getElementById('scansToday');
+      if (totalEl) totalEl.textContent = total;
+      if (todayEl) todayEl.textContent = todayCount;
     });
 
     document.getElementById('clearFbBtn').style.display = 'block';
