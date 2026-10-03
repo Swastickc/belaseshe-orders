@@ -3,9 +3,6 @@ type: quickstart
 title: Quickstart
 description: What Belasheshe Orders is, the three pages and who uses each, how to run it locally, and how to deploy it — the routing map for the rest of the wiki.
 tags: [quickstart, overview, setup, deploy]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-03T11:03:11.929Z
 sources:
   - id: openwiki-source-e2d36065640e6201821ff884
     resource: repo://firebase.json
@@ -19,7 +16,10 @@ sources:
     resource: repo://shared/firebase-config.js
   - id: openwiki-source-334209dcccd68ba2712825b2
     resource: repo://shared/menu-data.js
-generated: { by: "opencode", at: "2026-10-03T11:03:11.929Z" }
+generated: { by: "opencode", at: "2026-10-03T12:24:34.678Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-03T12:24:34.678Z
 ---
 
 # Quickstart
@@ -53,17 +53,17 @@ firebase login
 firebase deploy --only hosting,firestore:rules
 ```
 
-Note: the repo has drifted between two hosting stories — the README documents Firebase Hosting, while `scripts/generate-qr.js` targets GitHub Pages (`https://swastickc.github.io/belaseshe-orders/menu.html`). There is no deploy workflow in the repo. QR codes must encode the **deployed** URL: either open `print-qr.html` on the live domain, or update `TARGET_URL` in `scripts/generate-qr.js` and rerun it.
+Hosting is split by audience: the **customer QR link** is deployed and targeted on Firebase Hosting (`https://belaseshe-orders.web.app/menu.html` — `scripts/generate-qr.js`'s `TARGET_URL`), while the **staff app** stays on GitHub Pages, where its PWA install and local data live. There is no deploy workflow in the repo. QR codes must encode the **deployed** URL: either open `print-qr.html` on the live domain, or update `TARGET_URL` in `scripts/generate-qr.js` and rerun it.
 
 ## Where to read next
 
-<!-- openwiki: broken internal link [/openwiki/architecture/overview.md] link "/openwiki/architecture/overview.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Architecture Overview](/openwiki/architecture/overview.md) — how the three pages, shared modules, and Firestore fit together
-<!-- openwiki: broken internal link [/openwiki/architecture/data-model.md] link "/openwiki/architecture/data-model.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Firestore Data Model and Security Rules](/openwiki/architecture/data-model.md) — collections, order shape, status lifecycle, what the rules enforce and the no-auth trade-off
-<!-- openwiki: broken internal link [/openwiki/workflows/staff-pos.md] link "/openwiki/workflows/staff-pos.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Staff Point-of-Sale App](/openwiki/workflows/staff-pos.md) — PIN, screens, live alerts, open tabs, payment
-<!-- openwiki: broken internal link [/openwiki/workflows/customer-qr-ordering.md] link "/openwiki/workflows/customer-qr-ordering.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Customer QR Ordering Flow](/openwiki/workflows/customer-qr-ordering.md) — the customer's three-step flow
-<!-- openwiki: broken internal link [/openwiki/operations/deployment-and-qr.md] link "/openwiki/operations/deployment-and-qr.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-- [Deployment and Table QR Codes](/openwiki/operations/deployment-and-qr.md) — hosting config, QR generation, table codes
+<!-- openwiki: broken internal link [openwiki/architecture/overview.md] file "openwiki/architecture/overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+- [Architecture Overview](openwiki/architecture/overview.md) — how the three pages, shared modules, and Firestore fit together
+<!-- openwiki: broken internal link [openwiki/architecture/data-model.md] file "openwiki/architecture/data-model.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+- [Firestore Data Model and Security Rules](openwiki/architecture/data-model.md) — collections, order shape, status lifecycle, what the rules enforce and the no-auth trade-off
+<!-- openwiki: broken internal link [openwiki/workflows/staff-pos.md] file "openwiki/workflows/staff-pos.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+- [Staff Point-of-Sale App](openwiki/workflows/staff-pos.md) — PIN, screens, live alerts, open tabs, payment
+<!-- openwiki: broken internal link [openwiki/workflows/customer-qr-ordering.md] file "openwiki/workflows/customer-qr-ordering.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+- [Customer QR Ordering Flow](openwiki/workflows/customer-qr-ordering.md) — the customer's three-step flow
+<!-- openwiki: broken internal link [openwiki/operations/deployment-and-qr.md] file "openwiki/operations/deployment-and-qr.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+- [Deployment and Table QR Codes](openwiki/operations/deployment-and-qr.md) — hosting config, QR generation, table codes

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:02b21e31481a0c2b3f85ac2bc7923821db94bee50e13b254cc05889ec8e37bbb",
+  "pageVersion": "sha256:6a930c69619d40f46d9a9c56fbdf8f6335858df54514ea0c1e694cb308a7d1fb",
   "claims": [
     {
       "id": "claim_f1d59e0964764dd383a613114550b4fb",
@@ -21,7 +21,7 @@
       "statement": "Order documents are created client-side with the creator encoded in the id prefix and source field: the customer menu writes ids prefixed c_ with source 'customer' and seen false, while the staff app writes ids prefixed o_ with source 'staff' and seen true.",
       "evidence": [
         {
-          "resource": "repo://index.html#L1089-L1107",
+          "resource": "repo://index.html#L1100-L1118",
           "version": "repo-lines-v1:sha256:4047212ade9bf6dc7890f46ba13aefcf6253a551c44a078f94f7ef55ece12d82:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM0YjUwMWMyMTVhZGI3MTM3ZjFjNTYxNzdjYjZiNTUzZjQ2YjFiNGM5ZjI3ZGZmZGJkZDA5MWU4YjhjMTMyOWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhhNDJkYTY1M2MyNGVkMGE2ZDVhNDQ0NDMwOTNmN2ZkMmM3Nzg3MTA5NThmOWNlZjBlM2E2YTE0YTAyMzg0MjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVjM2JmMDQ0NDJiMjcyM2U2MDIxNmZlOWIxMTQyNTRkYThkYTU1ZjFlMzI4MzhjZGJhMWY3M2MxNWExYmE1NDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ5MDUwNDI0OWFiZWI0ZmRiZjA5MTZkOTUyMzQ5NmJiOGYxNWU0NjY1MjE0ZDA1ZGM3NGY0ZDMzNWY4YmIyM2QifQ"
         },
         {
@@ -73,11 +73,11 @@
       "statement": "shared/menu-data.js is only the seed for the live menu: the staff app pushes DEFAULT_MENU to the config/menu document on first run, and after that the Firestore copy wins and staff Menu Editor edits are persisted there.",
       "evidence": [
         {
-          "resource": "repo://index.html#L1313-L1317",
+          "resource": "repo://index.html#L1324-L1328",
           "version": "repo-lines-v1:sha256:55c5fe0bb7ea80e1761a2d22379ec436adec43e96952c1a651a22db08b210a61:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDIyNDljN2U4ZjdkN2E1MGE5ODVkNzdlZjJjZTBkZjA0YjM1NzEzNTE4OGEyZGQ4YjJiODNmNjUzY2MyNmEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjY2M2Y3ODg2MGUxNTRiMDAxMjI4NDE5ODNhYjY4Y2I5YjAxMDY5MTljYWI5ZTQwZGExMWM2NmYwNDQyYzgyZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTY0ODA4NjBlYjM1YTE0NjQ1ZGZhNTk3NjFlMGFmZmQ0NjhlM2M0NWU4ZDg1OTc5M2YxMTAxYzhmZmY5MjAyOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmI1ODBlOTY0ZjgzYTQ3M2Y0M2Q0NDM4NDYyOTQ5ZDY4YjU2MDBmZGE3ODdmMTYzNzQ1ZDAwZGU4OWNiZjM2YSJ9"
         },
         {
-          "resource": "repo://index.html#L1566-L1577",
+          "resource": "repo://index.html#L1577-L1588",
           "version": "repo-lines-v1:sha256:d131e33834fd562569ad601d9738e90ae9df4a9b779875a235847c4a96bc6962:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJkMDFjMGNiNGM4MjBiNjVhN2JiNTViYTU2NjkyNmVmMjI0OTNhZWQwNTQxOTYzNDk1NmVjZWI2OTI1ODBiN2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliNjJmNjBkODU5MGE1NzljZjQ2ZjhkNjczNzhjNGM1NzJiOTYyY2VjY2RiOTBjN2E1ZjdiNDJiOTYwNzgyYTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImEwMzU4MjY0ZjM2OWMyY2Q4NTQ3MmZhZWEzNjRkZDg3YTNlMDhmNzhiNDkyMzI3OGQwNzM3NDE0ZjhjODM2NWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQwNDJkYTBkODBhNWY2YmE3ZmM4YWM3NjkyMGNjY2I4NmMyNDIwODNlZTcxODlkMGRmYTM5ZGE0YTU1M2ZiNzMifQ"
         },
         {
@@ -103,10 +103,34 @@
           "version": "repo-lines-v1:sha256:8236ff821a5a23d5b6c2bacf5835bb1b10f8940e54d917b4035d1d6fda982078:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjoyLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJiOGQyN2JjMmJlYjVkYzgzNTFhMjZlMTM0Njc0ZmM3YzU4N2IyOWYyMzFmMmUzNzNlMjZkZDczZjlhNGYzM2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ3MjQ0ZWY4ZGI4MmViYTkzNzA2ZjQxZmQwOGU5YmYxZDY3MTY4MmEyY2NhODI5MjM1MzdiMDU5ZmQ4ZTY2NjUifQ"
         }
       ]
+    },
+    {
+      "id": "claim_ffbc7b51f4834358a138a9a816b908fd",
+      "statement": "The config collection also holds a live QR-menu view counter document, config/menu-scans, with shape { total, daily.<date>, byTable.<table>, lastScanAt } that menu.html grows using Firestore increment through a merge write so concurrent sessions never clobber each other.",
+      "evidence": [
+        {
+          "resource": "repo://menu.html#L699-L718",
+          "version": "repo-lines-v1:sha256:6df499acfd6c91ba9964949c459ce2c3f462b40668fb5f72902155ddb726f735:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZkMjM4YmIzMWNiMzNjYjM3YThlMGY5ZmI2YzgzY2RlYWI4YTMxMzE1ZDZlMjgwNTYwYTJlMzkyZjE4M2Y0ZjEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkYTExMzBmMjM2MTE5OTEzNjExZmY0NDUwYTM4OGM5NTkzZWUyZDAxYjZkZTI4NjNiYzAxZDE5MGQ3ZWVjNzUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYyZmRjM2UxMGZjNzViZWUwOGM2NjMzYzNkZWI1MjE4YzI0MmI0OGY2YjA2MGE4YmY4YjdiZjkwMmViYmZlNWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ5YTAyNWZlZWQ5MjlkZGQ2NTQxMWExNjU4MjQzMmIzYzY5ODQ0OTgzMTUxNzlmZDg1ZTVlNjgzODYzYWU0ODEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8d61d4b73a10426285ffa4ece97af593",
+      "statement": "The staff dashboard displays the QR-menu counter live: two stat cards (views today and all time) are updated by an onSnapshot subscription on config/menu-scans, deriving today's count from the daily map keyed by the current UTC date.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1591-L1601",
+          "version": "repo-lines-v1:sha256:f1d0ad41633448c29443ab4e1dc992c1f46f4320c976023cb87010e01e57c218:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdiMmNhZDJiM2Y3NTJiMzIwN2E5MmVkOWI1YjA3MjEwYjdjYmE0OGJmZDM1N2EwNjhjNjU2MThmZDE3OWNkMzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIyZDExY2FmNDNlOTdlZjM2OWU2YmVlZDFhMjY4YmQwNTgzOGYyOWI5ZGQyNTRiZjY5YmE2NDg4NDE0NzIzNGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVhZjAwNzYzYmU5ZmYwN2U3YzFjNTdkYTNmMTg0ZThjZmIzYTNjMjBkY2JhZmM5YTI3Mjc1NWIxZGM2YWU5NTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ4NGYyYWIzODczYmRkYzU1YzIzYWFkYmE2NGQ4ZTUyYTk2OTllNzJhMGE4ZjExNjI5YTViYWQzOTFiOTlkYzcifQ"
+        },
+        {
+          "resource": "repo://index.html#L398-L408",
+          "version": "repo-lines-v1:sha256:f8705dd9f36fd08baed69128acca36142cc3b5ee0bca324d5f49636eeab60359:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyZjNjZmQxMWRhNjE1MDE5N2FjZWVkMDg0MDZhYzY0YjA1MDM0MGRlN2JjMDQxMjRhNGNiN2VmYTY3MTM0MGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFmMjE1ZmQwM2NmYzJiZWViZjgwNGExN2FjNWU5NDc5NTFmN2NkMmRjMDU2MDUyMjQ5OWM2MDZmZGJjZDcxODUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg0N2M2YjMyY2IyY2QwOTcwMmE5OTFiYjhmYTY0YzY0NzVkZWRjOWUwMDM1ZmViOTY1MDBmMDExNzEwYTE4MWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNmMjI5NTNiYzA4OTkwNzVkODYzODllMDFkMTVlNThjY2EzOTRkN2Y5ZThhZWQyYjBhMTBhZWIzYWExMDMzYTIifQ"
+        }
+      ]
     }
   ],
   "verification": {
     "by": "openwiki/0.6.1",
-    "at": "2026-10-03T11:03:11.929Z"
+    "at": "2026-10-03T12:24:34.678Z"
   }
 }

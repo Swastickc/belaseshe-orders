@@ -3,15 +3,15 @@ type: workflow
 title: Customer QR Ordering Flow (menu.html)
 description: The customer-facing step flow — browse the live menu, pick a table, place the order straight into Firestore, and watch its status stream back live.
 tags: [customer, qr, ordering, cart, workflow, menu-html]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-03T11:03:11.929Z
 sources:
   - id: openwiki-source-be4b3c3d5fa55f597b20d352
     resource: repo://menu.html
   - id: openwiki-source-334209dcccd68ba2712825b2
     resource: repo://shared/menu-data.js
-generated: { by: "opencode", at: "2026-10-03T11:03:11.929Z" }
+generated: { by: "opencode", at: "2026-10-03T12:24:34.678Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-03T12:24:34.678Z
 ---
 
 # Customer QR Ordering Flow (menu.html)
@@ -36,10 +36,13 @@ The cart is plain in-memory state: `state.cart` maps item id → qty; `addToCart
 
 On success the confirmation modal shows table, zone, total and a time-formatted summary, the cart is cleared, `navigator.vibrate` pulses the phone, and `trackOrderStatus` subscribes `onSnapshot` to the order document so kitchen progress (`pending → preparing → ready → paid`) streams into the status tracker until the customer dismisses it.
 
+## QR-menu view counting
+
+On every Firebase connect, `menu.html` counts one QR-menu view per device per 10-minute window: a `localStorage` timestamp (`belasheshe-last-scan-at`) gates the write, so refreshes and re-scans within the window count as the same customer. A counted view increments `config/menu-scans` — `total`, `daily.<today>`, and `byTable.<table>` (table taken from the `?t=` param, sanitized, defaulting to `none`) — using Firestore `increment` with a `merge` write and `serverTimestamp()` for `lastScanAt`. The whole counter is best-effort and wrapped in `try`/`catch`: it must never block ordering. The staff dashboard displays the counter's `total` and today's `daily` value as live stat cards via its own `onSnapshot` on the same document.
+
 ## Connectivity posture
 
 The page degrades explicitly: `initFirebase` sets `state.connected` and every send path re-checks it — Place Order stays disabled until connected, a failed send toasts "Could not send order, check your connection and try again", and a send attempted before the Firestore module finishes importing gets "Not connected yet, try again in a moment". Nothing is queued offline on the customer side; a lost connection simply means the customer retries.
 
-<!-- openwiki: broken internal link [/openwiki/architecture/overview.md] link "/openwiki/architecture/overview.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-<!-- openwiki: broken internal link [/openwiki/workflows/staff-pos.md] link "/openwiki/workflows/staff-pos.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-Related: [Architecture Overview](/openwiki/architecture/overview.md), [Staff POS](/openwiki/workflows/staff-pos.md).
+<!-- openwiki: broken internal link [overview.md] file "overview.md" does not exist. Fix the href or restore the target, then delete this comment. -->
+Related: [Architecture Overview](overview.md), [Staff POS](staff-pos.md).

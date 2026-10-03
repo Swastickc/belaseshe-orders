@@ -5,7 +5,7 @@ description: The orders and config collections, the order document shape and sta
 tags: [firestore, data-model, security, rules, orders, config]
 verified:
   - by: openwiki/0.6.1
-    at: 2026-10-03T11:03:11.929Z
+    at: 2026-10-03T12:24:34.678Z
 sources:
   - id: openwiki-source-60b51f83565a4de6497fc329
     resource: repo://firestore.rules
@@ -19,7 +19,7 @@ sources:
     resource: repo://shared/firebase-config.js
   - id: openwiki-source-334209dcccd68ba2712825b2
     resource: repo://shared/menu-data.js
-generated: { by: "opencode", at: "2026-10-03T11:03:11.929Z" }
+generated: { by: "opencode", at: "2026-10-03T12:24:34.678Z" }
 ---
 
 # Firestore Data Model and Security Rules
@@ -31,9 +31,11 @@ Firestore is the app's only backend. Every HTML page talks to it directly from t
 | Collection | Written by | Read by | Purpose |
 |---|---|---|---|
 | `orders/{orderId}` | staff app and customer menu | both (live via `onSnapshot`) | one document per order |
-| `config/{docId}` | staff Menu Editor / Settings screens | both | shared live menu (`config/menu` holds `{ items, updatedAt }`), QR image, settings |
+| `config/{docId}` | staff Menu Editor / Settings screens; `menu.html` writes `menu-scans` | both | shared live menu (`config/menu` holds `{ items, updatedAt }`), QR image, settings, QR-menu view counter (`config/menu-scans`) |
 
 The `config/menu` document is the live copy of the menu. `shared/menu-data.js` only seeds it: on first run the staff app pushes `DEFAULT_MENU` to `config/menu`, and afterwards the Firestore copy wins and edits made in the staff Menu Editor are persisted there (`index.html` writes it with `setDoc(doc(state.firestore, 'config', 'menu'), { items: MENU, updatedAt: Date.now() })`).
+
+The `config/menu-scans` document is a live QR-menu view counter maintained by `menu.html` and displayed on the staff dashboard: `{ total, daily.<YYYY-MM-DD>, byTable.<table>, lastScanAt }`, all grown with Firestore `increment` through a `merge` write so concurrent customer sessions never clobber each other.
 
 ## Order document shape
 

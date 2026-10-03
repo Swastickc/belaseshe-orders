@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:7ef5c9b9e6840a8940d82d2209c4213cca1e1cb9e0c3f1cf81f8afd3e28058ce",
+  "pageVersion": "sha256:47d70de8f60e6a36bcad008f94878cf69642efd73de31f1f9581347c5e7a387f",
   "claims": [
     {
       "id": "claim_741eb90beeb94c128ab31a74accaebc5",
@@ -36,15 +36,15 @@
     },
     {
       "id": "claim_859037dd200246a398e5ca2013a688c2",
-      "statement": "Local development requires any static file server because ES modules need http:// rather than file://; the documented deploy path is firebase deploy --only hosting,firestore:rules against the belaseshe-orders project pinned in .firebaserc, though scripts/generate-qr.js indicates the app actually lives on GitHub Pages.",
+      "statement": "Local development requires any static file server because ES modules need http:// rather than file://; the documented deploy path is firebase deploy --only hosting,firestore:rules against the belaseshe-orders project pinned in .firebaserc, and the customer-facing QR link is deployed and targeted on Firebase Hosting while the staff app stays on GitHub Pages.",
       "evidence": [
         {
           "resource": "repo://README.md#L33-L55",
           "version": "repo-lines-v1:sha256:61d0b25ecd79bb5a6a1f01da63f40f42a838114990699ed6a0c92f15fb4f1775:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwNzNhZjY5MTcxMzI4NTU0NDc2OWUwMzA4NTY0MDFjYTczNzE1NGY5MGMwYzExNDk0ZTdiZmZmOTkzMzM2ZGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxMWQxOTZiMTUzZWFhNDU0MjY3NjYzNjA4YjE1NzU4MGMxNTQ2ZGFhNTBjZjhiYjZjYjU1NmQyYjdlNDk3YWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRiOGZmNjM4YzY0ZTFhNmQxOTJjZTY2OWFjZDFlNmM4MThhMTNlYmJkODQzMTFkM2ZjOWY0NWIwNmY4ODU4NWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEwZjI3MDhlM2RkNmE3NDFjMGU1ZTFjOTM0MjczYmM5MWI2MjExZDNlNGRhNjI4ZjBlZjVjZWFlZjI4NTU3M2MifQ"
         },
         {
-          "resource": "repo://scripts/generate-qr.js#L1-L9",
-          "version": "repo-lines-v1:sha256:4bed1f89549ce1f668797e09ea0ac0a9b12f03c0632a13e2d3426ad8b1298386:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2Q5OGJhZjRhNWQ3ZGRjNDNhYTI4NjNkNjhkZDA0ZDRiNTI2OWViZTJlNmY2ZTQ0MTBkNzliNmY5ZGUyODlhZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGQ1MjgzOTJhNGYwNjJjYjIxNzAyYTliNjdhYTc2ZGQ3Y2JhMThkNDFiZGRmMTg1NjliNTI0OWI5YjRjMjY2MCJ9"
+          "resource": "repo://scripts/generate-qr.js#L3-L11",
+          "version": "repo-lines-v1:sha256:2775bcb6c50fcccd70bb92730d5439e97359635d4ce1130d238be5e73d789b3b:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTAxZWFkOTM2YTIyODFkNTNkY2MwNjRiN2UyYTJhYjBkNTNiOTJlZjNlZjdiMzRiNjY4NjczMDA3ODk1Yzg2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDgwZWFkNDc5YWY3ZTllNzg4NDIzZjk5MmViMzRkNDYwNDU2MmRlMzIwMmU3ZTA4YzBmOGI2YjJkZjk5Njk4NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTgyMWEzYmZjYmVhZWZhMTM0NTI2NDVkOTE5YWFkZjAyNGQ5ZDRjMjdkOTAyNjZlYjA4ZTMwOWFmMTE2YWU1YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGEyZDZmMGY3MTU2MjY5MmRjOGZkNjEwN2ExYWM4ZTM2ODY5ZWQ1OTBjODNkYjA3NDlhYzUyM2ExYWIxMGEyZSJ9"
         }
       ]
     },
@@ -57,14 +57,14 @@
           "version": "repo-lines-v1:sha256:3b04f439f1482c4ddec759c208f7a8a8f7e9e1a93cf26a17dc22388c6626e2cf:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjBlOGY1MmQ4MjlkNDhmNWYyZGY0ZDM5YjE0YzRmNzY0MDljYjI3ODE0ZjMwYWVlNTU5YmNmMTE0MzhkZWMyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTQyOWIzYmNjNzM4NTNiY2JjMTM4Y2M1MmQ1ZDE3YzgwYTdlMTYzZWMxOTg3OGM1OGEyNWMzMWEzODRjMzFkNSJ9"
         },
         {
-          "resource": "repo://scripts/generate-qr.js#L4-L9",
-          "version": "repo-lines-v1:sha256:61674279c230d9ba958da1633034b622a1010a4a026a466375faf480123353a4:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWQ0NGQzOTRjNTJhZjI5ZDhhN2I5YjY1OWRkYjUxNzQ4NTMyMjM1YWMxM2U2ZTNhMDVlNDI4NjRjNjliNjMzNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGM1M2Y2YjdjNWViNDI1ODNmYzI2N2NjMGVhMzI5MGNlNjdkMGE3NmI3ZWQ0ZjM3MDQzY2I3YTdhY2U4ZWU0YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGQ1MjgzOTJhNGYwNjJjYjIxNzAyYTliNjdhYTc2ZGQ3Y2JhMThkNDFiZGRmMTg1NjliNTI0OWI5YjRjMjY2MCJ9"
+          "resource": "repo://scripts/generate-qr.js#L3-L11",
+          "version": "repo-lines-v1:sha256:2775bcb6c50fcccd70bb92730d5439e97359635d4ce1130d238be5e73d789b3b:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTAxZWFkOTM2YTIyODFkNTNkY2MwNjRiN2UyYTJhYjBkNTNiOTJlZjNlZjdiMzRiNjY4NjczMDA3ODk1Yzg2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDgwZWFkNDc5YWY3ZTllNzg4NDIzZjk5MmViMzRkNDYwNDU2MmRlMzIwMmU3ZTA4YzBmOGI2YjJkZjk5Njk4NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTgyMWEzYmZjYmVhZWZhMTM0NTI2NDVkOTE5YWFkZjAyNGQ5ZDRjMjdkOTAyNjZlYjA4ZTMwOWFmMTE2YWU1YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGEyZDZmMGY3MTU2MjY5MmRjOGZkNjEwN2ExYWM4ZTM2ODY5ZWQ1OTBjODNkYjA3NDlhYzUyM2ExYWIxMGEyZSJ9"
         }
       ]
     }
   ],
   "verification": {
     "by": "openwiki/0.6.1",
-    "at": "2026-10-03T11:03:11.929Z"
+    "at": "2026-10-03T12:24:34.678Z"
   }
 }

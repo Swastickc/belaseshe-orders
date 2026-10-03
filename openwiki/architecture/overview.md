@@ -3,9 +3,6 @@ type: architecture-overview
 title: Architecture Overview
 description: A no-build static frontend — three standalone HTML pages sharing ES modules, with Firestore as the only backend and real-time sync through onSnapshot.
 tags: [architecture, firebase, firestore, static-site, es-modules, realtime]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-03T11:03:11.929Z
 sources:
   - id: openwiki-source-e2d36065640e6201821ff884
     resource: repo://firebase.json
@@ -15,7 +12,10 @@ sources:
     resource: repo://menu.html
   - id: openwiki-source-334209dcccd68ba2712825b2
     resource: repo://shared/menu-data.js
-generated: { by: "opencode", at: "2026-10-03T11:03:11.929Z" }
+generated: { by: "opencode", at: "2026-10-03T12:24:34.678Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-03T12:24:34.678Z
 ---
 
 # Architecture Overview
@@ -40,12 +40,12 @@ The three pages share two ES modules:
 
 ## Firestore as the integration point
 
-<!-- openwiki: broken internal link [/openwiki/architecture/data-model.md] link "/openwiki/architecture/data-model.md" is root-absolute, which no real consumer resolves against the repository root (not a coding agent reading the page, not GitHub's Markdown renderer, not a local viewer); use a path relative to this file instead. Fix the href or restore the target, then delete this comment. -->
-The pages do not talk to each other — they meet in Firestore (see [Firestore Data Model and Security Rules](/openwiki/architecture/data-model.md)):
+The pages do not talk to each other — they meet in Firestore (see [Firestore Data Model and Security Rules](data-model.md)):
 
 - The customer menu subscribes to `config/menu` with `onSnapshot`, so menu edits made in the staff Menu Editor appear on customer phones without a reload.
-- The staff app subscribes to the whole `orders` collection with `onSnapshot` (`index.html:1536`): the moment a customer writes an order document, the staff app plays a synthesized two-note alert and shows a banner; tapping the order marks it `seen`.
+- The staff app subscribes to the whole `orders` collection with `onSnapshot` (`index.html:1547`): the moment a customer writes an order document, the staff app plays a synthesized two-note alert and shows a banner; tapping the order marks it `seen`.
 - The customer's confirmation screen subscribes to its own order document with `onSnapshot` (`menu.html:616`), so status changes made by staff (`pending → preparing → ready → paid`) stream back to the customer live.
+- The customer page also reports QR-menu views into `config/menu-scans` (one per device per 10-minute window), which the staff dashboard shows as live stat cards.
 
 Writes go the same direct way: both sides use `setDoc(doc(state.firestore, 'orders', order.id), order)` with client-generated IDs, and menu edits are persisted by writing `config/menu`.
 

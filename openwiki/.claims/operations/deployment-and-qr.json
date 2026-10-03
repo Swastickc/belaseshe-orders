@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pageVersion": "sha256:4d62079643454b19d9fbf1825a75fc412dcded09cdc992af30d7bf7069bd16b0",
+  "pageVersion": "sha256:ae783c443aa2a64aec9392d18e7a4f4e3793ce5f37463dc7f8aa9bfc31d28968",
   "claims": [
     {
       "id": "claim_07ac2663b28a43f699c83a154817c505",
@@ -18,7 +18,7 @@
     },
     {
       "id": "claim_e1955bca752b4d309e72cea868661cb7",
-      "statement": "Deployment documentation has drifted: the README documents Firebase Hosting at belaseshe-orders.web.app, while scripts/generate-qr.js states the app is hosted on GitHub Pages at swastickc.github.io/belaseshe-orders/menu.html; the repo contains no GitHub Actions deploy workflow (only the scheduled OpenWiki update), so Pages hosting is managed outside the repo.",
+      "statement": "Hosting is split by audience: the customer-facing QR link is targeted and documented on Firebase Hosting (https://belaseshe-orders.web.app/menu.html), while the staff app stays on GitHub Pages where its PWA install and local data live; the repo contains no GitHub Actions deploy workflow (only the scheduled OpenWiki update), so Pages hosting is managed outside the repo.",
       "evidence": [
         {
           "resource": "repo://.github/workflows/openwiki-update.yml#L1-L14",
@@ -29,8 +29,8 @@
           "version": "repo-lines-v1:sha256:75cfdc733b001366a9f5f96f89828d9918975b7adfbf34f434bc39f77b2ed4d3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU5YmViOTc3MGMyNmM5N2FkMzMxNzZiMzc5ZDZkY2E0MDIwYWRlMjhhNjA2NGM3MDM5YzhlZjlkYTU3OTUwY2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxMWQxOTZiMTUzZWFhNDU0MjY3NjYzNjA4YjE1NzU4MGMxNTQ2ZGFhNTBjZjhiYjZjYjU1NmQyYjdlNDk3YWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIyMzg5NzBiOTU1YWE2ODRkOWU3ODc0MzQ4OWVkZmMxODFmYmI1ZTAxNTYxMWY1NzhmY2Q3YzMxOWRiNzI1OTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEwZjI3MDhlM2RkNmE3NDFjMGU1ZTFjOTM0MjczYmM5MWI2MjExZDNlNGRhNjI4ZjBlZjVjZWFlZjI4NTU3M2MifQ"
         },
         {
-          "resource": "repo://scripts/generate-qr.js#L1-L9",
-          "version": "repo-lines-v1:sha256:4bed1f89549ce1f668797e09ea0ac0a9b12f03c0632a13e2d3426ad8b1298386:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2Q5OGJhZjRhNWQ3ZGRjNDNhYTI4NjNkNjhkZDA0ZDRiNTI2OWViZTJlNmY2ZTQ0MTBkNzliNmY5ZGUyODlhZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGQ1MjgzOTJhNGYwNjJjYjIxNzAyYTliNjdhYTc2ZGQ3Y2JhMThkNDFiZGRmMTg1NjliNTI0OWI5YjRjMjY2MCJ9"
+          "resource": "repo://scripts/generate-qr.js#L3-L11",
+          "version": "repo-lines-v1:sha256:2775bcb6c50fcccd70bb92730d5439e97359635d4ce1130d238be5e73d789b3b:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTAxZWFkOTM2YTIyODFkNTNkY2MwNjRiN2UyYTJhYjBkNTNiOTJlZjNlZjdiMzRiNjY4NjczMDA3ODk1Yzg2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDgwZWFkNDc5YWY3ZTllNzg4NDIzZjk5MmViMzRkNDYwNDU2MmRlMzIwMmU3ZTA4YzBmOGI2YjJkZjk5Njk4NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTgyMWEzYmZjYmVhZWZhMTM0NTI2NDVkOTE5YWFkZjAyNGQ5ZDRjMjdkOTAyNjZlYjA4ZTMwOWFmMTE2YWU1YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGEyZDZmMGY3MTU2MjY5MmRjOGZkNjEwN2ExYWM4ZTM2ODY5ZWQ1OTBjODNkYjA3NDlhYzUyM2ExYWIxMGEyZSJ9"
         }
       ]
     },
@@ -50,11 +50,11 @@
     },
     {
       "id": "claim_c9893c583bf04b78867bc4a2b6c11c6a",
-      "statement": "scripts/generate-qr.js is a one-off Node script that writes assets/shop-qr.svg using the vendored vendor/qrcode.js at error-correction level M for the hardcoded GitHub Pages URL.",
+      "statement": "scripts/generate-qr.js is a one-off Node script that writes assets/shop-qr.svg using the vendored vendor/qrcode.js at error-correction level M, encoding the Firebase Hosting customer URL (TARGET_URL).",
       "evidence": [
         {
-          "resource": "repo://scripts/generate-qr.js#L1-L20",
-          "version": "repo-lines-v1:sha256:68af3dd5c35ac5425056d4487073e703e5db5da40f86c1076110caf6c85edb9f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkOThiYWY0YTVkN2RkYzQzYWEyODYzZDY4ZGQwNGQ0YjUyNjllYmUyZTZmNmU0NDEwZDc5YjZmOWRlMjg5YWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmZmYzNjk2ZWQxNDhlNzVjNTgwY2EwYTBlY2I4NjAzYTY1Y2FiYWQxMTBlOTlkZTRiYzQ1ZWU4ODFjNzA0YmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+          "resource": "repo://scripts/generate-qr.js#L11-L21",
+          "version": "repo-lines-v1:sha256:b129c2c32b42e59cae6371b26aae75b12f12dbb5f6005c430c76af83b8bd7c0d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4MGVhZDQ3OWFmN2U5ZTc4ODQyM2Y5OTJlYjM0ZDQ2MDQ1NjJkZTMyMDJlN2UwOGMwZjhiNmIyZGY5OTY5ODQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmZmYzNjk2ZWQxNDhlNzVjNTgwY2EwYTBlY2I4NjAzYTY1Y2FiYWQxMTBlOTlkZTRiYzQ1ZWU4ODFjNzA0YmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI5NjZhOGZhNzdmMmIzOTI4MGYwYmRmMGI4YzFjNmZiODE1NTg3MjczNjk5M2E2NzgxODY5MDQ2ZWQwZTBmYjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
         }
       ]
     },
@@ -67,7 +67,7 @@
           "version": "repo-lines-v1:sha256:418e6baf2b0a4db96853f42c994f64308cd606661e8c3740a03c546aa4841c58:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0M2E1NGQ1MDA4ZmU5NTM4OTkzMmFkNDBmMmMzMWMyZGZkMDhjZmQyMjUyZTU2ZmNjNTJmNjNmYTA4MWJjZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjMWQ1ZDIxMmFmMzliMzI2OGIzYjIyYjAxZGMzMjY2ODA5Yjg4Y2UyNjQyYjQ3ZDNjYTE4ZWJkNjZjOWRlNjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZhNjcxOWJmMmEyNTI3NzAxZmRkMDY3NGMzNTNiMDJmNGExMTMxNzJiOTExZGM0MzM2ODk2NWRkNzJlZTYzZjQifQ"
         },
         {
-          "resource": "repo://menu.html#L739-L740",
+          "resource": "repo://menu.html#L760-L761",
           "version": "repo-lines-v1:sha256:44548c7c392d32339e58926ef8870c7377ea07300ddc3fe8a8bdfdad91003111:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmMxYWE2MmMzYWIwZTJmODkyMDFjNGNkNjVmYjQ3ZDk2NTZlNTI4MGY4ODg5ODgyMGJmZDJjMTg3ZWE3NzliZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmE2MTRmYWI4NmMwNThkMjdkOWQ4MmJjNzM5ZjMwMmRhOTk3ZTJkZDRhZjRlYzRlODNlYzU4YzkxM2VhZTFmMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjYzY2I4MTFiOWI5ZTUyODAzOTAwZTg3MDhjOGYwOTg2NzQ1YmQ5MGJhMDk2MjIyZTYxYWExYWZkMjY1NGViZCJ9"
         },
         {
@@ -79,6 +79,6 @@
   ],
   "verification": {
     "by": "openwiki/0.6.1",
-    "at": "2026-10-03T11:03:11.929Z"
+    "at": "2026-10-03T12:24:34.678Z"
   }
 }

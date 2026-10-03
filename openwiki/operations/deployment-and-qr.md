@@ -1,11 +1,8 @@
 ---
 type: operations
 title: Deployment and Table QR Codes
-description: How the app is hosted and deployed (Firebase Hosting config plus a GitHub Pages QR URL), how the printable shop QR is generated, and the R1–R5 / D1–D2 table code scheme.
+description: How the app is hosted and deployed — the customer QR link on Firebase Hosting and the staff app on GitHub Pages — plus QR generation and the R1–R5 / D1–D2 table code scheme.
 tags: [deployment, firebase-hosting, github-pages, qr, print, tables]
-verified:
-  - by: openwiki/0.6.1
-    at: 2026-10-03T11:03:11.929Z
 sources:
   - id: openwiki-source-e2c6fa1c0ea8d60783512901
     resource: repo://.firebaserc
@@ -23,7 +20,10 @@ sources:
     resource: repo://scripts/generate-qr.js
   - id: openwiki-source-334209dcccd68ba2712825b2
     resource: repo://shared/menu-data.js
-generated: { by: "opencode", at: "2026-10-03T11:03:11.929Z" }
+generated: { by: "opencode", at: "2026-10-03T12:24:34.678Z" }
+verified:
+  - by: openwiki/0.6.1
+    at: 2026-10-03T12:24:34.678Z
 ---
 
 # Deployment and Table QR Codes
@@ -38,18 +38,18 @@ The canonical deploy command from the README is:
 firebase deploy --only hosting,firestore:rules
 ```
 
-**Deployment reality has drifted in two directions** — both are in the repo and worth reconciling:
+**Hosting is split by audience** (per `scripts/generate-qr.js`):
 
-- The README documents Firebase Hosting (`https://belaseshe-orders.web.app`).
-- `scripts/generate-qr.js` states the app is actually hosted on **GitHub Pages** and hardcodes `https://swastickc.github.io/belaseshe-orders/menu.html` as the QR target ("update this URL if the repo/username or hosting method ever changes"). There is no GitHub Actions deploy workflow in the repo — the only workflow is the scheduled OpenWiki update — so Pages hosting is managed outside the repo.
+- The **customer-facing link lives on Firebase Hosting**: `scripts/generate-qr.js` targets `https://belaseshe-orders.web.app/menu.html` ("no personal GitHub username in the URL"), matching the README's documented hosting.
+- The **staff app stays on GitHub Pages**, which is where the staff PWA install and its local data already live. There is no GitHub Actions deploy workflow in the repo — the only workflow is the scheduled OpenWiki update — so Pages hosting is managed outside the repo.
 
-If you deploy to Firebase, update the `TARGET_URL` in `scripts/generate-qr.js` or use `print-qr.html` opened on the live domain.
+The committed shop QR asset should therefore encode the Firebase Hosting customer link; if the hosting method changes, update `TARGET_URL` in `scripts/generate-qr.js` or use `print-qr.html` opened on the live domain.
 
 ## The shop QR code
 
 v2 uses **one unified QR for the whole shop**, not one per table: `print-qr.html` encodes `<origin>/menu.html` (no table parameter), and the customer is asked which table they're sitting at only when they actually place an order. The page computes the URL at runtime from `location.origin`, so it must be opened on the deployed domain — opening it locally prints a QR pointing at `localhost`. It renders one branded card (Belasheshe / বেলাশেষে, QR, scan hint, resolved URL) and uses the browser's print dialog; `@media print` strips the toolbar and headings.
 
-For the committed static asset, `scripts/generate-qr.js` (run with `node scripts/generate-qr.js`) writes `assets/shop-qr.svg` using the vendored `vendor/qrcode.js` at error-correction level M.
+For the committed static asset, `scripts/generate-qr.js` (run with `node scripts/generate-qr.js`) writes `assets/shop-qr.svg` using the vendored `vendor/qrcode.js` at error-correction level M, encoding the Firebase Hosting customer URL.
 
 ## Table codes
 
