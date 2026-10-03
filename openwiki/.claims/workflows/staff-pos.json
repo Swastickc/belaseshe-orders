@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:b1440cc79008cc439edc5f8c5782d17afccc19cde601ff379844ad7390e28094",
+  "claims": [
+    {
+      "id": "claim_a5705be74bf84b22b48f39c84df71a1e",
+      "statement": "The staff app is a single-file SPA whose five screens (orders, menu, menuedit, settings, history) are toggled via data-screen attributes after a PIN unlock, and the PIN stored in the IndexedDB settings store only gates the phone UI — it is not an authentication boundary for the database.",
+      "evidence": [
+        {
+          "resource": "repo://firestore.rules#L5-L9",
+          "version": "repo-lines-v1:sha256:7c82874cda75391c196134143540f6d8da19c3d4e83a589cc5ecc3933f27f353:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTAxZWFkOTM2YTIyODFkNTNkY2MwNjRiN2UyYTJhYjBkNTNiOTJlZjNlZjdiMzRiNjY4NjczMDA3ODk1Yzg2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTJkMGIzZjVlZDM2ZWYxY2E3NTlmOTdhOTFlY2U5YTkxOWIxYzExNmRjZGU4ZjAwMzhiMWRmZGQyNzZlODEzMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmYyYjQ5NGY5OGU2YjM1YzczNmI0NzEzNWRmYTEzZmM4YWRhZDM1MGRiYzg2NzgyN2NjNmRkYzExNWU1ODNiZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDM2MTg5ZTEzOGU1MzU2MjU1ODA4ZDBjNDM2YTkwOTg3ZTM1OWM2NGZkYWZjODgwZWZlYzkyNGYyOWM0M2Y5OCJ9"
+        },
+        {
+          "resource": "repo://index.html#L1459-L1459",
+          "version": "repo-lines-v1:sha256:a9e56a3012caeab06972c01a745741794081c41c70d897e681372cd033b5568c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTllNTZhMzAxMmNhZWFiMDY5NzJjMDFhNzQ1NzQxNzk0MDgxYzQxYzcwZDg5N2U2ODEzNzJjZDAzM2I1NTY4YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTllNTZhMzAxMmNhZWFiMDY5NzJjMDFhNzQ1NzQxNzk0MDgxYzQxYzcwZDg5N2U2ODEzNzJjZDAzM2I1NTY4YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjc4ZjA3ZTZkZDlhZDBjZTkyN2NjNTY0MGI3YWNmZThhZDNkZTYyNjdkMzA1ZTg2ODZlYjI1ZWFmMWIxOTk3YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDA5OGNlYmUwZWU3NGE5YTk1YjJjNTNkNTdhOGM4NDk2YzQ3NzU1ZDkzZTgwOWMyMzUzNzE2MWI5MGI4N2RkMyJ9"
+        },
+        {
+          "resource": "repo://index.html#L771-L798",
+          "version": "repo-lines-v1:sha256:d6d4e5c9d7183ae61ee5e9226dc83fba6f7c22f00dfa5e960dd91592ce1d6eec:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc2MjFiNzVhMzJhZmFjYmMyNzlmNThlN2I4OWNmMGExY2YxMGUyMDRiNTgwZTJkYWZhNjA4OWZlMzNiN2M0NjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFjZTUxOTdkMzA4YzZkZGFlNzVjZjQxNjVkNTJjOTU3N2NmY2Q4Yjk5NzhlMTllOThmMzIzOGViNzI5YTNiMjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUwMTA3MzYwODM3N2U2OTMwN2VhMGUxZThiYjY1ZDVkYWVkODA3ODJkM2Q2MjhkYTA1ZTIzNjg0ZmYyMGJhYzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk5NWM4Mzk1ODIxMDQxMDUzZGEzNjdjNzJlY2ZlYzdmZTVlNDhlYTQ1M2EwZTNmZGIwZmE4MGJlM2U5NzBjNGUifQ"
+        },
+        {
+          "resource": "repo://index.html#L803-L810",
+          "version": "repo-lines-v1:sha256:f41ccb57a7a08db163e2bad9832c23c0e9c987b7a074fbc8091c26ce0e17d4d9:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzk5NDRmNDYzZWM3NDVhODMyMTEwY2YzNjUzMzZmYzAyNGNkOGI2ZTI0MDNhNWIxNjEwYzYxYTU3YzY0YzhjNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjViZGZlMjQ0NTQ5Yjc5ZWY3MDQ2OWQ0Mjg4ZWUzYWQ4ZGQzOGM1YTE3OGU0NDFmMThhNTYyMzYzYTViNzcyYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg5MjQ1ZTY2ZDczMDlmYjJkNmNlMjY2ZGJiZmU4ZDhlOGIxNjFiNGRkZDExMjVkZjA2MTc1YThjZTFiZjQ4NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjc3OWQxMThkNmUzY2JmNDUwNTM5NzQ4ZGVlN2E0MzA3YWNiZTY0NDZjYmEyOTdmMjc2MGZhNWQwYmJhMWJjMiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_9345d31b81604751ad37fd8dcbd4322c",
+      "statement": "The orders onSnapshot subscription classifies an added document as a new customer order only when it is not from the initial load, source === 'customer', and its id is not already in state.knownOrderIds; then it plays a WebAudio two-note beep, shows a table/takeaway banner, and vibrates — and staff tap-to-acknowledge writes { seen: true } to Firestore.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1230-L1231",
+          "version": "repo-lines-v1:sha256:b800e44f5a936321bbabb8cf646cb3088afba3199657006cf7e3222dc2f6c966:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGY4MjNjZGZhNDZjMTFjZGRiNmFhMWIzYmMwMzliODFjYjc1N2Q2ODIyOGM0OWExZDk0ZjEzOGM5NmQxYTE2MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTc3MzY1YWU2OGQyNzE4ZDU0MDI0NzU0MGFmM2M3ODY0YWQ3MWM0NzIxNjdmMDdlODliMjgxNTAwZWVjODllNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDY2YWM0N2M1OWE3YjI5NDM3M2M3NTEzYzMyNjQzN2E0MjRjMzJmOWU5ZDY4NzI2MzA2ZWQxODcxNjFkMzQyOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjMxYmNjZDc0OTg4N2U4YWIyYjQ5ZGJjNTQ1YTU0NThkMTg1NmRkOGRkNGY0ODI3OTA3N2ZmNGVjNzA2M2ZmMCJ9"
+        },
+        {
+          "resource": "repo://index.html#L1536-L1558",
+          "version": "repo-lines-v1:sha256:6fd64dcb82cd1b95c6307747add4a2d60745c66d9d67004d1b84a2786835a483:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkMmE1MTg2Yjg5NmQxZjBlOGE0OTBlMWIzZGIyNjQ4YTgwZGJkMDIxMjY0NDk0M2U1MmE0MmRiMzc3MDM0MzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ5OTU2N2EzOTViNGQ1M2Y0NjgxMDkwNGRiNDU3NDc3MjExNTljZjQ3YmFlY2VkNTY0ZmQxYTZiZmEwYjI2ZjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdjMzQzNmNkZjUxZTIxYmUwMmEwM2FmMTJiMGJhOWE2YzQzZDZjY2NjZmZiOGU1YzE3ZjI4NGMyYzZiNzM3NWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUyMWUxYmJjODFiMmUzYzNhYTIxYjcxMGUzYmZiYjVkZDgwNmYzOTljY2ZhOWFhNGVjNmFhODcyYmYwN2Q0ZTYifQ"
+        },
+        {
+          "resource": "repo://index.html#L734-L752",
+          "version": "repo-lines-v1:sha256:ba82990b2d42c022fb6855be88b605f66f540345b85bbbda19cd627223b43362:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyZTNhMDRjNmJjNDY1MDU3MWI3ODJhMDEyMTc3YzUyZWZmYWU4OWZjYzdhOTIzY2Q4MWZiMzNmZmQ3NDkzZDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkxODc1ZTY3YWZhZjNkMWY5ZjE3MjdkN2FlMTI4Mjg3ZjY2YzBmZjlhMzkwYzIxODQyYzNjMmI3MDg1N2E0M2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE4NmMyOTE1ODkwY2IyNjlkMDE4NDFiZThmZjIwMTVlODk1Mzg2MTc5OGU0Y2MwYjUxNmE2ZGJmMDk3MGE0MDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_711301bd17304cb48a12629fd3a6bf6a",
+      "statement": "Orders are edited as open tabs: unpaid orders appear as chips that reload into edit mode via state.editingOrderId, and saveOrder(status) persists to IndexedDB first and then best-effort setDocs to Firestore, so a failed sync leaves the local copy intact; payment is the same write with status 'paid'.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1068-L1107",
+          "version": "repo-lines-v1:sha256:1dbb49652145f3a12c170b8a7bdd22885e14cbf909e06faa37c1caf7d0b81778:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyMmRjNzcwMzI3ODMwZmFlYmM0YjYyNmJhZGYzYjkwNmJjMTM2Yjc4OWE5NzQ5MzY4ZDk1NDc5YjFlMTkzMzMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhhNDJkYTY1M2MyNGVkMGE2ZDVhNDQ0NDMwOTNmN2ZkMmM3Nzg3MTA5NThmOWNlZjBlM2E2YTE0YTAyMzg0MjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFiZmQwZGZkOGVmOGJlZDFiOTExYTI3ZjA3NGE2OTdiYjg1NjUyZjc5Mzc1ZDMxMjI2YzkyMjBiMGVlNTVkZmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ5MDUwNDI0OWFiZWI0ZmRiZjA5MTZkOTUyMzQ5NmJiOGYxNWU0NjY1MjE0ZDA1ZGM3NGY0ZDMzNWY4YmIyM2QifQ"
+        },
+        {
+          "resource": "repo://index.html#L1125-L1126",
+          "version": "repo-lines-v1:sha256:9b7bba308162d4df789d75fbf27f5028e4bc89db11cbb24b0972210b43eefe82:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY1MjJkOTQzMmFkYWY4MjVmZmUxNTA0MWY3OWZiYzAzMDY4YjVkZjhjNmVkMjBmZTU3NDg0MTY4ZWE1NzkwNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNGVkNjEzNGZjN2RlNjMyNjcxOGEzNTMxMzQ2MDYxYWI1YTFiNDczMGI1Y2MyYTdmMDkxNGVkMTZhMDM1MThhMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTI2MDkyZGI3NjQ1ZWE4ZWRlZmNkMjhhNzI1MDRmYmQwNjc1OTRiOWRjYTA3NDllZmUxYTE3NjU3ZTcwMmZiOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzYxYThmYWQzYTlhMTFhZDRkYmFkYWM4ZWQ1NzNmNWM5YTA3ZmEzMTJiMTRkZTgxOTVmNzA1ZDU0N2QwNGYxYiJ9"
+        },
+        {
+          "resource": "repo://index.html#L860-L905",
+          "version": "repo-lines-v1:sha256:e98b251a2076cb8446e52810a31195533759a009383f548a987daf3ed122bb2c:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0ZTAxMGQwMGUyZDUxZjFhN2IxMTU3ZWI4NzhiNTYwODQ4ZDg1ZGY3NWJhZWY4NTE1ZDA0MDkzNTk0ZGU4NzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlY2M3MWU0YzI4M2VjN2YwMTUwZDA0NmU5YjNmNTk5YmVjMTYyNTZmNGRhY2QxNjdhNjJhM2VhMDQ4MTgzZjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUwNjUxNGJlYzVjMzc0OTgzNGYzNTUyOGJlMzNiZTQyMzdkYzcwNzM1ZjUyNmZjYWY5N2JkOWJmM2Y0MDRmNmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRlOGU3MWRmY2U3NjMyOTk0ODlmNTI5ZDViZDc0YWIzY2E4MWNiMjJjZmMzMjVlYTE3Y2ViOTcwZDNlODhlZTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0d1be137b3f94fd4b6da1fe438e76d04",
+      "statement": "On every Firebase init the staff app seeds config/menu if it does not exist, but if it exists the remote items array wins and replaces the in-memory MENU and the settings mirror; locally held orders are backfilled to Firestore with setDoc merge when Firebase connects.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1560-L1564",
+          "version": "repo-lines-v1:sha256:b26d8df2172097e3610a9871e27385283e5b7d64f71dcf89de30c42c349a0d04:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjJkMTFjYWY0M2U5N2VmMzY5ZTZiZWVkMWEyNjhiZDA1ODM4ZjI5YjlkZDI1NGJmNjliYTY0ODg0MTQ3MjM0YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmIwZWU2ZTQwZjc5MzU4MWJkMGJlYTlkMmU0YjU5NzI4ZmU2YzFkOGMxZjA3NDMwMGIzNGU2ZjkzZDNiNjZjYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzU5NDllMWZiYjNhN2FiNjEwOWVhYzA1Mjk0MzMyOGI5ZjRlYzkwMWE0NmEzZDkwMDg5NWNhOTU0OTQyMmY1NiJ9"
+        },
+        {
+          "resource": "repo://index.html#L1566-L1577",
+          "version": "repo-lines-v1:sha256:d131e33834fd562569ad601d9738e90ae9df4a9b779875a235847c4a96bc6962:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJkMDFjMGNiNGM4MjBiNjVhN2JiNTViYTU2NjkyNmVmMjI0OTNhZWQwNTQxOTYzNDk1NmVjZWI2OTI1ODBiN2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliNjJmNjBkODU5MGE1NzljZjQ2ZjhkNjczNzhjNGM1NzJiOTYyY2VjY2RiOTBjN2E1ZjdiNDJiOTYwNzgyYTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImEwMzU4MjY0ZjM2OWMyY2Q4NTQ3MmZhZWEzNjRkZDg3YTNlMDhmNzhiNDkyMzI3OGQwNzM3NDE0ZjhjODM2NWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQwNDJkYTBkODBhNWY2YmE3ZmM4YWM3NjkyMGNjY2I4NmMyNDIwODNlZTcxODlkMGRmYTM5ZGE0YTU1M2ZiNzMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aaea002ff576481a99d22b978d1e240a",
+      "statement": "The settings screen stores device-local overrides in IndexedDB: PIN, alerts-enabled flag, a custom Payment QR image (with delete), an optional custom Firebase config (with clear), and the menu seed.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1312-L1312",
+          "version": "repo-lines-v1:sha256:51fa4583801070dde8f60dec06630a3061bab1f1273be12df0216e2a5b459234:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTFmYTQ1ODM4MDEwNzBkZGU4ZjYwZGVjMDY2MzBhMzA2MWJhYjFmMTI3M2JlMTJkZjAyMTZlMmE1YjQ1OTIzNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTFmYTQ1ODM4MDEwNzBkZGU4ZjYwZGVjMDY2MzBhMzA2MWJhYjFmMTI3M2JlMTJkZjAyMTZlMmE1YjQ1OTIzNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWEwMTBjNmNjMTgwODMyM2ZhNTI5ODkxNjRkMzEwMjIwNzVhOTRhOTYzYjFjM2I2YzQ3NDAwNTc4NGQzZDgzMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWE3M2JjYjY2OTEzMDhlZGMyNGZkYzM5MmQ5YmE4YWY1NWYzZTlhNTNkZTVmNDk3NWIzZDliMGQ3YjgyNDNjYiJ9"
+        },
+        {
+          "resource": "repo://index.html#L1436-L1485",
+          "version": "repo-lines-v1:sha256:ad93eaf429752116172abb9b76a62a57d7fc2ec1c867b7be94d0ef1d45c95a36:eyJzZWxlY3RlZExpbmVDb3VudCI6NTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiNDA4MTRlNmQ2OTJkZDYyZTdkMWVhZGI1ZDI5Y2YxMmE1YTY2YmRlMDEzMWRkMDdkZjRlMTk2MzNmOGE0NjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzYjBlNzk5NWVmODRjY2I4YmEwNmM2N2M3NjZmZWQ3OGY5YWFhNTI0NzA0NTU4MDI2Mzk5MmM4MGNhZjA4NzUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZiNGU2ZjQxOTg2MzY0Zjc0MGFhOWVkZTAyY2I0YTA0MTgzMDNmNDM0MmFjYzAxNWRhZDAwYTI1NTI3ZWE4MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVlM2M4ODZjOTZhMGQxNGE4YWM1OTk1NDMyNzkyNjk1ZTY4NjI2ZjcyNjdjNjQ4N2FmN2NhMDFiOWFlNTQwNDUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-03T11:03:11.929Z"
+  }
+}

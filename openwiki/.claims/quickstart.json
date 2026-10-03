@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:7ef5c9b9e6840a8940d82d2209c4213cca1e1cb9e0c3f1cf81f8afd3e28058ce",
+  "claims": [
+    {
+      "id": "claim_741eb90beeb94c128ab31a74accaebc5",
+      "statement": "Belasheshe Orders is order management for the Belasheshe cafe built as three no-build static HTML pages backed entirely by Firestore: a PIN-locked staff POS (index.html), a login-free customer QR menu (menu.html), and a printable shop QR generator (print-qr.html).",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L1-L16",
+          "version": "repo-lines-v1:sha256:bff1aa1de879cfe608a6441b92874df865a434acb3e4ddee084e921e1084b945:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwNmE4YmYzZmFmNzI5NWRjNTI5NTY5ZWU4NjUyNzc3ODIzNjE5OGJlZmJiMzQxOWE5MzhjYTNhYjZiYjRjN2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ2OGIyYzdiNDczNWFhODQyZmVmZjY4MjljNmY3NzBiMzIzOGYwMDIzNmNiNWVjNjIzZDY4MTVmN2ZlOTI3MTgifQ"
+        },
+        {
+          "resource": "repo://firebase.json#L1-L22",
+          "version": "repo-lines-v1:sha256:83f4718cd37f3cad80d5cf36d8c89e3ba873efd6776298772b91d32b3a70b368:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7d327712341c438ba56e99b6e712548c",
+      "statement": "The pages share shared/firebase-config.js (Firebase project config for belaseshe-orders) and shared/menu-data.js (seeded menu, table codes R1-R5 / D1-D2, zone helpers), and sync with each other only through Firestore live listeners rather than direct communication.",
+      "evidence": [
+        {
+          "resource": "repo://shared/firebase-config.js#L1-L20",
+          "version": "repo-lines-v1:sha256:c383375eb28e24c8bac577cf479db8315ff66e0b4a23e670fba87c108506d4fa:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYyNzJhMjgzOGUxNzdiNDJmOWFlMmUyZGM1NDhhOTM2YTc0NWI2MzkyZTA1ZGNhOGQ1MzA1NGU4Y2ExNDkyMmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoyLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIyNDc5MTE1NzRmN2ZiZTdlYjQ0NzRjOGMzNmM1N2M2YThiNDhiYWQ0ODMxODkyNDdjOWIyM2FlZDNjZTE2YzYifQ"
+        },
+        {
+          "resource": "repo://shared/menu-data.js#L1-L10",
+          "version": "repo-lines-v1:sha256:74cdcf900b76723b5f289d35ce1a93d34fd6ed8d47b08ce07b7a2013b3b6d0d8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwMmMzMWEzZTMwYTgxNGVmZTRiM2MwODdmYWQwNTY4YzQ2ODNkNzZmZjM0YWMzY2I1NzY1OWI5MDRiZmJlMTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY1N2YyZjY0YTc4NDk5NWQ1YzczMzUzNGUzZjQyMDFiMjhiZDQxZjc2MzIwY2ZlYmIyODdhYWE5OTcyNmIwZGQifQ"
+        },
+        {
+          "resource": "repo://shared/menu-data.js#L76-L96",
+          "version": "repo-lines-v1:sha256:d943ca721b6d116fa622dd568d5b2ac654eb0b10415ab99d662b94de7ea9653a:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZjYTU3Y2Q1Y2E4YjcwZjAxYmZmNmZkNGZhNmU4MmM4NGUwZmNjNmIyZTU1MGIwOTcyZWRiOWZkMGJkZmFhOTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyMzNmYjMxYzkxODc5YTQxY2E1NDQ5NzQwMDA2ZTQ0ZTlhYWJiMTQ4Zjc2NTJjMjhjZmEyNDBhMzJiM2JlZmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRhZjY2ZGE1YjI0ODVlZjNhMzc1YWJiMGQ0YzliZDM4ZTcwNjViMDgyNDU4NWQyODhkYmEyNmU4YzY0NTIzNDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_859037dd200246a398e5ca2013a688c2",
+      "statement": "Local development requires any static file server because ES modules need http:// rather than file://; the documented deploy path is firebase deploy --only hosting,firestore:rules against the belaseshe-orders project pinned in .firebaserc, though scripts/generate-qr.js indicates the app actually lives on GitHub Pages.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L33-L55",
+          "version": "repo-lines-v1:sha256:61d0b25ecd79bb5a6a1f01da63f40f42a838114990699ed6a0c92f15fb4f1775:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwNzNhZjY5MTcxMzI4NTU0NDc2OWUwMzA4NTY0MDFjYTczNzE1NGY5MGMwYzExNDk0ZTdiZmZmOTkzMzM2ZGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxMWQxOTZiMTUzZWFhNDU0MjY3NjYzNjA4YjE1NzU4MGMxNTQ2ZGFhNTBjZjhiYjZjYjU1NmQyYjdlNDk3YWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRiOGZmNjM4YzY0ZTFhNmQxOTJjZTY2OWFjZDFlNmM4MThhMTNlYmJkODQzMTFkM2ZjOWY0NWIwNmY4ODU4NWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEwZjI3MDhlM2RkNmE3NDFjMGU1ZTFjOTM0MjczYmM5MWI2MjExZDNlNGRhNjI4ZjBlZjVjZWFlZjI4NTU3M2MifQ"
+        },
+        {
+          "resource": "repo://scripts/generate-qr.js#L1-L9",
+          "version": "repo-lines-v1:sha256:4bed1f89549ce1f668797e09ea0ac0a9b12f03c0632a13e2d3426ad8b1298386:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2Q5OGJhZjRhNWQ3ZGRjNDNhYTI4NjNkNjhkZDA0ZDRiNTI2OWViZTJlNmY2ZTQ0MTBkNzliNmY5ZGUyODlhZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGQ1MjgzOTJhNGYwNjJjYjIxNzAyYTliNjdhYTc2ZGQ3Y2JhMThkNDFiZGRmMTg1NjliNTI0OWI5YjRjMjY2MCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b29403502f814967adfb64f589606834",
+      "statement": "QR codes must encode the deployed URL: print-qr.html computes the target from location.origin at runtime and scripts/generate-qr.js hardcodes TARGET_URL, so either open print-qr.html on the live domain or update TARGET_URL and rerun the script after a hosting change.",
+      "evidence": [
+        {
+          "resource": "repo://print-qr.html#L55-L62",
+          "version": "repo-lines-v1:sha256:3b04f439f1482c4ddec759c208f7a8a8f7e9e1a93cf26a17dc22388c6626e2cf:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjBlOGY1MmQ4MjlkNDhmNWYyZGY0ZDM5YjE0YzRmNzY0MDljYjI3ODE0ZjMwYWVlNTU5YmNmMTE0MzhkZWMyZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTQyOWIzYmNjNzM4NTNiY2JjMTM4Y2M1MmQ1ZDE3YzgwYTdlMTYzZWMxOTg3OGM1OGEyNWMzMWEzODRjMzFkNSJ9"
+        },
+        {
+          "resource": "repo://scripts/generate-qr.js#L4-L9",
+          "version": "repo-lines-v1:sha256:61674279c230d9ba958da1633034b622a1010a4a026a466375faf480123353a4:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWQ0NGQzOTRjNTJhZjI5ZDhhN2I5YjY1OWRkYjUxNzQ4NTMyMjM1YWMxM2U2ZTNhMDVlNDI4NjRjNjliNjMzNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGM1M2Y2YjdjNWViNDI1ODNmYzI2N2NjMGVhMzI5MGNlNjdkMGE3NmI3ZWQ0ZjM3MDQzY2I3YTdhY2U4ZWU0YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGQ1MjgzOTJhNGYwNjJjYjIxNzAyYTliNjdhYTc2ZGQ3Y2JhMThkNDFiZGRmMTg1NjliNTI0OWI5YjRjMjY2MCJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-03T11:03:11.929Z"
+  }
+}

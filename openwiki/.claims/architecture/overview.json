@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:09a2d0f72b5652a5c17349b4af96d6e82766fea0f35bc530cc250b8b1b389ccf",
+  "claims": [
+    {
+      "id": "claim_42bca8b75a7c43e2aeb861f07bd58362",
+      "statement": "The app is a no-build static site with no server-side code: each HTML page is self-contained and its module script imports Firebase directly from the gstatic CDN plus the repo's own shared ES modules; deployment is the file system itself.",
+      "evidence": [
+        {
+          "resource": "repo://firebase.json#L1-L22",
+          "version": "repo-lines-v1:sha256:83f4718cd37f3cad80d5cf36d8c89e3ba873efd6776298772b91d32b3a70b368:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
+        },
+        {
+          "resource": "repo://index.html#L1101-L1106",
+          "version": "repo-lines-v1:sha256:a4f2cf6cf4797f730e84d0fe22d87807a754512345f6e80bb46996e133be528f:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGU3MmVhMjgyNDIwNGVmMzZhZDk0ODgyOTAzOTIyNTJhMTEyZmMzMzg4YzhjZjg0NzZkMjE0ZGFlZTFmOTgwMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzQ2YjhjMTExMDU2ZWMzOGRlNjcwYjI1N2E3NTY1NThhMTcyMjYwY2E2YmVhYTE4ZWJhYTk4YzQxNDA0NWFlZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzdmMjE1NWRjNTFiOTBmOGZmMDc4YTFkZDlkZjA4M2M3OTYwOTdlYjRjM2RlODJkNTQxMjcxN2U5YWU3YjJhNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjNhZjdiZDY2OTMxYjgzODQzYzNjYjdiZGI3ODdmMTkxNDZjOWE2NjVmMjUwMjk4MzMxODBhMjFiYWNlODk0ZCJ9"
+        },
+        {
+          "resource": "repo://menu.html#L686-L705",
+          "version": "repo-lines-v1:sha256:4613fa65308eb2dd9f8fcee22fd8bc1172ed6c4e98bebb1c171cedcff36ce235:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0Y2JiMGNhYTNmMzA0NGU1OWFmNWFkMGEwOTRkMDUyZjBmNjRmODVlYzVlMjEwZmNlNDQ0NjliOTI3ZjNjMjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRmYTNmZmFiOTE2ZTU2NzE2ZDc2ZTVhOWU3Y2EwNzM0MzFkNzI3ZWJhMTg5ODBlY2Y1ZDc0MzJhYWNiMTNiNWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczYmYzYTYyNTA2ZDQxMWYxNjdkNzAxMzA4YjlhZDBlZGEyMzA0ZTU5OWEyNWM1OWZlNWQzYWExOGNiMmUyMjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7f9adc6baf6a47c7832aa3b66c12b389",
+      "statement": "The pages do not communicate with each other directly — they meet in Firestore: the customer menu subscribes to config/menu with onSnapshot so staff menu edits propagate live, and the staff app subscribes to the whole orders collection so a new customer order triggers its banner and alert immediately.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1536-L1564",
+          "version": "repo-lines-v1:sha256:438928d42b11fc398a2c25163cfc3b908483adc6fc51f2667eb1e3e11444c54c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkMmE1MTg2Yjg5NmQxZjBlOGE0OTBlMWIzZGIyNjQ4YTgwZGJkMDIxMjY0NDk0M2U1MmE0MmRiMzc3MDM0MzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4OTNmNDBlMzc4MWViODk2YzgyZDA0NmEwODA2N2ExMWUzNWNkZjJmMWRmYWYyNmZlYTkwYjhkYjY2NzY0MTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdjMzQzNmNkZjUxZTIxYmUwMmEwM2FmMTJiMGJhOWE2YzQzZDZjY2NjZmZiOGU1YzE3ZjI4NGMyYzZiNzM3NWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM1OTQ5ZTFmYmIzYTdhYjYxMDllYWMwNTI5NDMzMjhiOWY0ZWM5MDFhNDZhM2Q5MDA4OTVjYTk1NDk0MjJmNTYifQ"
+        },
+        {
+          "resource": "repo://menu.html#L691-L705",
+          "version": "repo-lines-v1:sha256:e0323e2e4424a2a3ce20074b0fb483dc72508eadf2bd12a5a3c2422bef49bed1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNjODFhOTMyZTZmMTkxNTMxMTljMDE1NTFiMGRmMzU1NWQ1ZGUxMjk2NzFkYTU2ZmQ3ZWIwZjY1NjFkZDc4MjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0Y2JiMGNhYTNmMzA0NGU1OWFmNWFkMGEwOTRkMDUyZjBmNjRmODVlYzVlMjEwZmNlNDQ0NjliOTI3ZjNjMjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI1ZWIwNzY1MWU2ZjExNzcwY2MyNjYzOTE2MzJmMTc1MDJhMDczZWMxYWJiM2EzODA0NmY0YTA5NGEzMDdhZjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczYmYzYTYyNTA2ZDQxMWYxNjdkNzAxMzA4YjlhZDBlZGEyMzA0ZTU5OWEyNWM1OWZlNWQzYWExOGNiMmUyMjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aa09227e908147a189e0b261fe3f626b",
+      "statement": "shared/menu-data.js is the shared source of truth for tables and the seeded menu: it exports DEFAULT_MENU, DEFAULT_CATEGORIES, PUBLIC_MENU_CATEGORIES (cigarettes excluded from the customer browse view), the TABLES map with rooftop R1-R5 and downstairs D1-D2, and the zoneOfTable/isValidTable helpers used by both staff and customer sides.",
+      "evidence": [
+        {
+          "resource": "repo://shared/menu-data.js#L1-L96",
+          "version": "repo-lines-v1:sha256:8a7420233648036c18efc6deeecd989df867c0a6bddfe86387644efd14fa0eb4:eyJzZWxlY3RlZExpbmVDb3VudCI6OTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyMzNmYjMxYzkxODc5YTQxY2E1NDQ5NzQwMDA2ZTQ0ZTlhYWJiMTQ4Zjc2NTJjMjhjZmEyNDBhMzJiM2JlZmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7a108ddcc8264c62adcd8035e9134db0",
+      "statement": "The staff app keeps device-local state in an IndexedDB database named 'belasheshe' with an orders store (a mirror of the live list, backfilled from Firestore snapshots with merge) and a settings store (menu seed, payment QR image, PIN, alerts flag, optional custom Firebase config) — never the source of truth.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1098-L1098",
+          "version": "repo-lines-v1:sha256:27e5788d5d9d73d24a81dbc0a5a74bfa82c9c3b3af99e52af796e90b468a8a3d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjdlNTc4OGQ1ZDlkNzNkMjRhODFkYmMwYTVhNzRiZmE4MmM5YzNiM2FmOTllNTJhZjc5NmU5MGI0NjhhOGEzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjdlNTc4OGQ1ZDlkNzNkMjRhODFkYmMwYTVhNzRiZmE4MmM5YzNiM2FmOTllNTJhZjc5NmU5MGI0NjhhOGEzZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTgwODM1MzEwNGQ0NDA2NjBiZGVlODQ4Zjk2YTdjMDE5ZmViZjVlM2RjNzM1N2FkNmM0ZmE4OTEzYTcwMDAwYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDQ0N2E5ZGU1Njk3OTEyMWU2NDBmMzA0MWY5NDU0ZjNiZTAxNzdlM2ZjOGE1Y2FhOTZkZGIxMTMwN2U3MGFmZSJ9"
+        },
+        {
+          "resource": "repo://index.html#L1312-L1312",
+          "version": "repo-lines-v1:sha256:51fa4583801070dde8f60dec06630a3061bab1f1273be12df0216e2a5b459234:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTFmYTQ1ODM4MDEwNzBkZGU4ZjYwZGVjMDY2MzBhMzA2MWJhYjFmMTI3M2JlMTJkZjAyMTZlMmE1YjQ1OTIzNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTFmYTQ1ODM4MDEwNzBkZGU4ZjYwZGVjMDY2MzBhMzA2MWJhYjFmMTI3M2JlMTJkZjAyMTZlMmE1YjQ1OTIzNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWEwMTBjNmNjMTgwODMyM2ZhNTI5ODkxNjRkMzEwMjIwNzVhOTRhOTYzYjFjM2I2YzQ3NDAwNTc4NGQzZDgzMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWE3M2JjYjY2OTEzMDhlZGMyNGZkYzM5MmQ5YmE4YWY1NWYzZTlhNTNkZTVmNDk3NWIzZDliMGQ3YjgyNDNjYiJ9"
+        },
+        {
+          "resource": "repo://index.html#L1436-L1485",
+          "version": "repo-lines-v1:sha256:ad93eaf429752116172abb9b76a62a57d7fc2ec1c867b7be94d0ef1d45c95a36:eyJzZWxlY3RlZExpbmVDb3VudCI6NTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiNDA4MTRlNmQ2OTJkZDYyZTdkMWVhZGI1ZDI5Y2YxMmE1YTY2YmRlMDEzMWRkMDdkZjRlMTk2MzNmOGE0NjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzYjBlNzk5NWVmODRjY2I4YmEwNmM2N2M3NjZmZWQ3OGY5YWFhNTI0NzA0NTU4MDI2Mzk5MmM4MGNhZjA4NzUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZiNGU2ZjQxOTg2MzY0Zjc0MGFhOWVkZTAyY2I0YTA0MTgzMDNmNDM0MmFjYzAxNWRhZDAwYTI1NTI3ZWE4MjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVlM2M4ODZjOTZhMGQxNGE4YWM1OTk1NDMyNzkyNjk1ZTY4NjI2ZjcyNjdjNjQ4N2FmN2NhMDFiOWFlNTQwNDUifQ"
+        },
+        {
+          "resource": "repo://index.html#L1563-L1563",
+          "version": "repo-lines-v1:sha256:e27b8877d22f32541fe0cd9eba1e188df2d79a7fc676ae345390aaa8a5efce10:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTI3Yjg4NzdkMjJmMzI1NDFmZTBjZDllYmExZTE4OGRmMmQ3OWE3ZmM2NzZhZTM0NTM5MGFhYThhNWVmY2UxMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTI3Yjg4NzdkMjJmMzI1NDFmZTBjZDllYmExZTE4OGRmMmQ3OWE3ZmM2NzZhZTM0NTM5MGFhYThhNWVmY2UxMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjdhOTc0ZmZmNzcxMWE5YWNlMTdhMTMzMzBjNDhjNGJiN2JhMTVlNTBkYmY3ODk2MTk1MTY5ZjY0YjVjOGMxOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjY3NzMxZWMxMWJiZjQ5MWMwODc2ZjE5ZGJlNDA3OWIwOTEyNjMzZWEyYjUzYjA3OTI3Y2EwY2UzY2UxMGUzNSJ9"
+        },
+        {
+          "resource": "repo://index.html#L665-L720",
+          "version": "repo-lines-v1:sha256:6d16e37cc2b5b42039ba64596a40a9c7a6b86a342381dd5eaf943ff07e2a453b:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0YTA0YjAxM2E1ZDZmNmI2YWE4MWU5OWVjZGY0MTQ4MWQwM2Q5N2RlMjAzNjMzMjFkZjVhZGU4ZDBiMDU5YWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU4Mjg2ZTJmMGQ4YTQyMzIyNGQ5MjFlNGY3ODAwOTIxZDkwYmNjZDZhYmI1YjUyMTI1ZTQ4OGZjY2YxNGZlYTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzNGNkOTlmZDU4OWNmNTg0N2E5Njk2NjFhNjVjNDdlYTY3MTUzOGRkZGQxMjdjZmY2NGYzYzU4ZWI2M2JmNjAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7b5ee2bf629c489bb2c15d5c3eb8dab8",
+      "statement": "Every failure path is a Firestore failure: pages lazy-import Firestore modules inside try blocks and degrade to not-connected toasts (the customer menu disables Place Order until connected), while the staff app persists orders to IndexedDB first and catches/log warns on failed syncs so a hiccup does not lose an order.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1103-L1107",
+          "version": "repo-lines-v1:sha256:f192fde89626298974823dbea93555e8c7ac01a8f42ae64f0406979cc8934d53:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDIyNDljN2U4ZjdkN2E1MGE5ODVkNzdlZjJjZTBkZjA0YjM1NzEzNTE4OGEyZGQ4YjJiODNmNjUzY2MyNmEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGE0MmRhNjUzYzI0ZWQwYTZkNWE0NDQ0MzA5M2Y3ZmQyYzc3ODcxMDk1OGY5Y2VmMGUzYTZhMTRhMDIzODQyNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWEwOGVmZWFhMjE3ZDQ2NzA1MzlhODc2YjUwMjI4YjJmZGY0N2U2OGU0NDU4NDA4OGY2MGU3MjRlOTk3MzBjZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDkwNTA0MjQ5YWJlYjRmZGJmMDkxNmQ5NTIzNDk2YmI4ZjE1ZTQ2NjUyMTRkMDVkYzc0ZjRkMzM1ZjhiYjIzZCJ9"
+        },
+        {
+          "resource": "repo://menu.html#L625-L628",
+          "version": "repo-lines-v1:sha256:121b9a92937d82c087852050586ac46aea2643825c3d62004f2b1337cccce025:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGYyMDE5Y2E0OGUwMTI2NTc5NmE4NDI3YTg5YTg1OWNhZmYyZWE1Njk4NzZlNjI1ZDg4ODEwNDFkZTliMmE5YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmRjYTNmOTUyYmM1MTYyZTBhZThhMTJmYzgzNjkzMDA3OGFhMWRhYTRhNzlmNTIxODcxYTI4OTdlYWZhOTk2NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGI2MmI4MjQ0OWExMmMyNzYwNjYxZTBjOWVkMDZmNGQ5M2ZlMzgwOGVhNjU2OGJmZWYzZGMyMTdhYWJiNWY2NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGNmNzQ4OGMwMWMwYzY3NGE0N2FmYmNlOGNiMzdiZDIwNTYwMTJjYThmZWFlZDIwNThhNGVhNWIwZTNhM2U5MyJ9"
+        },
+        {
+          "resource": "repo://menu.html#L718-L727",
+          "version": "repo-lines-v1:sha256:da52aeeb5fac15e450b10c185921fbe3661e1e77be055cac50a3636c7829602e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjViNGI4MDc2MmMyMzEwZDZmZTczN2U2NmRiMjIzNDgwNGM3NmZjODY2NzA5ZjAxN2Y0MmIzM2U3Y2MzZGM0N2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhZjZlN2ZmZmFiZDQ0NTZjMmQzMjk2NzU3MWZjZmVmNGEzMmNhMGEyMWI2ZjFkM2U4MWM2YTg5NThiZjJmNGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYTBkM2JlYzFiMTI1ZDljOGU0MmQzYmZlYTM1NGJkMTljZmJiNDM0MmJlOTkzMDk3ODE3MDBhMTg3YWZiZjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM0ZWM0OTFiOGRlMWMyYTY0NjVkYTYwODBkYjBmZGVhMzEyNzk2YTkzZmU2NjdhMzdkZTAyZGJiNTU4NzEzOTAifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-03T11:03:11.929Z"
+  }
+}

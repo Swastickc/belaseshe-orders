@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:66b20a9eea8cd4c663764825304a45e15300da2d2f32e0711e44a1b456cdad13",
+  "claims": [
+    {
+      "id": "claim_2d579a3c20e64beb94229e8e85773b96",
+      "statement": "menu.html is a login-free single-page app with three full-screen steps (menu, table, order) managed by goToStep, where the menu view is rendered from the live config/menu Firestore document rather than the hardcoded seed.",
+      "evidence": [
+        {
+          "resource": "repo://menu.html#L393-L405",
+          "version": "repo-lines-v1:sha256:f6e69576f5d6f15e476acff8dae291519da78cad3758ebaf9a8b6a8b62f7349d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzNDFlYmIyOGVhMGJiMzY3NmQ5YzRhOTY3NzVhYjJhMDA2ODhhNjk1YjY1YjFlNjJmOThkZTRiYzI0NzNmOWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUwMWVhYmMwMzY4OGE4NzU2N2UwN2E1OGE1N2FmYjZlZDUwYzJhNjEzYmFiNmFlNDcyZTliZTQ2NzcwMDMwMDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk4NzViZjg2N2I4OWEwMTRjZWMxOWVmNmZlMzM4N2EwMjU1MjRkNzk0NDc2Zjk4ZGIzMTdlMDYwMzkwMGE2OGMifQ"
+        },
+        {
+          "resource": "repo://menu.html#L691-L705",
+          "version": "repo-lines-v1:sha256:e0323e2e4424a2a3ce20074b0fb483dc72508eadf2bd12a5a3c2422bef49bed1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNjODFhOTMyZTZmMTkxNTMxMTljMDE1NTFiMGRmMzU1NWQ1ZGUxMjk2NzFkYTU2ZmQ3ZWIwZjY1NjFkZDc4MjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0Y2JiMGNhYTNmMzA0NGU1OWFmNWFkMGEwOTRkMDUyZjBmNjRmODVlYzVlMjEwZmNlNDQ0NjliOTI3ZjNjMjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI1ZWIwNzY1MWU2ZjExNzcwY2MyNjYzOTE2MzJmMTc1MDJhMDczZWMxYWJiM2EzODA0NmY0YTA5NGEzMDdhZjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczYmYzYTYyNTA2ZDQxMWYxNjdkNzAxMzA4YjlhZDBlZGEyMzA0ZTU5OWEyNWM1OWZlNWQzYWExOGNiMmUyMjgifQ"
+        },
+        {
+          "resource": "repo://menu.html#L728-L740",
+          "version": "repo-lines-v1:sha256:0f88c2c8f97b746af88a5a556957cb4288b33002da6de1e7790e10b2fd8a294c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkzOGY3MmNmNTA5ZDcxM2Y4NzcxY2QxNjE3OWY1NmU0NDNlNzgyNmE1NDFhNDA1YTFiYTg1MDE5NTEzZWUwZmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE2NTJiZGUxOWJkZmRjOTFmYTc2ZjMwMWMyOWI5Y2I2MDk4ZWQxMTIwOTY4OGJlMjQxZDMzYzkyNWIzM2FmNjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI2M2NiODExYjliOWU1MjgwMzkwMGU4NzA4YzhmMDk4Njc0NWJkOTBiYTA5NjIyMmU2MWFhMWFmZDI2NTRlYmQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6cdfdce725cb4573979910cdf7b6f59b",
+      "statement": "In v2 the table is always chosen explicitly at order time: even a stray ?t= URL param from an old bookmarked per-table link never auto-fills or skips the table step, and after selection the URL is rewritten to ?t=<table> with history.replaceState.",
+      "evidence": [
+        {
+          "resource": "repo://menu.html#L406-L416",
+          "version": "repo-lines-v1:sha256:418e6baf2b0a4db96853f42c994f64308cd606661e8c3740a03c546aa4841c58:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0M2E1NGQ1MDA4ZmU5NTM4OTkzMmFkNDBmMmMzMWMyZGZkMDhjZmQyMjUyZTU2ZmNjNTJmNjNmYTA4MWJjZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjMWQ1ZDIxMmFmMzliMzI2OGIzYjIyYjAxZGMzMjY2ODA5Yjg4Y2UyNjQyYjQ3ZDNjYTE4ZWJkNjZjOWRlNjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZhNjcxOWJmMmEyNTI3NzAxZmRkMDY3NGMzNTNiMDJmNGExMTMxNzJiOTExZGM0MzM2ODk2NWRkNzJlZTYzZjQifQ"
+        },
+        {
+          "resource": "repo://menu.html#L736-L740",
+          "version": "repo-lines-v1:sha256:1d4804005725fd667d5d39a2ac46a904e9dfb6e08dd2662c8f0fd4e05c6f835e:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWZjOTQxMzQ5NTBkYzk3ZTY5YzNmMzcwMzBkYzhhYzU2MWU1MTA3NDI1Y2Q0ZjNjODQwMTk4NjRhZTE5NTc1MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjYzY2I4MTFiOWI5ZTUyODAzOTAwZTg3MDhjOGYwOTg2NzQ1YmQ5MGJhMDk2MjIyZTYxYWExYWZkMjY1NGViZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_4d64c3b4d1d74c1d900f3ab7005a17da",
+      "statement": "placeOrder builds the order client-side with a c_-prefixed id, status 'pending', source 'customer' and seen false, and submits it with a single setDoc to orders/{id}; there is no payment step on the customer side.",
+      "evidence": [
+        {
+          "resource": "repo://menu.html#L633-L653",
+          "version": "repo-lines-v1:sha256:e1673b011970be795a262a6208ab60563992c9811878f52617bb0785a8220333:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNhM2U0NmY5NDI3NmI2ZjZmNGVkMWYwMmFmNzhiZWY2YTJlZTFjNDM5ZGQ1NTg0Yjk3Mzk0ODMxMzIxNGQyYjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZmZjk0ZGZiNmRiYzAwNmU3ZTQxOTM4ZmJlYzhmNmU1MmRlNmU4NzAzZGFlYmIxNGY1NDFlZTA5MzNmNzM4NDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVjYmVhYzBmZDcwODQ0YmYxMTEwYmY3YTdkZTkwMjM5MGMzMWJiMjNkZDhkZjc0MGQ2YjYyZmJmMTUxMjZkMWMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_41b3dbc232044bf192575d4072cc4e56",
+      "statement": "Cigarettes are excluded from the customer browse view via PUBLIC_MENU_CATEGORIES but remain orderable from the Place Order tab and the staff app.",
+      "evidence": [
+        {
+          "resource": "repo://shared/menu-data.js#L21-L26",
+          "version": "repo-lines-v1:sha256:80638282d0cd3168bff5df1e75d2840ce74ea70235c5b905514da7afd0bfc83a:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWU3MzQ5ZThkMTM3ZjQ2NzJhYjk0M2U0MDQ1MjQ0YTM2NTUxZTg3OTgxOWY0MGE4NzAxZjNhNmQ5MmI2ZmM3OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODhjNmY0NjQzY2QzMDg3Nzk1NjgxMDYzYjJjM2MyNDY4NTdhZjZlMDNlOWU3OGM4YzNkYWFkYmVjM2ZkMmI0MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODA4OTQ3MDNlMmE4OWVkMTE0MzQxMjIyYzRhZDM4ZjFiYjVjMDVhYTlmOWVmOTdkODlkMzQyZDc3MGVjMTNhMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c8c2333f04d34c10a0a6d9a1bba13dd1",
+      "statement": "After a successful order the confirmation screen subscribes onSnapshot to the order document and streams status changes to the customer until dismissed, and the page degrades explicitly offline: Place Order stays disabled until initFirebase sets state.connected, with distinct toasts for not-yet-connected and failed sends.",
+      "evidence": [
+        {
+          "resource": "repo://menu.html#L583-L586",
+          "version": "repo-lines-v1:sha256:df61fa07db395c6ad60d22092a9f24354bb553ab924c4a311868097ba281a9df:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDdlOTRhYmMxYjQ2MmEwYTRjYTE1ZjlhNzE3OGY1MmNlN2FjZjQ1NjM3OTY3OWQ5YmVhN2ZhZjJmZTA3Zjc3NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWRjNjZlNWNjYjkzMGQ2MjVhYWQ0OGFmYjU2YjQ1ZTZhYjdkOGJlMjAyMmI3MmQ2MWNhMmJjODA1MjcxNTE1ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjQ0Mzc3ZjEwNzAyZWMxNjQxOThjMWY3NDhhNzU3YjJkZGVjNjE4NDVhNTAyMTVmODg4NWY1NWY2MWI4NjQ5ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2Y5NTc1MzRlNzAwNTVhODU4ODljMDM2Y2FhYmE4ZGVjM2ZhYzVhZTRlNDQ1OGM5ODlmZjQzNGY5N2RiZDI3NSJ9"
+        },
+        {
+          "resource": "repo://menu.html#L612-L621",
+          "version": "repo-lines-v1:sha256:df2b175e0f1e226a9d26ef9abf2089eb6db2163ff88e17782bc7f223979967b5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzMzkyMGZkOTJhMjMyNjliNjlmODNlNmNiNDViNzIwYzZkMzI1MTBjOTNhOTAzMzllMGNiZmRiY2EwYTNlMmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ1YTE4ZjVkNzQ2ZjE0MTllNDg0ZTlhNGVkODFhZjllOTgzYmZkNDlhNTY1Mzg5MmE1ZmJjZWQ2MGMwMzVhYjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRiNjJiODI0NDlhMTJjMjc2MDY2MWUwYzllZDA2ZjRkOTNmZTM4MDhlYTY1NjhiZmVmM2RjMjE3YWFiYjVmNjcifQ"
+        },
+        {
+          "resource": "repo://menu.html#L625-L626",
+          "version": "repo-lines-v1:sha256:d194a414e23b539c21267bebb0c7837934039680e9f73acefb51d4fbe45ccf3c:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGYyMDE5Y2E0OGUwMTI2NTc5NmE4NDI3YTg5YTg1OWNhZmYyZWE1Njk4NzZlNjI1ZDg4ODEwNDFkZTliMmE5YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTYwMzNjOTJiMTViNzdjNDlhZTA2MzVhYmUxNTgyZDllNTBhYTdkNGYyODMwOWM3NTU5NmY0OTI3NzU0NTA4ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGI2MmI4MjQ0OWExMmMyNzYwNjYxZTBjOWVkMDZmNGQ5M2ZlMzgwOGVhNjU2OGJmZWYzZGMyMTdhYWJiNWY2NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNThjZTc5OWRiZWFjNjI5MTQwZTljODFjYzUyYzNhZjRjOTBiZTdhYTU0ZGYzMzc1MzQ5ZDAxMmI4ZjBlOTk4YyJ9"
+        },
+        {
+          "resource": "repo://menu.html#L689-L716",
+          "version": "repo-lines-v1:sha256:2854246263c8ae32375c8f6054ff46eb631eef27fd5204f0219d463dcc25cfa1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2NTk1ZjRlZTVmZjYzZDUwOTUwNDE5ZGMzNDQxNDUxMzg1MWRjOTczNmZkMTdhNGY3YmZhOTMwYjI2MWI2ZjIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA3ZTU0MGUzNjYxMTI1ZTQ0MDRlNGMyMjZiZDQyNjZmZGZmOTJlMjJmYjIzODczNmY3N2JjNmM5Y2M5OGQ1YTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE2Y2NjNDNmYjYzNGI2Y2RlMzZmYTNkNmJkZjkzYjc5MjliY2Y2MTk0ZmYyNDFhZDI3NjcxYzYzZjBiZTVjZmIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-03T11:03:11.929Z"
+  }
+}

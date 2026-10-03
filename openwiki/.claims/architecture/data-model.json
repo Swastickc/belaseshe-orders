@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:02b21e31481a0c2b3f85ac2bc7923821db94bee50e13b254cc05889ec8e37bbb",
+  "claims": [
+    {
+      "id": "claim_f1d59e0964764dd383a613114550b4fb",
+      "statement": "Firestore is the only backend: the three HTML pages talk to it directly from the browser via the Firebase JS SDK, with no server and no authentication layer; the database defines exactly two collections, orders/{orderId} and config/{docId}.",
+      "evidence": [
+        {
+          "resource": "repo://firestore.rules#L24-L39",
+          "version": "repo-lines-v1:sha256:1d7a3018f88c12f9a4dafc0230d54ff46879716d9e1190839bbe970fc3fc9e45:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5NGUxYzBiODc4MTUzMDk4MTRiMGJmYjE0OWUzYTc2NjExZmJkMWQ2MTg2NDQ3ZjM4NjBhNTA0ZjRiNmMyZDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4OTNmNDBlMzc4MWViODk2YzgyZDA0NmEwODA2N2ExMWUzNWNkZjJmMWRmYWYyNmZlYTkwYjhkYjY2NzY0MTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhmMGE2ZDJmMmU3NzAxMmJlYjMxZTRmNTEwYmQzYjI5NjhjYzFmZjBiNjk0NmQ5MGFhMzAzYzc5Yjk1MmVkOWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE4NDU2OTc5NjY2YWZmNWQzNDM2YzdiYjI2MjIyZGI3MThlYzQxM2M3NjkxNmZjN2E2MGEwZTg5YTg3ZTI2NTMifQ"
+        },
+        {
+          "resource": "repo://shared/firebase-config.js#L1-L20",
+          "version": "repo-lines-v1:sha256:c383375eb28e24c8bac577cf479db8315ff66e0b4a23e670fba87c108506d4fa:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYyNzJhMjgzOGUxNzdiNDJmOWFlMmUyZGM1NDhhOTM2YTc0NWI2MzkyZTA1ZGNhOGQ1MzA1NGU4Y2ExNDkyMmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoyLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIyNDc5MTE1NzRmN2ZiZTdlYjQ0NzRjOGMzNmM1N2M2YThiNDhiYWQ0ODMxODkyNDdjOWIyM2FlZDNjZTE2YzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6e21870c46b043c19041971a6e401d29",
+      "statement": "Order documents are created client-side with the creator encoded in the id prefix and source field: the customer menu writes ids prefixed c_ with source 'customer' and seen false, while the staff app writes ids prefixed o_ with source 'staff' and seen true.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1089-L1107",
+          "version": "repo-lines-v1:sha256:4047212ade9bf6dc7890f46ba13aefcf6253a551c44a078f94f7ef55ece12d82:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM0YjUwMWMyMTVhZGI3MTM3ZjFjNTYxNzdjYjZiNTUzZjQ2YjFiNGM5ZjI3ZGZmZGJkZDA5MWU4YjhjMTMyOWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhhNDJkYTY1M2MyNGVkMGE2ZDVhNDQ0NDMwOTNmN2ZkMmM3Nzg3MTA5NThmOWNlZjBlM2E2YTE0YTAyMzg0MjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVjM2JmMDQ0NDJiMjcyM2U2MDIxNmZlOWIxMTQyNTRkYThkYTU1ZjFlMzI4MzhjZGJhMWY3M2MxNWExYmE1NDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ5MDUwNDI0OWFiZWI0ZmRiZjA5MTZkOTUyMzQ5NmJiOGYxNWU0NjY1MjE0ZDA1ZGM3NGY0ZDMzNWY4YmIyM2QifQ"
+        },
+        {
+          "resource": "repo://menu.html#L633-L652",
+          "version": "repo-lines-v1:sha256:b35400a6377c73648fec06cc4057de646482daac236c25796d00278301f6fba1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNhM2U0NmY5NDI3NmI2ZjZmNGVkMWYwMmFmNzhiZWY2YTJlZTFjNDM5ZGQ1NTg0Yjk3Mzk0ODMxMzIxNGQyYjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlNTdkZjc2NmRhNTkxNjM5OWI1NGRhNTNhNGRmYWJkMTkxNzI0ODhkNzdhZjUzYzY5Y2I3NjlmNmQ5ZGI0NTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZmZjk0ZGZiNmRiYzAwNmU3ZTQxOTM4ZmJlYzhmNmU1MmRlNmU4NzAzZGFlYmIxNGY1NDFlZTA5MzNmNzM4NDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU4OGI1MjUxN2VlZDA4YjU2OTNlZjA3MTZlMjAxYTgyYjE5OTQ0NTM1ZDg1NWFjZjNhNDE5MWM2MzdjMGE5NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_155b7183b15f4212b81ebf66104e1061",
+      "statement": "A new order can only be created through the rules if it has the required keys, a valid destination (table|takeaway), a valid zone (rooftop|downstairs|none), between 1 and 40 items, a numeric total between 0 and 100000, status exactly 'pending', and source 'staff' or 'customer' — so an order can never be created already paid.",
+      "evidence": [
+        {
+          "resource": "repo://firestore.rules#L41-L49",
+          "version": "repo-lines-v1:sha256:9d7f5258d4fc82086bca508a4550faef18863848d5ecf86097ab2128a416bc0b:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzEyZTJiNDVhMmVhNWZlNjU0YWYzYzQwM2Q5MWQ5YWRiOWJmMWIyMGExNjFmYjVjZjBjMzFmZTM5ODc3YzMzNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTRhYmE5MWU3ZGM3Y2UzNjVlMmJlNGVkNTEwYWE4MDllMzg0ZTI2ZTM2NjYxNzcwMDk0ZWUwMjExZTljZGYzYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmNjNzZmZWM3YjQ0ZDM5OWRjYTJhZmNlNWViZTlkYzMzYWNjMDYwZjIyNWY0OWZkMGMwMzFhYjY3ZTg2NWE3ZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ed170f132450490d80547cafa146b4e7",
+      "statement": "The order status lifecycle is pending → preparing → ready → paid; update validation restricts changed keys to status, updatedAt, note, seen, items, and total, and the customer's live status tracker folds ready and paid onto the same final step.",
+      "evidence": [
+        {
+          "resource": "repo://firestore.rules#L51-L55",
+          "version": "repo-lines-v1:sha256:75586ecaaa0a3702ecba2d60e08e5b2f57fdca0d689159c3fb0a57a654c5c84b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmM3ZTA3NmJhZDNjOWMwZWJmNmJmOThhZjg4NGQxNDk4ODA5ZGUxMWY3Y2ZlOGJmMjAxODczNGUzMWRmNWY0ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2RmNGNjMDdlOWM2ZGYzYTI5MTAxOTMwYzM2MTU0NDRlZjRkNTRlYTdlZTAyZGU3M2JmZTE0ODMwZDE3ZDY2OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjIsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGY3MzlhMDZjMWNiYjEyNDRlMzM2M2QzOGJjZjlmYTUwY2U4NGZlZDM5OWMyMTkzYTNjN2YwOGQ1OTkxOGIyYSJ9"
+        },
+        {
+          "resource": "repo://menu.html#L599-L620",
+          "version": "repo-lines-v1:sha256:f9433d3f014df6d786f9871e4f5b09c2ac7585700b82c2e1c7669f81aa85fec4:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJjN2Y0NmNkMjFiZDQ5YzJiYzUzMTEwYjcwNmEzOTU2ZTgyYTJlNDU3MzBmMzFhM2MyODA1N2M1NWMwZmFkYzMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxMmNhMzQ1Y2NmNzViZjljMDgwNmJjZTY5NWJlOGRlODA4Yjc5OTg0MjUxYTdhNTRkMjAyY2Y2MTAxZGQ0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY5Mzc3N2UxZGZmZDFlZjRhNjg3NDIxNjgxNjM3OTNhODMzMTZhMjk0MjU4ZDgxOGEyM2EwMzQzYjY5OTE5NzUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVmNWI3ZWRkOTNlOWM3ODcyN2M2MTAyYWE2M2MwYzQ2NWZhNGNmYjhlZDk0YzU1ZjI0ODI0N2U5NjMwMzY1ZjcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_05f7903781694ed9b4fb5d5f6ce551d3",
+      "statement": "Contrary to the file's own header comment claiming items and total are frozen after creation, isValidStatusUpdate's hasOnly list includes items and total, so the rules allow rewriting an existing order's items and total.",
+      "evidence": [
+        {
+          "resource": "repo://firestore.rules#L13-L16",
+          "version": "repo-lines-v1:sha256:316b6a29610f1389d4900efb884ebbb715ccdac9f662762e27ca7ded46a99c44:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTQ5OTA1OWI2ZmM0Y2VlYTYzN2Y4NGY5YmE1ZjA2ZDVhN2Q3MDJkYzg4NGQ5YTgxMmE5Y2E4M2ZjNTAzYjg4OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmQzYTMwNWNiY2U1MDQyZjU1ZTljZWIzZTRkY2NmZDJjODUyODI1YTM4NTdhNGI0Mzc5YTI2YTE3YzM3N2Y4NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDM2MTg5ZTEzOGU1MzU2MjU1ODA4ZDBjNDM2YTkwOTg3ZTM1OWM2NGZkYWZjODgwZWZlYzkyNGYyOWM0M2Y5OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmZjMDVlZjFhNWM5NmNjMTUwMzBlN2Y1MjM2NjdiMzMzMzY4MDdmNzQ5NTExMzM4NTM3MWQzZGI0OWNjMDMxOSJ9"
+        },
+        {
+          "resource": "repo://firestore.rules#L51-L55",
+          "version": "repo-lines-v1:sha256:75586ecaaa0a3702ecba2d60e08e5b2f57fdca0d689159c3fb0a57a654c5c84b:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmM3ZTA3NmJhZDNjOWMwZWJmNmJmOThhZjg4NGQxNDk4ODA5ZGUxMWY3Y2ZlOGJmMjAxODczNGUzMWRmNWY0ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2RmNGNjMDdlOWM2ZGYzYTI5MTAxOTMwYzM2MTU0NDRlZjRkNTRlYTdlZTAyZGU3M2JmZTE0ODMwZDE3ZDY2OSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjIsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZGY3MzlhMDZjMWNiYjEyNDRlMzM2M2QzOGJjZjlmYTUwY2U4NGZlZDM5OWMyMTkzYTNjN2YwOGQ1OTkxOGIyYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2c8944d0124e45e38cfeeb855f2320df",
+      "statement": "shared/menu-data.js is only the seed for the live menu: the staff app pushes DEFAULT_MENU to the config/menu document on first run, and after that the Firestore copy wins and staff Menu Editor edits are persisted there.",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1313-L1317",
+          "version": "repo-lines-v1:sha256:55c5fe0bb7ea80e1761a2d22379ec436adec43e96952c1a651a22db08b210a61:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDIyNDljN2U4ZjdkN2E1MGE5ODVkNzdlZjJjZTBkZjA0YjM1NzEzNTE4OGEyZGQ4YjJiODNmNjUzY2MyNmEzYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjY2M2Y3ODg2MGUxNTRiMDAxMjI4NDE5ODNhYjY4Y2I5YjAxMDY5MTljYWI5ZTQwZGExMWM2NmYwNDQyYzgyZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTY0ODA4NjBlYjM1YTE0NjQ1ZGZhNTk3NjFlMGFmZmQ0NjhlM2M0NWU4ZDg1OTc5M2YxMTAxYzhmZmY5MjAyOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmI1ODBlOTY0ZjgzYTQ3M2Y0M2Q0NDM4NDYyOTQ5ZDY4YjU2MDBmZGE3ODdmMTYzNzQ1ZDAwZGU4OWNiZjM2YSJ9"
+        },
+        {
+          "resource": "repo://index.html#L1566-L1577",
+          "version": "repo-lines-v1:sha256:d131e33834fd562569ad601d9738e90ae9df4a9b779875a235847c4a96bc6962:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJkMDFjMGNiNGM4MjBiNjVhN2JiNTViYTU2NjkyNmVmMjI0OTNhZWQwNTQxOTYzNDk1NmVjZWI2OTI1ODBiN2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliNjJmNjBkODU5MGE1NzljZjQ2ZjhkNjczNzhjNGM1NzJiOTYyY2VjY2RiOTBjN2E1ZjdiNDJiOTYwNzgyYTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImEwMzU4MjY0ZjM2OWMyY2Q4NTQ3MmZhZWEzNjRkZDg3YTNlMDhmNzhiNDkyMzI3OGQwNzM3NDE0ZjhjODM2NWUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQwNDJkYTBkODBhNWY2YmE3ZmM4YWM3NjkyMGNjY2I4NmMyNDIwODNlZTcxODlkMGRmYTM5ZGE0YTU1M2ZiNzMifQ"
+        },
+        {
+          "resource": "repo://shared/menu-data.js#L1-L10",
+          "version": "repo-lines-v1:sha256:74cdcf900b76723b5f289d35ce1a93d34fd6ed8d47b08ce07b7a2013b3b6d0d8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwMmMzMWEzZTMwYTgxNGVmZTRiM2MwODdmYWQwNTY4YzQ2ODNkNzZmZjM0YWMzY2I1NzY1OWI5MDRiZmJlMTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY1N2YyZjY0YTc4NDk5NWQ1YzczMzUzNGUzZjQyMDFiMjhiZDQxZjc2MzIwY2ZlYmIyODdhYWE5OTcyNmIwZGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6eb191513d2d4ead934b723f04892227",
+      "statement": "The rules accept a documented no-auth trade-off: orders is world-readable and deletable, config is world-writable, the staff PIN only gates the phone UI, and the named escalation paths are Firebase App Check and Firebase Auth.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L57-L61",
+          "version": "repo-lines-v1:sha256:b63340b4419887e7bcd35d1dad108acad71492e41b080e1b282d3ce36c13abac:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWNiMjBkNjQzNzhkNGQyNDk0NjM4ZTYyODk4OGY2NjgxNWE1YzhlZWQ2ZGJlYWQ1Y2I5MmJmOWMwOGJhMzM4ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWEyYjFmMjViMjk4MzYzZjljODk0YzVlZWJlNzAwYTdiNjJmMDhkOGEzNDBmZDYyMjE2YWU0OWRjMDg4NWUyZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzdmMmE1MTg5MWI3OGQxZTc4YzQyY2JmNGU1MTI4NTAyYjU3OTQ3ODZkZjQ4NGJhYjliNzYzN2I1MTA0MDA4YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjUyZWQ3M2FhMjU0ODYwOGZlNjFiYzNiNDI3ZTgzMGFlMGQ1MmZjMmE2ZGIwM2U5NWM4NWUzOWVjOWIxZDk3YiJ9"
+        },
+        {
+          "resource": "repo://firestore.rules#L27-L39",
+          "version": "repo-lines-v1:sha256:13cbb7b4ab8a8cecb53a8fa6ccb286d7ab95140dfbc8f842e6bdefab2ba70662:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFjNDQyMTYwMzVjNjc1MDE0OGFmMjhmZDIwNmM2MDdjZTg0OTFjNjM5MDFmNDRkMzEzMTg2ZmUxYjViZDBiN2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4OTNmNDBlMzc4MWViODk2YzgyZDA0NmEwODA2N2ExMWUzNWNkZjJmMWRmYWYyNmZlYTkwYjhkYjY2NzY0MTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg2MDc5ZDQzMTU3MjQ4NDRlNzZjZTY2NTcxNzNkNmE0MzczMWE2ZDc4N2I5YjZiOWMyYjlmNTZhMDVkYzY3NTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE4NDU2OTc5NjY2YWZmNWQzNDM2YzdiYjI2MjIyZGI3MThlYzQxM2M3NjkxNmZjN2E2MGEwZTg5YTg3ZTI2NTMifQ"
+        },
+        {
+          "resource": "repo://firestore.rules#L3-L22",
+          "version": "repo-lines-v1:sha256:8236ff821a5a23d5b6c2bacf5835bb1b10f8940e54d917b4035d1d6fda982078:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjdlNDhhMTZiODhkM2RkNjIyOGFlZjU5OTg0MmQwOGEyM2U2MWE4NDFkZTY0MGQ3YjljOTA5Y2IwYzVhMmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjoyLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJiOGQyN2JjMmJlYjVkYzgzNTFhMjZlMTM0Njc0ZmM3YzU4N2IyOWYyMzFmMmUzNzNlMjZkZDczZjlhNGYzM2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ3MjQ0ZWY4ZGI4MmViYTkzNzA2ZjQxZmQwOGU5YmYxZDY3MTY4MmEyY2NhODI5MjM1MzdiMDU5ZmQ4ZTY2NjUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.6.1",
+    "at": "2026-10-03T11:03:11.929Z"
+  }
+}

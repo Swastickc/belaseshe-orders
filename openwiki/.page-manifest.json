@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "pages": {
+    "/openwiki/architecture/data-model.md": {
+      "pageVersion": "sha256:02b21e31481a0c2b3f85ac2bc7923821db94bee50e13b254cc05889ec8e37bbb",
+      "completedBy": "opencode",
+      "completedRunId": "97f5273b-cd1e-4c24-bf7e-25d38273e88b",
+      "gitHead": "a058489c7ea1560b33a00ab27f0b7e564ce57bb0",
+      "sourceFingerprint": "sha256:750371cb59f21650313c712e24edf80313d2703a4cb1dd3c65e45f94885849b0"
+    },
+    "/openwiki/architecture/overview.md": {
+      "pageVersion": "sha256:09a2d0f72b5652a5c17349b4af96d6e82766fea0f35bc530cc250b8b1b389ccf",
+      "completedBy": "opencode",
+      "completedRunId": "97f5273b-cd1e-4c24-bf7e-25d38273e88b",
+      "gitHead": "a058489c7ea1560b33a00ab27f0b7e564ce57bb0",
+      "sourceFingerprint": "sha256:750371cb59f21650313c712e24edf80313d2703a4cb1dd3c65e45f94885849b0"
+    },
+    "/openwiki/operations/deployment-and-qr.md": {
+      "pageVersion": "sha256:4d62079643454b19d9fbf1825a75fc412dcded09cdc992af30d7bf7069bd16b0",
+      "completedBy": "opencode",
+      "completedRunId": "97f5273b-cd1e-4c24-bf7e-25d38273e88b",
+      "gitHead": "a058489c7ea1560b33a00ab27f0b7e564ce57bb0",
+      "sourceFingerprint": "sha256:750371cb59f21650313c712e24edf80313d2703a4cb1dd3c65e45f94885849b0"
+    },
+    "/openwiki/quickstart.md": {
+      "pageVersion": "sha256:7ef5c9b9e6840a8940d82d2209c4213cca1e1cb9e0c3f1cf81f8afd3e28058ce",
+      "completedBy": "opencode",
+      "completedRunId": "97f5273b-cd1e-4c24-bf7e-25d38273e88b",
+      "gitHead": "a058489c7ea1560b33a00ab27f0b7e564ce57bb0",
+      "sourceFingerprint": "sha256:750371cb59f21650313c712e24edf80313d2703a4cb1dd3c65e45f94885849b0"
+    },
+    "/openwiki/workflows/customer-qr-ordering.md": {
+      "pageVersion": "sha256:66b20a9eea8cd4c663764825304a45e15300da2d2f32e0711e44a1b456cdad13",
+      "completedBy": "opencode",
+      "completedRunId": "97f5273b-cd1e-4c24-bf7e-25d38273e88b",
+      "gitHead": "a058489c7ea1560b33a00ab27f0b7e564ce57bb0",
+      "sourceFingerprint": "sha256:750371cb59f21650313c712e24edf80313d2703a4cb1dd3c65e45f94885849b0"
+    },
+    "/openwiki/workflows/staff-pos.md": {
+      "pageVersion": "sha256:b1440cc79008cc439edc5f8c5782d17afccc19cde601ff379844ad7390e28094",
+      "completedBy": "opencode",
+      "completedRunId": "97f5273b-cd1e-4c24-bf7e-25d38273e88b",
+      "gitHead": "a058489c7ea1560b33a00ab27f0b7e564ce57bb0",
+      "sourceFingerprint": "sha256:750371cb59f21650313c712e24edf80313d2703a4cb1dd3c65e45f94885849b0"
+    }
+  }
+}
